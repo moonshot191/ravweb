@@ -14,10 +14,10 @@ class AddDatesToApolloTable extends Migration
     public function up()
     {
         Schema::table('apollos', function (Blueprint $table) {
-            $table->string('edited_by');
+            $table->string('edited_by')->nullable();
             $table->boolean('validated');
-            $table->string('validated_by');
-            $table->dateTime('validated_at');
+            $table->string('validated_by')->nullable();
+            $table->timestamp('validated_at')->nullable();
         });
     }
 
