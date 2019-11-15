@@ -11,6 +11,18 @@
 
             <div class="card ">
               <div class="card-header card-header-primary">
+                  @if (session('status'))
+                      <div class="row">
+                          <div class="col-sm-12">
+                              <div class="alert alert-success">
+                                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                      <i class="material-icons">close</i>
+                                  </button>
+                                  <span>{{ session('status') }}</span>
+                              </div>
+                          </div>
+                      </div>
+                  @endif
                 <h4 class="card-title">{{ __('Add User') }}</h4>
                 <p class="card-category"></p>
               </div>
@@ -42,6 +54,20 @@
                     </div>
                   </div>
                 </div>
+                  <div class="row">
+                      <label class="col-sm-2 col-form-label">{{ __('User Type') }}</label>
+                      <div class="col-sm-7">
+                          <div class="form-group{{ $errors->has('roles') ? ' has-danger' : '' }}">
+
+                              {!! Form::select('roles[]', $roles, isset($user) ? $user->roles->pluck('id')->toArray() : null,  ['class' => 'form-control', 'multiple']) !!}
+                              {{--                                            {!! Form::select('product_id', $groups, 1, ['class' => 'form-control']) !!}--}}
+
+                              @if ($errors->has('roles'))
+                                  <span id="roles-error" class="error text-danger" for="input-roles">{{ $errors->first('roles') }}</span>
+                              @endif
+                          </div>
+                      </div>
+                  </div>
                 <div class="row">
                   <label class="col-sm-2 col-form-label" for="input-password">{{ __(' Password') }}</label>
                   <div class="col-sm-7">

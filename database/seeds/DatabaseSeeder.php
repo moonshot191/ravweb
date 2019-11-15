@@ -41,7 +41,7 @@ class DatabaseSeeder extends Seeder
         if ($this->command->confirm('Create Roles for user, default is admin and user? [y|N]', true)) {
 
             // Ask for roles from input
-            $input_roles = $this->command->ask('Enter roles in comma separate format.', 'Manager,Validator,Teacher');
+            $input_roles = $this->command->ask('Enter roles in comma separate format.', 'Manager,Validator,Teacher,User');
 
             // Explode roles
             $roles_array = explode(',', $input_roles);

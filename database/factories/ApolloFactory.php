@@ -2,7 +2,7 @@
 use Faker\Generator as Faker;
 $factory->define(App\Apollo::class, function (Faker $faker) {
     return [
-        'member_id' => $faker->randomNumber($nbDigits = NULL, $strict = false),
+        'message_id' => $faker->randomNumber($nbDigits = NULL, $strict = false),
         'username' => $faker->userName(),
         'question'=>$faker->sentence($nbWords = 6, $variableNbWords = true),
         'answer'=>$faker->sentence($nbWords = 6, $variableNbWords = true),
