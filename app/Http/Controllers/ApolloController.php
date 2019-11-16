@@ -6,6 +6,9 @@ use App\Apollo;
 use App\Group;
 use App\Http\Requests\GroupRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+
+
 
 class ApolloController extends Controller
 {
@@ -110,7 +113,28 @@ class ApolloController extends Controller
      */
     public function update(Request $request, Apollo $apollo)
     {
-       $apollo->update($request->all());
+        $rules = array(
+            'answer'=>'required|string|min:3',
+            'question'=> 'required|string|min:3',
+            'level' => 'required|numeric',
+            'group_id'=>'required'
+        );
+
+        $this->validate($request,$rules);
+
+        $data = request()->except(['_token','_method']);
+        if(isset($data['validated'])){
+
+            $data['validated']=true;
+            $data['validated_by']=auth()->user()->username;
+            $data['validated_at']=\Carbon\Carbon::now();
+        }else{
+            $data['validated']=false;
+        }
+        $data['edited_by']=auth()->user()->username;
+        Apollo::whereId($apollo->id)->update($data);
+
+
         return redirect()->route('apollo.index')->withStatus(__('Question successfully updated.'));
     }
 

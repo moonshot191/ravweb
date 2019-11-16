@@ -15,7 +15,7 @@ class AddDatesToApolloTable extends Migration
     {
         Schema::table('apollos', function (Blueprint $table) {
             $table->string('edited_by')->nullable();
-            $table->boolean('validated');
+            $table->boolean('validated')->default(false);
             $table->string('validated_by')->nullable();
             $table->timestamp('validated_at')->nullable();
         });

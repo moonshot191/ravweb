@@ -70,6 +70,37 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="row">
+                                    <label class="col-sm-2 col-form-label">{{ __('Validate ') }}</label>
+                                    <div class="col-sm-7">
+                                        <div class="form-group{{ $errors->has('validated') ? ' has-danger' : '' }}">
+                                            @if($apollo->validated==true)
+                                            <div class="togglebutton">
+                                                <label>
+                                                    <input type="checkbox" name="validated" id="validated" checked="">
+                                                    <span class="toggle"></span>
+                                                    Validated
+                                                </label>
+                                            </div>
+                                            @else
+                                            <div class="togglebutton">
+                                                <label>
+                                                    <input type="checkbox" name="validated" id="validated">
+                                                    <span class="toggle"></span>
+                                                    Validate
+                                                </label>
+                                            </div>
+                                            @endif
+                                            @if ($errors->has('validated'))
+                                                <span id="validated-error" class="error text-danger" for="input-validated">{{ $errors->first('validated') }}</span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <input type="text" name="edited_by" hidden>
+                                <input type="text" name="validated_by" hidden>
+                                <input type="text" name="validated_at" hidden>
                                 {{--                                <input type="text" name="user_id" hidden>--}}
                                 {{--                                <input type="text" name="username" hidden>--}}
                             </div>
