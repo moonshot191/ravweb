@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Authorizable;
 use App\Apollo;
 use App\Group;
 use App\Http\Requests\GroupRequest;
@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Validator;
 
 class ApolloController extends Controller
 {
-
+    use Authorizable;
    protected $url ="https://api.telegram.org/bot";
     /**
      * Display a listing of the resource.
@@ -22,7 +22,7 @@ class ApolloController extends Controller
     public function index(Apollo $model)
     {
 
-        return view('bot.apollo.index', ['apollo' => $model->paginate(10)]);
+        return view('bot.apollo.index', ['apollo' => $model->orderBy('created_at', 'desc')->paginate(10)]); #view('bot.apollo.index', ['apollo' => $model->latest()]);
 
     }
 

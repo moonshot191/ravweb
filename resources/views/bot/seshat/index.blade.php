@@ -1,4 +1,4 @@
-@extends('layouts.app', ['activePage' => 'apollo-management', 'titlePage' => __('Apollo Management')])
+@extends('layouts.app', ['activePage' => 'seshat-management', 'titlePage' => __('Seshat Management')])
 
 @section('content')
 
@@ -8,8 +8,8 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header card-header-primary">
-                            <h4 class="card-title ">{{ $apollo->total() }} {{str_plural('Question',$apollo->count())}}</h4>
-                            <p class="card-category"> {{ __('Here you can manage Apollo questions') }}</p>
+                            <h4 class="card-title ">{{ $seshat->total() }} {{str_plural('Question',$seshat->count())}}</h4>
+                            <p class="card-category"> {{ __('Here you can manage seshat questions') }}</p>
                         </div>
                         <div class="card-body">
                             @if (session('status'))
@@ -26,8 +26,8 @@
                             @endif
                             <div class="row">
                                 <div class="col-12 text-right">
-                                    @can('add_apollo')
-                                        <a href="{{ route('apollo.create') }}" class="btn btn-sm btn-primary">{{ __('Add Question') }}</a>
+                                    @can('add_seshats')
+                                        <a href="{{ route('seshats.create') }}" class="btn btn-sm btn-primary">{{ __('Add Question') }}</a>
                                     @endcan
                                 </div>
                             </div>
@@ -70,15 +70,15 @@
 {{--                                        {{ __('Creation date') }}--}}
 {{--                                    </th>--}}
                                     <th class="text-right">
-                                        @can('edit_apollo','delete_apollo')
+                                        @can('edit_seshats','delete_seshats')
                                             {{ __('Actions') }}
                                         @endcan
                                     </th>
 
                                     </thead>
                                     <tbody>
-                                    @if($apollo->total()>0)
-                                        @foreach($apollo as $group)
+                                    @if($seshat->total()>0)
+                                        @foreach($seshat as $group)
                                             <tr>
                                                 <td>
                                                     {{ $group->question }}
@@ -143,16 +143,16 @@
                                                 <td class="td-actions text-right">
                                                     {{--                              @include('shared._actions', ['entity' => 'users','id'=>$group->id])--}}
 
-                                                    <form action="{{ route('apollo.destroy', $group) }}" method="post">
+                                                    <form action="{{ route('seshats.destroy', $group) }}" method="post">
                                                         @csrf
                                                         @method('delete')
-                                                        @can('edit_apollo')
-                                                            <a rel="tooltip" class="btn btn-success btn-link" href="{{ route('apollo.edit', $group) }}" data-original-title="" title="Edit">
+                                                        @can('edit_seshats')
+                                                            <a rel="tooltip" class="btn btn-success btn-link" href="{{ route('seshats.edit', $group) }}" data-original-title="" title="Edit">
                                                                 <i class="material-icons">edit</i>
                                                                 <div class="ripple-container"></div>
                                                             </a>
                                                         @endcan
-                                                        @can('delete_apollo')
+                                                        @can('delete_seshats')
                                                             <button type="button" class="btn btn-danger btn-link" data-toggle="tooltip" rel="tooltip" title="Delete" onclick="confirm('{{ __("Are you sure you want to delete this group?") }}') ? this.parentElement.submit() : ''">
                                                                 <i class="material-icons">close</i>
                                                                 <div class="ripple-container"></div>
@@ -182,7 +182,14 @@
                                                             </button>
                                                         </div>
                                                         <div class="modal-body">
-
+                                                            <div class="row">
+                                                                <label class="col-sm-2 col-form-label"><span class="badge badge-pill badge-info">{{ __('Image') }}</span>:</label>
+                                                                <div class="col-sm-7">
+                                                                    <div class="form-group">
+                                                                        <img src="{{ url('seshat/'.$group->img_path) }}" alt="..." class="img-thumbnail">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                             <div class="row">
                                                                 <label class="col-sm-2 col-form-label"><span class="badge badge-pill badge-info">{{ __('Question') }}</span>:</label>
                                                                 <div class="col-sm-7">
@@ -315,10 +322,10 @@
                                             </div>
                                         </div>
 
-                                        {{$apollo->links()}}
+                                        {{$seshat->links()}}
                                     @else
                                         <td>
-                                            <p>No apollo created at the moment</p>
+                                            <p>No seshat created at the moment</p>
                                         </td>
                                     @endif
 

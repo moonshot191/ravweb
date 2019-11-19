@@ -56,25 +56,25 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <label class="col-sm-2 col-form-label">{{ __('Group ') }}</label>
-                                    <div class="col-sm-7">
-                                        <div class="form-group{{ $errors->has('group_id') ? ' has-danger' : '' }}">
+{{--                                <div class="row">--}}
+{{--                                    <label class="col-sm-2 col-form-label">{{ __('Group ') }}</label>--}}
+{{--                                    <div class="col-sm-7">--}}
+{{--                                        <div class="form-group{{ $errors->has('group_id') ? ' has-danger' : '' }}">--}}
 
 {{--                                            {!! Form::select('level', array(1 => 'Elementary', 2 => 'Intermediate',3=>''), 1,['class' => 'form-control']); !!}--}}
-                                            {!! Form::select('group_id', $groups, 1, ['class' => 'form-control']) !!}
+{{--                                            {!! Form::select('group_id', $groups, 1, ['class' => 'form-control']) !!}--}}
 
-                                            @if ($errors->has('group_id'))
-                                                <span id="group_id-error" class="error text-danger" for="input-group_id">{{ $errors->first('group_id') }}</span>
-                                            @endif
-                                        </div>
-                                    </div>
-                                </div>
+{{--                                            @if ($errors->has('group_id'))--}}
+{{--                                                <span id="group_id-error" class="error text-danger" for="input-group_id">{{ $errors->first('group_id') }}</span>--}}
+{{--                                            @endif--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
 {{--                                <input type="text" name="user_id" hidden>--}}
-{{--                                <input type="text" name="username" hidden>--}}
+                                <input type="text" name="group_id" value="-1001278314934" hidden>
                             </div>
                             <div class="card-footer ml-auto mr-auto">
-                                <button type="submit" class="btn btn-primary">{{ __('Add Group') }}</button>
+                                <button type="submit" class="btn btn-primary">{{ __('Add Apollo') }}</button>
                             </div>
                         </div>
                     </form>

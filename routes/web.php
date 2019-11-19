@@ -19,13 +19,15 @@ Auth::routes((['register' => false]));
 Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 
 Route::group( ['middleware' => ['auth']], function() {
+    Route::resource('roles', 'RoleController');
+    Route::resource('groups', 'GroupController');
+    Route::resource('apollo', 'ApolloController');
+    Route::resource('seshats', 'SeshatController');
     Route::resource('users', 'UserController');
     Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
     Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
     Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
-    Route::resource('roles', 'RoleController');
-    Route::resource('groups', 'GroupController');
-    Route::resource('apollo', 'ApolloController');
+
     Route::post('apollo/send',['as'=>'apollo.send','uses'=>'ApolloController@send']);
     	Route::get('table-list', function () {
 		return view('pages.table_list');

@@ -67,6 +67,25 @@
                 </a>
             </li>
         @endcan
+
+        @can('add_seshats','edit_seshats', 'delete_seshats')
+            <li class="nav-item{{ $activePage ?? '' ?? '' == 'seshat-management' ? ' active' : '' }}">
+                <a class="nav-link" href="{{ route('seshats.index') }}">
+                    <i class="material-icons">add_a_photo</i>
+                    <p>{{ __('Seshat Management') }}</p>
+                </a>
+            </li>
+        @endcan
+
+
+        @can('add_zalmos','edit_zalmos', 'delete_zalmos')
+            <li class="nav-item{{ $activePage ?? '' ?? '' == 'seshat-management' ? ' active' : '' }}">
+                <a class="nav-link" href="{{ route('zalmos.index') }}">
+                    <i class="material-icons">add_a_photo</i>
+                    <p>{{ __('Zalmoxis Management') }}</p>
+                </a>
+            </li>
+        @endcan
 {{--        <li class="nav-item{{ $activePage ?? '' ?? '' == 'table' ? ' active' : '' }}">--}}
 {{--            <a class="nav-link" href="{{ route('table') }}">--}}
 {{--                <i class="material-icons">content_paste</i>--}}

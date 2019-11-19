@@ -1,30 +1,89 @@
-@extends('layouts.app', ['activePage' => 'apollo-management', 'titlePage' => __('Apollo Management')])
+@extends('layouts.app', ['activePage' => 'seshat-management', 'titlePage' => __('Seshat Management')])
+<style type="text/css">
 
+    input[type=file]{
+
+        display: inline;
+
+    }
+
+    #image_preview{
+
+        border: 1px solid black;
+
+        padding: 10px;
+        width: 300px;
+    }
+
+    #image_preview img{
+
+        width: 200px;
+        align-content: center;
+        padding: 5px;
+
+    }
+
+</style>
 @section('content')
     <div class="content">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <form method="post" action="{{ route('apollo.update',$apollo) }}" autocomplete="off" class="form-horizontal">
+                    <form method="post" enctype="multipart/form-data" action="{{ route('seshats.update',$seshat) }}" autocomplete="off" class="form-horizontal">
                         @csrf
                         @method('put')
 
                         <div class="card ">
                             <div class="card-header card-header-primary">
-                                <h4 class="card-title">{{ __('Edit Apollo Question') }}</h4>
+                                <h4 class="card-title">{{ __('Edit Seshat Question') }}</h4>
                                 <p class="card-category"></p>
                             </div>
                             <div class="card-body ">
+                                @if (session('status'))
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="alert alert-danger">
+                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                    <i class="material-icons">close</i>
+                                                </button>
+                                                <span>{{ session('status') }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
                                 <div class="row">
                                     <div class="col-md-12 text-right">
-                                        <a href="{{ route('apollo.index') }}" class="btn btn-sm btn-primary">{{ __('Back to list') }}</a>
+                                        <a href="{{ route('seshats.index') }}" class="btn btn-sm btn-primary">{{ __('Back to list') }}</a>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <label class="col-sm-2 col-form-label"><span class="badge badge-pill badge-info">{{ __('Image') }}</span>:</label>
+                                    <div class="col-sm-7">
+                                        <div class="form-group">
+                                            <img src="{{ url('seshat/'.$seshat->img_path) }}" alt="..." class="img-thumbnail">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <label class="col-sm-2 col-form-label">{{ __('Replace:') }}</label>
+                                    <div class="col-sm-7">
+                                        <div class="img-fluid img-thumbnail" id="image_preview" > </div>
+                                        <div class="form-group{{ $errors->has('') ? ' has-danger' : '' }}form-file-upload form-file-simple input-group">
+
+                                            <input class="form-control-file form-file-upload" type="file" id="img_path" name="img_path" multiple/>
+
+
+                                            @if ($errors->has('img_path'))
+                                                <span id="img_path-error" class="error text-danger" for="input-img_path">{{ $errors->first('img_path') }}</span>
+                                            @endif
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <label class="col-sm-2 col-form-label">{{ __('Answer') }}</label>
                                     <div class="col-sm-7">
                                         <div class="form-group{{ $errors->has('answer') ? ' has-danger' : '' }}">
-                                            <input class="form-control{{ $errors->has('answer') ? ' is-invalid' : '' }}" onkeyup="shuffle()" name="answer" id="input-answer" type="text" placeholder="{{ __('Answer') }}" value="{{ old('answer',$apollo->answer) }}" required="true" aria-required="true"/>
+                                            <input class="form-control{{ $errors->has('answer') ? ' is-invalid' : '' }}" onkeyup="shuffle()" name="answer" id="input-ans" type="text" placeholder="{{ __('Answer') }}" value="{{ old('answer',$seshat->answer) }}" required="true" aria-required="true"/>
                                             @if ($errors->has('answer'))
                                                 <span id="answer-error" class="error text-danger" for="input-answer">{{ $errors->first('answer') }}</span>
                                             @endif
@@ -35,7 +94,7 @@
                                     <label class="col-sm-2 col-form-label">{{ __('Question') }}</label>
                                     <div class="col-sm-7">
                                         <div class="form-group{{ $errors->has('question') ? ' has-danger' : '' }}">
-                                            <input class="form-control{{ $errors->has('question') ? ' is-invalid' : '' }}" name="question" id="input-question" type="text" placeholder="{{ __('Question auto generated') }}" value="{{ old('question',$apollo->question) }}" required="true" aria-required="true">
+                                            <input class="form-control{{ $errors->has('question') ? ' is-invalid' : '' }}" name="question" id="input-ques" type="text" placeholder="{{ __('Question auto generated') }}" value="{{ old('question',$seshat->question) }}" required="true" aria-required="true">
                                             @if ($errors->has('question'))
                                                 <span id="question-error" class="error text-danger" for="input-title">{{ $errors->first('question') }}</span>
                                             @endif
@@ -47,7 +106,7 @@
                                     <div class="col-sm-7">
                                         <div class="form-group{{ $errors->has('level') ? ' has-danger' : '' }}">
 
-                                            {!! Form::select('level', array(1 => 'Elementary', 2 => 'Intermediate',3=>'Advanced'), $apollo->level,['class' => 'form-control']); !!}
+                                            {!! Form::select('level', array(1 => 'Elementary', 2 => 'Intermediate',3=>'Advanced'), $seshat->level,['class' => 'form-control']); !!}
                                             {{--                                            {!! Form::select('product_id', $groups, 1, ['class' => 'form-control']) !!}--}}
 
                                             @if ($errors->has('level'))
@@ -56,25 +115,12 @@
                                         </div>
                                     </div>
                                 </div>
-{{--                                <div class="row">--}}
-{{--                                    <label class="col-sm-2 col-form-label">{{ __('Group ') }}</label>--}}
-{{--                                    <div class="col-sm-7">--}}
-{{--                                        <div class="form-group{{ $errors->has('group_id') ? ' has-danger' : '' }}">--}}
 
-{{--                                            --}}{{--                                            {!! Form::select('level', array(1 => 'Elementary', 2 => 'Intermediate',3=>''), 1,['class' => 'form-control']); !!}--}}
-{{--                                            {!! Form::select('group_id', $groups ,$apollo->group_title, ['class' => 'form-control']) !!}--}}
-
-{{--                                            @if ($errors->has('group_id'))--}}
-{{--                                                <span id="group_id-error" class="error text-danger" for="input-group_id">{{ $errors->first('group_id') }}</span>--}}
-{{--                                            @endif--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
                                 <div class="row">
                                     <label class="col-sm-2 col-form-label">{{ __('Validate ') }}</label>
                                     <div class="col-sm-7">
                                         <div class="form-group{{ $errors->has('validated') ? ' has-danger' : '' }}">
-                                            @if($apollo->validated==true)
+                                            @if($seshat->validated==true)
                                             <div class="togglebutton">
                                                 <label>
                                                     <input type="checkbox" name="validated" id="validated" checked="">
@@ -97,7 +143,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <input type="text" name="group_id" value="-1001278314934" hidden>
+
                                 <input type="text" name="edited_by" hidden>
                                 <input type="text" name="validated_by" hidden>
                                 <input type="text" name="validated_at" hidden>
@@ -115,4 +161,32 @@
 
         </div>
     </div>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    {{--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>--}}
+
+
+    <script type="text/javascript">
+
+
+
+        $("#img_path").change(function(){
+
+            $('#image_preview').html("");
+
+            var total_file=document.getElementById("img_path").files.length;
+
+            for(var i=0;i<total_file;i++)
+
+            {
+
+                $('#image_preview').append("<img src='"+URL.createObjectURL(event.target.files[i])+"'>");
+
+            }
+
+        });
+
+
+
+
+    </script>
 @endsection
