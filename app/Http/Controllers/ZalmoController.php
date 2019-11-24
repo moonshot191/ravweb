@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Group;
 use App\Zalmo;
 use Illuminate\Http\Request;
 
@@ -12,9 +13,10 @@ class ZalmoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Zalmo $model)
     {
-        //
+        return view('bot.zalmo.index', ['zalmo' => $model->orderBy('created_at', 'desc')->paginate(10)]);
+
     }
 
     /**
@@ -24,7 +26,8 @@ class ZalmoController extends Controller
      */
     public function create()
     {
-        //
+        $groups = Group::pluck('group_title','group_id');
+        return view('bot.zalmo.create',compact('groups'));
     }
 
     /**
@@ -35,7 +38,28 @@ class ZalmoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+
+        return $input['file'];
+    }
+
+    public function ajaxRequest()
+
+    {
+
+        return view('bot.zalmo.create');
+
+    }
+
+
+    public function ajaxRequestPost(Request $request)
+
+    {
+
+        $input = $request->all();
+
+        return response()->json($input);
+
     }
 
     /**
