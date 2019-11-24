@@ -519,6 +519,9 @@
 
                     makeWaveform();
                 });
+                Fr.voice.stopRecordingAfter(5000, function(){
+                    alert("Time limit reached.");
+                });
             });
 
             $(document).on("click", "#recordFor5:not(.disabled)", function(){
@@ -535,7 +538,7 @@
                     alert("Recording stopped after 9 seconds");
                     $("#record, #live").removeClass("disabled");
                 });
-                Fr.voice.stop();
+                Fr.voice.pause();
                 $("#record, #live").removeClass("disabled");
                 $("#pause").replaceWith('<a class="button one" id="pause">Pause</a>');
                 $(".one").addClass("disabled");
@@ -573,7 +576,7 @@
                         $("#audio")[0].play();
                     }, "URL");
                 }
-                Fr.voice.stop();
+                Fr.voice.pause();
                 recognition.stop();
                 $("#record, #live").removeClass("disabled");
                 $("#pause").replaceWith('<a class="button one" id="pause">Pause</a>');
@@ -671,6 +674,7 @@
                         success:function (result) {
 
                             console.log(result);
+                            Fr.voice.stop();
                         },
 
                     }
@@ -679,6 +683,7 @@
 
 
                 }, "base64");
+
             })
         });
 
