@@ -81,7 +81,8 @@
                                 <p class="card-category"></p>
                             </div>
                             <div class="card-body ">
-                                <div class="alert alert-danger display-error" style="display: none"></div>
+                                <div class="alert alert-danger print-error-msg" style="display:none"></div>
+                                    <ul id="errors"></ul>
                                 @if (session('status'))
                                     <div class="row">
                                         <div class="col-sm-12">
@@ -216,7 +217,7 @@
                                 <button id="ok"   class="btn btn-primary">{{ __('Save') }}</button>
                             </div>
                         </div>
-                        </div>
+
                     </form>
                 </div>
             </div>
@@ -671,9 +672,13 @@
                         data:data,
                             contentType: false,
                             processData: false,
-                        success:function (result) {
-
-                            console.log(result);
+                        success:function (data) {
+                            if($.isEmptyObject(data.error)){
+                                alert(data.success);
+                            }else{
+                                printErrorMsg(data.error);
+                            }
+                            console.log(data);
                             Fr.voice.stop();
                         },
 
@@ -686,6 +691,12 @@
 
             })
         });
-
+        function printErrorMsg (msg) {
+            $(".print-error-msg").find('errors').html('');
+            $(".print-error-msg").css('display', 'block');
+            $.each(msg, function (key, value) {
+                $(".print-error-msg").find('errors').append('<li>' + value + '</li>');
+            });
+        }
     </script>
 @endsection

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Group;
 use App\Zalmo;
 use Illuminate\Http\Request;
-
+use Validator;
 class ZalmoController extends Controller
 {
     /**
@@ -38,9 +38,16 @@ class ZalmoController extends Controller
      */
     public function store(Request $request)
     {
-        $input = $request->all();
-
-        return $input['file'];
+        $validator = Validator::make($request->all(), [
+            'file' => 'required',
+            'answer' => 'required',
+            'language' => 'required',
+            'level' => 'required',
+        ]);
+        if ($validator->passes()) {
+            return response()->json(['success'=>'Added new records.']);
+        }
+        return response()->json(['error'=>$validator->errors()->all()]);
     }
 
     public function ajaxRequest()
