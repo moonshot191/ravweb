@@ -4,15 +4,11 @@ namespace App\Http\Controllers;
 use App\Authorizable;
 use App\Apollo;
 use App\Group;
-use App\Http\Requests\GroupRequest;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
-
-
-
 class ApolloController extends Controller
 {
     use Authorizable;
+
    protected $url ="https://api.telegram.org/bot";
     /**
      * Display a listing of the resource.

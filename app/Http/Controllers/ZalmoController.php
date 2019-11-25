@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Authorizable;
 use App\Group;
 use App\Zalmo;
 use Illuminate\Http\Request;
 use Validator;
 class ZalmoController extends Controller
 {
+    use Authorizable;
     /**
      * Display a listing of the resource.
      *
@@ -46,29 +48,11 @@ class ZalmoController extends Controller
         ]);
         if ($validator->passes()) {
 
-            return response()->json(['success'=>'Question saved successfully!','redirecturl'=>'/zalmox']);
+            return response()->json(['success'=>'Question saved successfully!','redirecturl'=>'/zalmos']);
         }
         return response()->json(['error'=>$validator->errors()->all()]);
     }
 
-    public function ajaxRequest()
-
-    {
-
-        return view('bot.zalmo.create');
-
-    }
-
-
-    public function ajaxRequestPost(Request $request)
-
-    {
-
-        $input = $request->all();
-
-        return response()->json($input);
-
-    }
 
     /**
      * Display the specified resource.

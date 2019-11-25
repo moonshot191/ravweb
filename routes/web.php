@@ -24,12 +24,10 @@ Route::group( ['middleware' => ['auth']], function() {
     Route::resource('apollo', 'ApolloController');
     Route::resource('seshats', 'SeshatController');
     Route::resource('users', 'UserController');
-    Route::resource('zalmox', 'ZalmoController');
+    Route::resource('zalmos', 'ZalmoController');
     Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
     Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
     Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
-    Route::post('ajaxRequest', 'ZalmoController@ajaxRequestPost');
-    Route::get('ajaxRequest', 'ZalmoController@ajaxRequest');
 
     Route::post('apollo/send',['as'=>'apollo.send','uses'=>'ApolloController@send']);
     	Route::get('table-list', function () {

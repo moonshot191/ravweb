@@ -14,7 +14,22 @@ class CreateZalmosTable extends Migration
     public function up()
     {
         Schema::create('zalmos', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->Increments('id');
+            $table->string('username');
+            $table->string('answer');
+            $table->string('language');
+            $table->integer('bot')->default(2);
+            $table->integer('level')->nullable(true);
+            $table->longText('file')->nullable(true);
+            $table->unsignedInteger('user_id')->nullable(true);
+            $table->string('edited_by')->nullable();
+            $table->boolean('validated')->default(false);
+            $table->string('validated_by')->nullable();
+            $table->timestamp('validated_at')->nullable();
+            $table->foreign('user_id')
+                ->references('id')->on('users')
+                ->onDelete('cascade');
+
             $table->timestamps();
         });
     }

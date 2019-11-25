@@ -80,7 +80,7 @@
 
         @can('add_zalmos','edit_zalmos', 'delete_zalmos')
             <li class="nav-item{{ $activePage ?? '' ?? '' == 'seshat-management' ? ' active' : '' }}">
-                <a class="nav-link" href="{{ route('zalmox.index') }}">
+                <a class="nav-link" href="{{ route('zalmos.index') }}">
                     <i class="material-icons">mic</i>
                     <p>{{ __('Zalmoxis Management') }}</p>
                 </a>

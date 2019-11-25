@@ -9,7 +9,7 @@
                     <div class="card">
                         <div class="card-header card-header-primary">
                             <h4 class="card-title ">{{ $zalmo->total() }} {{str_plural('Question',$zalmo->count())}}</h4>
-                            <p class="card-category"> {{ __('Here you can manage zalmoxis questions') }}</p>
+                            <p class="card-category"> {{ __('Here you can manage zalmosis questions') }}</p>
                         </div>
                         <div class="card-body">
                             @if (session('status'))
@@ -27,7 +27,7 @@
                             <div class="row">
                                 <div class="col-12 text-right">
                                     @can('add_zalmos')
-                                        <a href="{{ route('zalmox.create') }}" class="btn btn-sm btn-primary">{{ __('Add Question') }}</a>
+                                        <a href="{{ route('zalmos.create') }}" class="btn btn-sm btn-primary">{{ __('Add Question') }}</a>
                                     @endcan
                                 </div>
                             </div>
@@ -70,7 +70,7 @@
 {{--                                        {{ __('Creation date') }}--}}
 {{--                                    </th>--}}
                                     <th class="text-right">
-                                        @can('edit_zalmox','delete_zalmox')
+                                        @can('edit_zalmos','delete_zalmos')
                                             {{ __('Actions') }}
                                         @endcan
                                     </th>
@@ -143,11 +143,11 @@
                                                 <td class="td-actions text-right">
                                                     {{--                              @include('shared._actions', ['entity' => 'users','id'=>$group->id])--}}
 
-                                                    <form action="{{ route('zalmox.destroy', $group) }}" method="post">
+                                                    <form action="{{ route('zalmos.destroy', $group) }}" method="post">
                                                         @csrf
                                                         @method('delete')
                                                         @can('edit_zalmos')
-                                                            <a rel="tooltip" class="btn btn-success btn-link" href="{{ route('zalmox.edit', $group) }}" data-original-title="" title="Edit">
+                                                            <a rel="tooltip" class="btn btn-success btn-link" href="{{ route('zalmos.edit', $group) }}" data-original-title="" title="Edit">
                                                                 <i class="material-icons">edit</i>
                                                                 <div class="ripple-container"></div>
                                                             </a>
