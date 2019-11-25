@@ -524,7 +524,7 @@
                     makeWaveform();
                 });
                 Fr.voice.stopRecordingAfter(12000, function(){
-                    alert("Uploading.");
+                    alert("Please be patient after clicking Save.");
                 });
             });
 
