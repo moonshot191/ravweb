@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d91204ff-3e2e-4135-9e44-4de859a9ea5e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ZalmoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ZalmoController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/bot/zalmo/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/bot/zalmo/create.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -36,28 +35,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/bot/zalmo/create.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="107">
-              <caret line="693" column="38" lean-forward="true" selection-start-line="693" selection-start-column="38" selection-end-line="693" selection-end-column="38" />
+            <state relative-caret-position="164">
+              <caret line="385" column="55" lean-forward="true" selection-start-line="385" selection-start-column="55" selection-end-line="385" selection-end-column="55" />
               <folding>
-                <element signature="e#2297#2317#0#HTML" expanded="true" />
-                <element signature="e#11757#11946#0#HTML" />
-                <element signature="e#12377#15288#0#HTML" />
-                <element signature="e#15337#15417#0#HTML" />
-                <element signature="e#15593#16032#0#HTML" />
-                <element signature="e#16242#16276#0#HTML" />
-                <element signature="e#16282#19119#0#HTML" />
-                <element signature="e#16537#16711#0#HTML" />
-                <element signature="e#16763#17579#0#HTML" />
-                <element signature="e#17624#18304#0#HTML" />
-                <element signature="e#18357#19107#0#HTML" />
-                <element signature="e#19148#19251#0#HTML" />
-                <element signature="e#19345#19433#0#HTML" />
-                <element signature="e#19496#19590#0#HTML" />
-                <element signature="e#19627#20168#0#HTML" />
-                <element signature="e#20198#20612#0#HTML" />
-                <element signature="e#20676#20803#0#HTML" />
-                <element signature="e#22924#23150#0#HTML" />
-                <element signature="e#27150#28313#0#HTML" />
+                <element signature="e#5683#5702#0#HTML" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -66,7 +47,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ZalmoController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
+            <state relative-caret-position="720">
               <caret line="48" column="9" selection-start-line="48" selection-start-column="9" selection-end-line="48" selection-end-column="9" />
               <folding>
                 <element signature="e#40#54#0#PHP" expanded="true" />
@@ -87,7 +68,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>update</find>
       <find>help-block</find>
       <find>route('login')</find>
       <find>$user</find>
@@ -117,6 +97,7 @@
       <find>this.recognition.stop();</find>
       <find>here</find>
       <find>thank</find>
+      <find>final_spa</find>
     </findStrings>
     <replaceStrings>
       <replace>error text-danger</replace>
@@ -450,17 +431,18 @@
       <workItem from="1574407614556" duration="8911000" />
       <workItem from="1574452209476" duration="1389000" />
       <workItem from="1574497624570" duration="18338000" />
+      <workItem from="1574663917430" duration="2926000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="267234000" />
+    <option name="totallyTimeSpent" value="270160000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.35084882" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.3565077" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="DB Browser" order="3" weight="0.32983023" />
@@ -473,11 +455,11 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Database Changes" order="7" />
       <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.4995958" visible="true" weight="0.41312057" />
+      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.4995958" weight="0.2996454" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5004042" side_tool="true" weight="0.20567375" />
       <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
       <window_info anchor="bottom" id="DB Execution Console" order="12" />
-      <window_info anchor="bottom" id="File Transfer" order="13" weight="0.3280142" />
+      <window_info anchor="bottom" id="File Transfer" order="13" visible="true" weight="0.3280142" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -895,40 +877,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ZalmoController.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/bot/zalmo/create.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="48" column="9" selection-start-line="48" selection-start-column="9" selection-end-line="48" selection-end-column="9" />
+        <state relative-caret-position="164">
+          <caret line="385" column="55" lean-forward="true" selection-start-line="385" selection-start-column="55" selection-end-line="385" selection-end-column="55" />
           <folding>
-            <element signature="e#40#54#0#PHP" expanded="true" />
+            <element signature="e#5683#5702#0#HTML" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/bot/zalmo/create.blade.php">
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ZalmoController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="107">
-          <caret line="693" column="38" lean-forward="true" selection-start-line="693" selection-start-column="38" selection-end-line="693" selection-end-column="38" />
+        <state relative-caret-position="720">
+          <caret line="48" column="9" selection-start-line="48" selection-start-column="9" selection-end-line="48" selection-end-column="9" />
           <folding>
-            <element signature="e#2297#2317#0#HTML" expanded="true" />
-            <element signature="e#11757#11946#0#HTML" />
-            <element signature="e#12377#15288#0#HTML" />
-            <element signature="e#15337#15417#0#HTML" />
-            <element signature="e#15593#16032#0#HTML" />
-            <element signature="e#16242#16276#0#HTML" />
-            <element signature="e#16282#19119#0#HTML" />
-            <element signature="e#16537#16711#0#HTML" />
-            <element signature="e#16763#17579#0#HTML" />
-            <element signature="e#17624#18304#0#HTML" />
-            <element signature="e#18357#19107#0#HTML" />
-            <element signature="e#19148#19251#0#HTML" />
-            <element signature="e#19345#19433#0#HTML" />
-            <element signature="e#19496#19590#0#HTML" />
-            <element signature="e#19627#20168#0#HTML" />
-            <element signature="e#20198#20612#0#HTML" />
-            <element signature="e#20676#20803#0#HTML" />
-            <element signature="e#22924#23150#0#HTML" />
-            <element signature="e#27150#28313#0#HTML" />
+            <element signature="e#40#54#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>

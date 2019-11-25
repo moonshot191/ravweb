@@ -81,8 +81,7 @@
                                 <p class="card-category"></p>
                             </div>
                             <div class="card-body ">
-                                <div class="alert alert-danger print-error-msg" style="display:none"></div>
-                                    <ul id="errors"></ul>
+
                                 @if (session('status'))
                                     <div class="row">
                                         <div class="col-sm-12">
@@ -126,7 +125,7 @@
                                     </div>
                                  <div class="row">
                                         <div id="results" class="col-sm-7">
-                                            <span id="final_span" class="final" style="color: red;"></span>
+                                            <span id="final_span" class="final"  style="color: red;"></span>
                                             <span id="interim_span" class="interim" style="color:#415dff;"></span>
 
                                         </div>
@@ -383,7 +382,11 @@
                     }
                 }
                 final_transcript = capitalize(final_transcript);
+                var n1 = document.getElementById('answer');
+                n1.value =linebreak(final_transcript);;
+
                 final_span.innerHTML = linebreak(final_transcript);
+
                 interim_span.innerHTML = linebreak(interim_transcript);
                 if (final_transcript || interim_transcript) {
                     showButtons('inline-block');
@@ -520,8 +523,8 @@
 
                     makeWaveform();
                 });
-                Fr.voice.stopRecordingAfter(5000, function(){
-                    alert("Time limit reached.");
+                Fr.voice.stopRecordingAfter(12000, function(){
+                    alert("Only 9 seconds recordings allowed.");
                 });
             });
 
@@ -584,66 +587,7 @@
                 $(".one").addClass("disabled");
             });
 
-            $(document).on("click", "#download:not(.disabled)", function(){
-                if($(this).parent().data("type") === "mp3"){
-                    Fr.voice.exportMP3(function(url){
-                        $("<a href='" + url + "' download='MyRecording.mp3'></a>")[0].click();
-                    }, "URL");
-                }else{
-                    Fr.voice.export(function(url){
-                        $("<a href='" + url + "' download='MyRecording.wav'></a>")[0].click();
-                    }, "URL");
-                }
-                Fr.voice.stop();
-                recognition.stop();
-                $("#record, #live").removeClass("disabled");
-                $("#pause").replaceWith('<a class="button one" id="pause">Pause</a>');
-                $(".one").addClass("disabled");
-            });
 
-            $(document).on("click", "#base64:not(.disabled)", function(){
-                    Fr.voice.export(function(url){
-                        console.log(url);
-                        alert("Check the web console for the URL");
-
-                        $("<a href='"+ url +"' target='_blank'></a>")[0].click();
-                    }, "base64");
-
-                Fr.voice.stop();
-
-                $("#record, #live").removeClass("disabled");
-                $("#pause").replaceWith('<a class="button one" id="pause">Pause</a>');
-                $(".one").addClass("disabled");
-            });
-
-            $(document).on("click", "#save:not(.disabled)", function(){
-                function upload(blob){
-                    var formData = new FormData();
-                    formData.append('file', blob);
-
-                    $.ajax({
-                        url: "{{route('zalmox.store')}}",
-                        type: 'POST',
-                        data: formData,
-                        contentType: false,
-                        processData: false,
-                        success: function(url) {
-                            $("#audio").attr("src", url);
-                            $("#audio")[0].play();
-                            alert("Saved In Server. See audio element's src for URL");
-                        }
-                    });
-                }
-                if($(this).parent().data("type") === "mp3"){
-                    Fr.voice.exportMP3(upload, "blob");
-                }else{
-                    Fr.voice.export(upload, "blob");
-                }
-                Fr.voice.stop();
-                $("#record, #live").removeClass("disabled");
-                $("#pause").replaceWith('<a class="button one" id="pause">Pause</a>');
-                $(".one").addClass("disabled");
-            });
 
             $(document).on("click",'#ok',function (e) {
 
@@ -676,7 +620,7 @@
                             if($.isEmptyObject(data.error)){
                                 alert(data.success);
                             }else{
-                                printErrorMsg(data.error);
+                                alert(data.error);
                             }
                             console.log(data);
                             Fr.voice.stop();
@@ -691,12 +635,6 @@
 
             })
         });
-        function printErrorMsg (msg) {
-            $(".print-error-msg").find('errors').html('');
-            $(".print-error-msg").css('display', 'block');
-            $.each(msg, function (key, value) {
-                $(".print-error-msg").find('errors').append('<li>' + value + '</li>');
-            });
-        }
+
     </script>
 @endsection
