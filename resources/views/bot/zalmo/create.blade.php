@@ -524,7 +524,7 @@
                     makeWaveform();
                 });
                 Fr.voice.stopRecordingAfter(12000, function(){
-                    alert("Only 9 seconds recordings allowed.");
+                    alert("Uploading.");
                 });
             });
 
@@ -619,6 +619,7 @@
                         success:function (data) {
                             if($.isEmptyObject(data.error)){
                                 alert(data.success);
+                                window.location.href = data.redirecturl
                             }else{
                                 alert(data.error);
                             }

@@ -45,7 +45,8 @@ class ZalmoController extends Controller
             'level' => 'required',
         ]);
         if ($validator->passes()) {
-            return response()->json(['success'=>'Added new records.']);
+
+            return response()->json(['success'=>'Question saved successfully!','redirecturl'=>'/zalmox']);
         }
         return response()->json(['error'=>$validator->errors()->all()]);
     }
