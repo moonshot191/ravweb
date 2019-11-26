@@ -27,7 +27,8 @@
                             <div class="row">
                                 <div class="col-12 text-right">
                                     @can('add_zalmos')
-                                        <a href="{{ route('zalmos.create') }}" class="btn btn-sm btn-primary">{{ __('Add Question') }}</a>
+                                        <a href="{{ route('zalmos.create') }}" class="btn btn-sm btn-info">{{ __('Upload questions') }}</a>
+                                        <a href="{{ route('export') }}" class="btn btn-sm btn-success">{{ __('Export to CSV') }}</a>
                                     @endcan
                                 </div>
                             </div>
@@ -37,9 +38,7 @@
                                     <th>
                                         {{ __('Question') }}
                                     </th>
-                                    <th>
-                                        {{ __('Answer') }}
-                                    </th>
+
                                     <th>
                                         {{ __('Level') }}
                                     </th>
@@ -81,11 +80,9 @@
                                         @foreach($zalmo as $group)
                                             <tr>
                                                 <td>
-                                                    {{ $group->question }}
+                                                    {{ $group->answer}}
                                                 </td>
-                                                <td>
-                                                    {{ $group->answer }}
-                                                </td>
+
                                                 <td>
                                                     @if($group->level==1)
                                                         <span class="badge badge-pill badge-primary">Elementary</span>
@@ -182,23 +179,8 @@
                                                             </button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <div class="row">
-                                                                <label class="col-sm-2 col-form-label"><span class="badge badge-pill badge-info">{{ __('Image') }}</span>:</label>
-                                                                <div class="col-sm-7">
-                                                                    <div class="form-group">
-                                                                        <img src="{{ url('zalmo/'.$group->img_path) }}" alt="..." class="img-thumbnail">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="row">
-                                                                <label class="col-sm-2 col-form-label"><span class="badge badge-pill badge-info">{{ __('Question') }}</span>:</label>
-                                                                <div class="col-sm-7">
-                                                                    <div class="form-group">
-                                                                        <input class="form-control" type="text" placeholder="{{ __('Question auto generated') }}" value="{{ old('question',$group->question) }}"  disabled>
 
-                                                                    </div>
-                                                                </div>
-                                                            </div>
+
                                                             <div class="row">
                                                                 <label class="col-sm-2 col-form-label"><span class="badge badge-pill badge-info">{{ __('Answer') }}</span>:</label>
                                                                 <div class="col-sm-7">

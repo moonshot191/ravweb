@@ -6,6 +6,10 @@ use App\Authorizable;
 use App\Group;
 use App\Zalmo;
 use Illuminate\Http\Request;
+use App\Exports\ZalmoExport;
+use App\Imports\ZalmoImport;
+use Maatwebsite\Excel\Facades\Excel;
+
 use Validator;
 class ZalmoController extends Controller
 {
@@ -28,8 +32,8 @@ class ZalmoController extends Controller
      */
     public function create()
     {
-        $groups = Group::pluck('group_title','group_id');
-        return view('bot.zalmo.create',compact('groups'));
+
+        return view('bot.zalmo.upload');
     }
 
     /**
@@ -41,16 +45,33 @@ class ZalmoController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'file' => 'required',
-            'answer' => 'required',
-            'language' => 'required',
-            'level' => 'required',
+            'csv_file' => 'required|mimes:csv,txt',
+
         ]);
         if ($validator->passes()) {
 
-            return response()->json(['success'=>'Question saved successfully!','redirecturl'=>'/zalmos']);
+            Excel::import(new ZalmoImport,request()->file('csv_file'));
+            return redirect()->route('zalmos.index')->withStatus(__('File uploaded.'));
+
+        }else{
+                    return redirect()->route('zalmos.create')->withStatus(__('File not a CSV.'));
+
+                }
+
+
         }
-        return response()->json(['error'=>$validator->errors()->all()]);
+
+
+    public function import()
+    {
+        Excel::import(new ZalmoImport,request()->file('csv_file'));
+
+        return back();
+    }
+
+    public function export()
+    {
+        return Excel::download(new ZalmoExport, 'zalmoxis.csv');
     }
 
 
@@ -73,7 +94,7 @@ class ZalmoController extends Controller
      */
     public function edit(Zalmo $zalmo)
     {
-        //
+        return view('bot.zalmo.edit',compact('zalmo'));
     }
 
     /**
@@ -85,7 +106,25 @@ class ZalmoController extends Controller
      */
     public function update(Request $request, Zalmo $zalmo)
     {
-        //
+        $rules = array(
+            'answer'=>'required|string|min:3',
+            'level' => 'required|numeric',
+        );
+        $this->validate($request,$rules);
+        $data = request()->except(['_token','_method']);
+        if(isset($data['validated'])){
+
+            $data['validated']=true;
+            $data['validated_by']=auth()->user()->username;
+            $data['validated_at']=\Carbon\Carbon::now();
+        }else{
+            $data['validated']=false;
+        }
+        $data['edited_by']=auth()->user()->username;
+        Zalmo::whereId($zalmo->id)->update($data);
+
+
+        return redirect()->route('zalmos.index')->withStatus(__('Question successfully updated.'));
     }
 
     /**
@@ -96,6 +135,8 @@ class ZalmoController extends Controller
      */
     public function destroy(Zalmo $zalmo)
     {
-        //
+        $zalmo->delete();
+        return redirect()->route('zalmos.index')->withStatus(__('Question successfully deleted.'));
     }
+
 }

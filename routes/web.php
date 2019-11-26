@@ -28,7 +28,8 @@ Route::group( ['middleware' => ['auth']], function() {
     Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
     Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
     Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
-
+    Route::get('export', 'ZalmoController@export')->name('export');
+    Route::post('import', 'ZalmoController@import')->name('import');
     Route::post('apollo/send',['as'=>'apollo.send','uses'=>'ApolloController@send']);
     	Route::get('table-list', function () {
 		return view('pages.table_list');

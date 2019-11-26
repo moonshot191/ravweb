@@ -96,7 +96,7 @@
                                 @endif
                                 <div class="row">
                                     <div class="col-md-12 text-right">
-                                        <a href="{{ route('zalmox.index') }}" class="btn btn-sm btn-primary">{{ __('Back to list') }}</a>
+                                        <a href="{{ route('zalmos.index') }}" class="btn btn-sm btn-primary">{{ __('Back to list') }}</a>
                                     </div>
                                 </div>
                                  <div class="row" id="info">
