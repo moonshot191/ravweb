@@ -86,6 +86,14 @@
                 </a>
             </li>
         @endcan
+        @can('add_gaias','edit_gaias', 'delete_gaias')
+            <li class="nav-item{{ $activePage ?? '' ?? '' == 'gaia-management' ? ' active' : '' }}">
+                <a class="nav-link" href="{{ route('gaias.index') }}">
+                    <i class="material-icons">record_voice_over</i>
+                    <p>{{ __('Gaia Management') }}</p>
+                </a>
+            </li>
+        @endcan
 {{--        <li class="nav-item{{ $activePage ?? '' ?? '' == 'table' ? ' active' : '' }}">--}}
 {{--            <a class="nav-link" href="{{ route('table') }}">--}}
 {{--                <i class="material-icons">content_paste</i>--}}

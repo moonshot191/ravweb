@@ -25,6 +25,7 @@ Route::group( ['middleware' => ['auth']], function() {
     Route::resource('seshats', 'SeshatController');
     Route::resource('users', 'UserController');
     Route::resource('zalmos', 'ZalmoController');
+    Route::resource('gaias','GaiaController');
     Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
     Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
     Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
@@ -35,7 +36,7 @@ Route::group( ['middleware' => ['auth']], function() {
     Route::get('bulkapollo', 'ApolloController@bulkview')->name('apolloview');
     Route::get('exportapollo', 'ApolloController@export')->name('apollexport');
     Route::get('sampleapollo', 'ApolloController@getDownload')->name('sampleapollo');
-
+    Route::get('gexport', 'GaiaController@export')->name('gexport');
     Route::post('apollo/send',['as'=>'apollo.send','uses'=>'ApolloController@send']);
     	Route::get('table-list', function () {
 		return view('pages.table_list');
