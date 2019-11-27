@@ -4,7 +4,12 @@ namespace App\Http\Controllers;
 use App\Authorizable;
 use App\Apollo;
 use App\Group;
+use App\Imports\ApolloImport;
+use App\Exports\ApolloExport;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+use Validator;
+
 class ApolloController extends Controller
 {
     use Authorizable;
@@ -88,6 +93,46 @@ class ApolloController extends Controller
         //
     }
 
+    public function bulkupload(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'csv_file' => 'required|mimes:csv,txt',
+
+        ]);
+        if ($validator->passes()) {
+
+            Excel::import(new ApolloImport,request()->file('csv_file'));
+            return redirect()->route('apollo.index')->withStatus(__('File uploaded.'));
+
+        }else{
+            return redirect()->route('apolloview')->withStatus(__('File not a CSV.'));
+
+        }
+
+    }
+
+
+    public function bulkview(Request $request)
+    {
+       return view('bot.apollo.upload');
+    }
+
+    public function export()
+    {
+        return Excel::download(new ApolloExport, 'apollo.csv');
+    }
+
+    public function getDownload()
+    {
+        //PDF file is stored under project/public/download/info.pdf
+        $file= public_path(). "/sample_apollo.csv";
+
+        $headers = [
+            'Content-Type' => 'text/csv',
+        ];
+
+        return response()->download($file, 'sample_apollo.csv', $headers);
+    }
     /**
      * Show the form for editing the specified resource.
      *

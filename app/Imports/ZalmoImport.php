@@ -6,8 +6,9 @@ use App\Zalmo;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
-
-class ZalmoImport implements ToModel, WithHeadingRow
+use Maatwebsite\Excel\Concerns\WithBatchInserts;
+use Maatwebsite\Excel\Concerns\WithChunkReading;
+class ZalmoImport implements ToModel, WithHeadingRow , WithBatchInserts,WithChunkReading
 {
     /**
     * @param array $row
@@ -31,5 +32,14 @@ class ZalmoImport implements ToModel, WithHeadingRow
                 ]);
         }
 
+    }
+
+    public function batchSize(): int
+    {
+        return 200;
+    }
+    public function chunkSize(): int
+    {
+        return 200;
     }
 }

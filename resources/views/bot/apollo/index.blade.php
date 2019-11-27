@@ -26,8 +26,10 @@
                             @endif
                             <div class="row">
                                 <div class="col-12 text-right">
+                                    <a href="{{ route('apollexport') }}" class="btn btn-sm btn-success">{{ __('Export to Csv') }}</a>
                                     @can('add_apollo')
-                                        <a href="{{ route('apollo.create') }}" class="btn btn-sm btn-primary">{{ __('Add Question') }}</a>
+                                        <a href="{{ route('apolloview') }}" class="btn btn-sm btn-info">{{ __('Upload bulk') }}</a>
+                                        <a href="{{ route('apollo.create') }}" class="btn btn-sm btn-primary">{{ __('Add Single') }}</a>
                                     @endcan
                                 </div>
                             </div>

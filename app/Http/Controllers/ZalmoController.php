@@ -62,6 +62,18 @@ class ZalmoController extends Controller
         }
 
 
+    public function getDownload()
+    {
+        //PDF file is stored under project/public/download/info.pdf
+        $file= public_path(). "/quiz.csv";
+
+        $headers = [
+            'Content-Type' => 'text/csv',
+        ];
+
+        return response()->download($file, 'sample.csv', $headers);
+    }
+
     public function import()
     {
         Excel::import(new ZalmoImport,request()->file('csv_file'));

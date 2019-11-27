@@ -1,12 +1,10 @@
-
-@extends('layouts.app', ['activePage' => 'zalmoxis-management', 'titlePage' => __('Zalmoxis Management')])
-
+@extends('layouts.app', ['activePage' => 'apollo-management', 'titlePage' => __('Apollo Management')])
 @section('content')
     <div class="content">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <form method="post" action="{{ route('zalmos.store') }}" enctype="multipart/form-data" autocomplete="off" class="form-horizontal">
+                    <form method="post" action="{{ route('bulkapollo') }}" enctype="multipart/form-data" autocomplete="off" class="form-horizontal">
                         @csrf
                         @method('post')
 
@@ -33,26 +31,26 @@
 
                                 <div class="row">
                                     <div class="col-md-12 text-right">
-                                        <a href="{{ route('download') }}" class="btn btn-sm btn-info">{{ __('Download sample Csv') }}</a>
+                                        <a href="{{ route('sampleapollo') }}" class="btn btn-sm btn-info">{{ __('Download sample Csv') }}</a>
 
-                                        <a href="{{ route('zalmos.index') }}" class="btn btn-sm btn-primary">{{ __('Back to list') }}</a>
+                                        <a href="{{ route('apollo.index') }}" class="btn btn-sm btn-primary">{{ __('Back to list') }}</a>
 
                                     </div>
                                 </div>
                                 <div class="row">
-                                        <label class="col-sm-2 col-form-label">{{ __('CSV') }}</label>
-                                        <div class="col-sm-7">
-                                            <div class="form-group{{ $errors->has('csv_file') ? ' has-danger' : '' }}form-file-upload form-file-simple input-group">
+                                    <label class="col-sm-2 col-form-label">{{ __('CSV') }}</label>
+                                    <div class="col-sm-7">
+                                        <div class="form-group{{ $errors->has('csv_file') ? ' has-danger' : '' }}form-file-upload form-file-simple input-group">
 
-                                                <input class="form-control-file" type="file" id="csv_file" name="csv_file" required>
+                                            <input class="form-control-file" type="file" id="csv_file" name="csv_file" required>
 
 
-                                                @if ($errors->has('csv_file'))
-                                                    <span id="csv_file-error" class="error text-danger" for="input-csv_file">{{ $errors->first('csv_file') }}</span>
-                                                @endif
-                                            </div>
+                                            @if ($errors->has('csv_file'))
+                                                <span id="csv_file-error" class="error text-danger" for="input-csv_file">{{ $errors->first('csv_file') }}</span>
+                                            @endif
                                         </div>
                                     </div>
+                                </div>
 
                             </div>
                             <div class="card-footer ml-auto mr-auto">
