@@ -17,7 +17,8 @@
         "laravel/helpers": "^1.1",
         "laravel/tinker": "^1.0",
         "laravelcollective/html": "^6.0",
-        "maatwebsite/excel": "^3.1"
+        "maatwebsite/excel": "^3.1",
+        "yajra/laravel-datatables-oracle": "^9.7"
     },
     "require-dev": {
         "facade/ignition": "^1.4",

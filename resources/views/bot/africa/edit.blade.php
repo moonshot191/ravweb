@@ -1,17 +1,17 @@
-@extends('layouts.app', ['activePage' => 'gaia-management', 'titlePage' => __('Gaia Management')])
+@extends('layouts.app', ['activePage' => 'africa-management', 'titlePage' => __('Africa Management')])
 
 @section('content')
     <div class="content">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <form method="post" enctype="multipart/form-data" action="{{ route('gaias.update',$gaia) }}" autocomplete="off" class="form-horizontal">
+                    <form method="post" enctype="multipart/form-data" action="{{ route('africas.update',$africa) }}" autocomplete="off" class="form-horizontal">
                         @csrf
                         @method('put')
 
                         <div class="card ">
                             <div class="card-header card-header-primary">
-                                <h4 class="card-title">{{ __('Edit gaia question') }}</h4>
+                                <h4 class="card-title">{{ __('Edit Africa question') }}</h4>
                                 <p class="card-category"></p>
                             </div>
                             <div class="card-body ">
@@ -29,16 +29,26 @@
                                 @endif
                                 <div class="row">
                                     <div class="col-md-12 text-right">
-                                        <a href="{{ route('gaias.index') }}" class="btn btn-sm btn-primary">{{ __('Back to list') }}</a>
+                                        <a href="{{ route('africas.index') }}" class="btn btn-sm btn-primary">{{ __('Back to list') }}</a>
                                     </div>
                                 </div>
-                                
-                                
+
+                                    <div class="row">
+                                        <label class="col-sm-2 col-form-label">{{ __('Word') }}</label>
+                                        <div class="col-sm-7">
+                                            <div class="form-group{{ $errors->has('question') ? ' has-danger' : '' }}">
+                                                <input class="form-control{{ $errors->has('question') ? ' is-invalid' : '' }}"  name="question" id="input-que" type="text" placeholder="{{ __('Word') }}" value="{{ old('question',$africa->question) }}" required="true" aria-required="true"/>
+                                                @if ($errors->has('question'))
+                                                    <span id="question-error" class="error text-danger" for="input-que">{{ $errors->first('question') }}</span>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
                                 <div class="row">
-                                    <label class="col-sm-2 col-form-label">{{ __('Answer') }}</label>
+                                    <label class="col-sm-2 col-form-label">{{ __('Meaning') }}</label>
                                     <div class="col-sm-7">
                                         <div class="form-group{{ $errors->has('answer') ? ' has-danger' : '' }}">
-                                            <input class="form-control{{ $errors->has('answer') ? ' is-invalid' : '' }}"  name="answer" id="input-ans" type="text" placeholder="{{ __('Answer') }}" value="{{ old('answer',$gaia->answer) }}" required="true" aria-required="true"/>
+                                            <input class="form-control{{ $errors->has('answer') ? ' is-invalid' : '' }}"  name="answer" id="input-ans" type="text" placeholder="{{ __('Answer') }}" value="{{ old('answer',$africa->answer) }}" required="true" aria-required="true"/>
                                             @if ($errors->has('answer'))
                                                 <span id="answer-error" class="error text-danger" for="input-answer">{{ $errors->first('answer') }}</span>
                                             @endif
@@ -51,7 +61,7 @@
                                     <div class="col-sm-7">
                                         <div class="form-group{{ $errors->has('level') ? ' has-danger' : '' }}">
 
-                                            {!! Form::select('level', array(1 => 'Elementary', 2 => 'Intermediate',3=>'Advanced'), $gaia->level,['class' => 'form-control']); !!}
+                                            {!! Form::select('level', array(1 => 'Elementary', 2 => 'Intermediate',3=>'Advanced'), $africa->level,['class' => 'form-control']); !!}
                                             {{--                                            {!! Form::select('product_id', $groups, 1, ['class' => 'form-control']) !!}--}}
 
                                             @if ($errors->has('level'))
@@ -65,22 +75,22 @@
                                     <label class="col-sm-2 col-form-label">{{ __('Validate ') }}</label>
                                     <div class="col-sm-7">
                                         <div class="form-group{{ $errors->has('validated') ? ' has-danger' : '' }}">
-                                            @if($gaia->validated==true)
-                                            <div class="togglebutton">
-                                                <label>
-                                                    <input type="checkbox" name="validated" id="validated" checked="">
-                                                    <span class="toggle"></span>
-                                                    Validated
-                                                </label>
-                                            </div>
+                                            @if($africa->validated==true)
+                                                <div class="togglebutton">
+                                                    <label>
+                                                        <input type="checkbox" name="validated" id="validated" checked="">
+                                                        <span class="toggle"></span>
+                                                        Validated
+                                                    </label>
+                                                </div>
                                             @else
-                                            <div class="togglebutton">
-                                                <label>
-                                                    <input type="checkbox" name="validated" id="validated">
-                                                    <span class="toggle"></span>
-                                                    Validate
-                                                </label>
-                                            </div>
+                                                <div class="togglebutton">
+                                                    <label>
+                                                        <input type="checkbox" name="validated" id="validated">
+                                                        <span class="toggle"></span>
+                                                        Validate
+                                                    </label>
+                                                </div>
                                             @endif
                                             @if ($errors->has('validated'))
                                                 <span id="validated-error" class="error text-danger" for="input-validated">{{ $errors->first('validated') }}</span>
@@ -96,7 +106,7 @@
                                 {{--                                <input type="text" name="username" hidden>--}}
                             </div>
                             <div class="card-footer ml-auto mr-auto">
-                                <button type="submit" class="btn btn-primary">{{ __('Update gaia') }}</button>
+                                <button type="submit" class="btn btn-primary">{{ __('Update africa') }}</button>
                             </div>
                         </div>
                     </form>

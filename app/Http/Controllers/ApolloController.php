@@ -7,6 +7,7 @@ use App\Group;
 use App\Imports\ApolloImport;
 use App\Exports\ApolloExport;
 use Illuminate\Http\Request;
+use DB;
 use Maatwebsite\Excel\Facades\Excel;
 use Validator;
 
@@ -23,7 +24,7 @@ class ApolloController extends Controller
     public function index(Apollo $model)
     {
 
-        return view('bot.apollo.index', ['apollo' => $model->orderBy('created_at', 'desc')->paginate(10)]); #view('bot.apollo.index', ['apollo' => $model->latest()]);
+        return view('bot.apollo.index', ['apollo' => $model->orderBy('created_at', 'desc')->paginate(50)]); #view('bot.apollo.index', ['apollo' => $model->latest()]);
 
     }
 
@@ -192,6 +193,19 @@ class ApolloController extends Controller
         return redirect()->route('apollo.index')->withStatus(__('Question successfully deleted.'));
     }
 
+    public function deleteAll(Request $request)
+    {
+        $ids = $request->ids;
+        DB::table("apollos")->whereIn('id',explode(",",$ids))->delete();
+        return response()->json(['success'=>"Question(s) Deleted successfully."]);
+    }
+
+    public function validateAll(Request $request){
+        $ids = $request->ids;
+        DB::table("apollos")->whereIn('id',explode(",",$ids))->update(array('validated'=>true,
+            'validated_by'=>auth()->user()->username,'validated_at'=>\Carbon\Carbon::now()));
+        return response()->json(['success'=>"Question(s) Validated successfully!"]);
+    }
 
 
 }

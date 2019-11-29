@@ -2,23 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Gaia;
-use App\Imports\GaiaImport;
-use App\Exports\GaiaExport;
+use App\Africa;
 use Illuminate\Http\Request;
+use App\Imports\AfricaImport;
+use App\Exports\AfricaExport;
 use Maatwebsite\Excel\Facades\Excel;
 use Validator;
-
-class GaiaController extends Controller
+class AfricaController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Gaia $model)
+    public function index(Africa $model)
     {
-        return view('bot.gaia.index', ['gaia' => $model->orderBy('created_at', 'desc')->paginate(50)]);
+        return view('bot.africa.index', ['africa' => $model->orderBy('created_at', 'desc')->paginate(50)]);
 
     }
 
@@ -29,7 +28,7 @@ class GaiaController extends Controller
      */
     public function create()
     {
-        return view('bot.gaia.create');
+        return view('bot.africa.create');
     }
 
     /**
@@ -46,11 +45,11 @@ class GaiaController extends Controller
         ]);
         if ($validator->passes()) {
 
-            Excel::import(new GaiaImport,request()->file('csv_file'));
-            return redirect()->route('gaias.index')->withStatus(__('File uploaded.'));
+            Excel::import(new AfricaImport,request()->file('csv_file'));
+            return redirect()->route('africas.index')->withStatus(__('File uploaded.'));
 
         }else{
-            return redirect()->route('gaias.create')->withStatus(__('File not a CSV.'));
+            return redirect()->route('africas.create')->withStatus(__('File not a CSV.'));
 
         }
     }
@@ -58,16 +57,27 @@ class GaiaController extends Controller
 
     public function export()
     {
-        return Excel::download(new GaiaExport, 'gaia.csv');
+        return Excel::download(new AfricaExport, 'africa.csv');
     }
 
+    public function getDownload()
+    {
+        //PDF file is stored under project/public/download/info.pdf
+        $file= public_path(). "/africa_sample.csv";
+
+        $headers = [
+            'Content-Type' => 'text/csv',
+        ];
+
+        return response()->download($file, 'sample_africa.csv', $headers);
+    }
     /**
      * Display the specified resource.
      *
-     * @param  \App\Gaia  $gaia
+     * @param  \App\Africa  $africa
      * @return \Illuminate\Http\Response
      */
-    public function show(Gaia $gaia)
+    public function show(Africa $africa)
     {
         //
     }
@@ -75,25 +85,26 @@ class GaiaController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Gaia  $gaia
+     * @param  \App\Africa  $africa
      * @return \Illuminate\Http\Response
      */
-    public function edit(Gaia $gaia)
+    public function edit(Africa $africa)
     {
-        return view('bot.gaia.edit',compact('gaia'));
+        return view('bot.africa.edit',compact('africa'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Gaia  $gaia
+     * @param  \App\Africa  $africa
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Gaia $gaia)
+    public function update(Request $request, Africa $africa)
     {
         $rules = array(
             'answer'=>'required|string|min:3',
+            'question'=>'required|string|min:3',
             'level' => 'required|numeric',
         );
         $this->validate($request,$rules);
@@ -106,21 +117,21 @@ class GaiaController extends Controller
             $data['validated']=false;
         }
         $data['edited_by']=auth()->user()->username;
-        Gaia::whereId($gaia->id)->update($data);
+        Africa::whereId($africa->id)->update($data);
 
 
-        return redirect()->route('gaias.index')->withStatus(__('Question successfully updated.'));
+        return redirect()->route('africas.index')->withStatus(__('Question successfully updated.'));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Gaia  $gaia
+     * @param  \App\Africa  $africa
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Gaia $gaia)
+    public function destroy(Africa $africa)
     {
-        $gaia->delete();
-        return redirect()->route('gaias.index')->withStatus(__('Question successfully deleted.'));
+        $africa->delete();
+        return redirect()->route('africas.index')->withStatus(__('Question successfully deleted.'));
     }
 }

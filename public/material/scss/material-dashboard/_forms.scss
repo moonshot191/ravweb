@@ -222,7 +222,7 @@ form {
 select {
   &,
   &.form-control {
-    // Use vendor prefixes as `appearance` isn't part of the CSS spec. OSX doesn't obey the border-radius: 0 without this.
+    // Use vendors prefixes as `appearance` isn't part of the CSS spec. OSX doesn't obey the border-radius: 0 without this.
     -moz-appearance: none;
     -webkit-appearance: none;
   }

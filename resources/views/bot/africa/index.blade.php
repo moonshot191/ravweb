@@ -1,4 +1,4 @@
-@extends('layouts.app', ['activePage' => 'apollo-management', 'titlePage' => __('Apollo Management')])
+@extends('layouts.app', ['activePage' => 'africa-management', 'titlePage' => __('Africa Management')])
 
 @section('content')
 
@@ -8,8 +8,8 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header card-header-primary">
-                            <h4 class="card-title ">{{ $apollo->total() }} {{str_plural('Question',$apollo->count())}}</h4>
-                            <p class="card-category"> {{ __('Here you can manage Apollo questions') }}</p>
+                            <h4 class="card-title ">{{ $africa->total() }} {{str_plural('Question',$africa->count())}}</h4>
+                            <p class="card-category"> {{ __('Here you can manage africa questions') }}</p>
                         </div>
                         <div class="card-body">
                             @if (session('status'))
@@ -26,31 +26,20 @@
                             @endif
                             <div class="row">
                                 <div class="col-12 text-right">
-
-                                    @can('add_apollo','delete_apollo')
-                                        <button  class="btn btn-warning btn-sm validate_all" data-url="{{ url('apolloval') }}"><i class="material-icons">thumb_up</i>Validate</button>
-                                        <button  class="btn btn-danger btn-sm delete_all" data-url="{{ url('apollodel') }}"><i class="material-icons">delete</i>Delete</button>
-                                        <a href="{{ route('apollexport') }}" class="btn btn-sm btn-success">{{ __('Export to Csv') }}</a>
-                                        <a href="#" onclick="window.print()" class="btn btn-sm btn-warning"><i class="material-icons">print</i> Print</a>
-                                        <a href="{{ route('apolloview') }}" class="btn btn-sm btn-info">{{ __('Upload bulk') }}</a>
-                                        <a href="{{ route('apollo.create') }}" class="btn btn-sm btn-primary">{{ __('Add Single') }}</a>
+                                    @can('add_africas')
+                                        <a href="{{ route('africas.create') }}" class="btn btn-sm btn-info">{{ __('Upload questions') }}</a>
+                                        <a href="{{ route('aexport') }}" class="btn btn-sm btn-success">{{ __('Export to CSV') }}</a>
                                     @endcan
                                 </div>
                             </div>
                             <div class="table-responsive">
-                                <table class="table" id="exampl">
-
+                                <table class="table">
                                     <thead class=" text-primary">
-                                    <th width="80px">
-                                        {{ __('#') }}
-                                    </th>
-                                    <th width="50px"><input type="checkbox" id="master"></th>
-
                                     <th>
-                                        {{ __('Question') }}
+                                        {{ __('Word(s)') }}
                                     </th>
                                     <th>
-                                        {{ __('Answer') }}
+                                        {{ __('Meaning') }}
                                     </th>
                                     <th>
                                         {{ __('Level') }}
@@ -63,65 +52,57 @@
                                         {{ __('Validated by') }}
 
                                     </th>
-                                    <th>
-                                        {{ __('Validation date') }}
+{{--                                    <th>--}}
+{{--                                        {{ __('Validation date') }}--}}
 
-                                    </th>
+{{--                                    </th>--}}
 
                                     <th>
                                         {{ __('Last edited by') }}
                                     </th>
-                                    <th>
-                                        {{ __('Date edited') }}
-                                    </th>
+{{--                                    <th>--}}
+{{--                                        {{ __('Date edited') }}--}}
+{{--                                    </th>--}}
                                     <th>
                                         {{ __('Created by') }}
 
                                     </th>
-                                    <th>
-                                        {{ __('Creation date') }}
-                                    </th>
-
+{{--                                    <th>--}}
+{{--                                        {{ __('Creation date') }}--}}
+{{--                                    </th>--}}
                                     <th class="text-right">
-                                        @can('edit_apollo','delete_apollo')
+                                        @can('edit_africas','delete_africas')
                                             {{ __('Actions') }}
                                         @endcan
                                     </th>
 
-
-
                                     </thead>
                                     <tbody>
-                                    @if($apollo->total()>0)
-                                        @foreach($apollo as  $index =>$group)
-                                            <tr id="tr_{{$group->id}}">
+                                    @if($africa->total()>0)
+                                        @foreach($africa as $group)
+                                            <tr>
                                                 <td>
-                                                    <strong>{{ $index+1 }}.</strong>
-                                                </td>
-                                                <td><input type="checkbox" class="sub_chk" data-id="{{$group->id}}"></td>
-
-                                                <td>
-                                                    {{ $group->question }}
+                                                    {{ $group->question}}
                                                 </td>
                                                 <td>
-                                                    {{ $group->answer }}
+                                                    {{ $group->answer}}
                                                 </td>
                                                 <td>
                                                     @if($group->level==1)
                                                         <span class="badge badge-pill badge-primary">Elementary</span>
-                                                    @elseif($group->level==2)
+                                                        @elseif($group->level==2)
                                                         <span class="badge badge-pill badge-warning">Intermediate</span>
                                                     @elseif($group->level==3)
                                                         <span class="badge badge-pill badge-danger">Advanced</span>
-                                                    @endif
+                                                        @endif
 
                                                 </td>
                                                 @if($group->validated==0)
-                                                    <td>
+                                                <td>
 
-                                                        <span class="badge badge-pill badge-info">Not Validated</span>
-                                                    </td>
-                                                @else
+                                                    <span class="badge badge-pill badge-info">Not Validated</span>
+                                                </td>
+                                                    @else
                                                     <td>
 
                                                         <span class="badge badge-pill badge-danger">Validated</span>
@@ -134,13 +115,7 @@
                                                         <a href="https://t.me/{{ $group->validated_by }}">{{ $group->validated_by }}</a>
                                                     @endif
                                                 </td>
-                                                <td>
-                                                    @if($group->validated_at==null)
-                                                        <span class="badge badge-pill badge-info">No date</span>
-                                                    @else
-                                                        {{ $group->validated_at }}
-                                                    @endif
-                                                </td>
+
 
                                                 <td>
                                                     @if($group->edited_by==null)
@@ -149,32 +124,24 @@
                                                         <a href="https://t.me/{{ $group->edited_by }}">{{ $group->edited_by }}</a>
                                                     @endif
                                                 </td>
-                                                <td>
-                                                    @if($group->updated_at==null)
-                                                        <span class="badge badge-pill badge-info">No date</span>
-                                                    @else
-                                                        {{ $group->updated_at }}
-                                                    @endif
-                                                </td>
-                                                <td><a href="https://t.me/{{ $group->username }}">{{ $group->username }}</a></td>
-                                                <td>
-                                                    {{ $group->created_at }}
-                                                </td>
 
+                                                <td><a href="https://t.me/{{ $group->username }}">{{ $group->username }}</a></td>
+{{--                                                <td>--}}
+{{--                                                    {{ $group->created_at }}--}}
+{{--                                                </td>--}}
                                                 <td class="td-actions text-right">
                                                     {{--                              @include('shared._actions', ['entity' => 'users','id'=>$group->id])--}}
-                                                    <form action="{{ route('apollo.destroy', $group) }}" method="post">
+
+                                                    <form action="{{ route('africas.destroy', $group) }}" method="post">
                                                         @csrf
                                                         @method('delete')
-
                                                         @can('edit_africas')
-                                                            <a rel="tooltip" class="btn btn-success btn-link" href="{{ route('apollo.edit', $group) }}" data-original-title="" title="Edit">
+                                                            <a rel="tooltip" class="btn btn-success btn-link" href="{{ route('africas.edit', $group) }}" data-original-title="" title="Edit">
                                                                 <i class="material-icons">edit</i>
                                                                 <div class="ripple-container"></div>
                                                             </a>
                                                         @endcan
                                                         @can('delete_africas')
-
                                                             <button type="button" class="btn btn-danger btn-link" data-toggle="tooltip" rel="tooltip" title="Delete" onclick="confirm('{{ __("Are you sure you want to delete this question?") }}') ? this.parentElement.submit() : ''">
                                                                 <i class="material-icons">close</i>
                                                                 <div class="ripple-container"></div>
@@ -184,22 +151,19 @@
                                                             <i class="material-icons">chat</i>
                                                             <div class="ripple-container"></div>
                                                         </button>
-
                                                     </form>
+
                                                 </td>
 
-
-
                                             </tr>
-
-
                                         @endforeach
+                                        {{--    -    modal--}}
                                         <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-lg">
                                                 <div class="modal-content">
                                                     <form action="" method="post">
                                                         @csrf
-                                                        {{--                                                        @method('post')--}}
+{{--                                                        @method('post')--}}
                                                         <div class="modal-header card-header card-header-danger">
                                                             <h5 class="modal-title" id="exampleModalLabel">View question</h5>
                                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -208,7 +172,7 @@
                                                         </div>
                                                         <div class="modal-body">
                                                             <div class="row">
-                                                                <label class="col-sm-2 col-form-label"><span class="badge badge-pill badge-info">{{ __('Question') }}</span>:</label>
+                                                                <label class="col-sm-2 col-form-label"><span class="badge badge-pill badge-info">{{ __('Word') }}</span>:</label>
                                                                 <div class="col-sm-7">
                                                                     <div class="form-group">
                                                                         <input class="form-control" type="text"  value="{{ old('question',$group->question) }}"  disabled>
@@ -218,7 +182,7 @@
                                                             </div>
 
                                                             <div class="row">
-                                                                <label class="col-sm-2 col-form-label"><span class="badge badge-pill badge-info">{{ __('Answer') }}</span>:</label>
+                                                                <label class="col-sm-2 col-form-label"><span class="badge badge-pill badge-info">{{ __('Meaning') }}</span>:</label>
                                                                 <div class="col-sm-7">
                                                                     <div class="form-group">
                                                                         <input class="form-control" type="text"  value="{{ old('question',$group->answer) }}"  disabled>
@@ -247,12 +211,12 @@
                                                                         @if($group->validated==0)
 
 
-                                                                            <span class="badge badge-pill badge-warning">False</span>
+                                                                                <span class="badge badge-pill badge-warning">False</span>
 
                                                                         @else
 
 
-                                                                            <span class="badge badge-pill badge-danger">True</span>
+                                                                                <span class="badge badge-pill badge-danger">True</span>
 
                                                                         @endif
 
@@ -340,152 +304,22 @@
                                             </div>
                                         </div>
 
-                                        {{$apollo->links()}}
+                                        {{$africa->links()}}
                                     @else
                                         <td>
-                                            <p>No apollo created at the moment</p>
+                                            <p>No africa created at the moment</p>
                                         </td>
                                     @endif
 
                                     </tbody>
-
                                 </table>
                             </div>
-
-
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script>
-    $(document).ready(function() {
-        $('#exampl').DataTable( {
-            "stateSave": true,
-            "ordering": true,
-            "info":true,
-            "paging":   false,
-        } );
 
-
-        $('#master').on('click', function(e) {
-            if($(this).is(':checked',true))
-            {
-                $(".sub_chk").prop('checked', true);
-            } else {
-                $(".sub_chk").prop('checked',false);
-            }
-        });
-
-
-        $('.delete_all').on('click', function(e) {
-
-
-            var allVals = [];
-            $(".sub_chk:checked").each(function() {
-                allVals.push($(this).attr('data-id'));
-            });
-
-
-            if(allVals.length <=0)
-            {
-                alert("Please select question(s).");
-            }  else {
-
-
-                var check = confirm("Are you sure you want to delete this question(s)?");
-                if(check == true){
-
-
-                    var join_selected_values = allVals.join(",");
-
-
-                    $.ajax({
-                        url: $(this).data('url'),
-                        type: 'DELETE',
-                        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                        data: 'ids='+join_selected_values,
-                        success: function (data) {
-                            if (data['success']) {
-                                $(".sub_chk:checked").each(function() {
-                                    $(this).parents("tr").remove();
-                                });
-                                alert(data['success']);
-                            } else if (data['error']) {
-                                alert(data['error']);
-                            } else {
-                                alert('Whoops Something went wrong!!');
-                            }
-                        },
-                        error: function (data) {
-                            alert(data.responseText);
-                        }
-                    });
-
-
-
-                }
-            }
-        });
-
-        $('.validate_all').on('click', function(e) {
-
-
-            var allVals = [];
-            $(".sub_chk:checked").each(function() {
-                allVals.push($(this).attr('data-id'));
-            });
-
-
-            if(allVals.length <=0)
-            {
-                alert("Please select question(s).");
-            }  else {
-
-
-                var check = confirm("Are you sure you want to validate this question(s)?");
-                if(check == true){
-
-
-                    var join_selected_values = allVals.join(",");
-
-
-                    $.ajax({
-                        url: $(this).data('url'),
-                        type: 'PUT',
-                        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                        data: 'ids='+join_selected_values,
-                        success: function (data) {
-                            if (data['success']) {
-                                setTimeout(function(){// wait for 5 secs(2)
-                                    location.reload(); // then reload the page.(3)
-                                }, 1000);
-                                alert(data['success']);
-                            } else if (data['error']) {
-                                alert(data['error']);
-                            } else {
-                                alert('Whoops Something went wrong!!');
-                            }
-                        },
-                        error: function (data) {
-                            alert(data.responseText);
-                        }
-                    });
-
-
-                }
-            }
-        });
-
-
-
-
-
-
-
-    } );
-</script>
 
 @endsection

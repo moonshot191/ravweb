@@ -94,6 +94,14 @@
                 </a>
             </li>
         @endcan
+        @can('add_africas','edit_africas', 'delete_africas')
+            <li class="nav-item{{ $activePage ?? '' ?? '' == 'africa-management' ? ' active' : '' }}">
+                <a class="nav-link" href="{{ route('africas.index') }}">
+                    <i class="material-icons">swap_horizontal_circle</i>
+                    <p>{{ __('Africa Management') }}</p>
+                </a>
+            </li>
+        @endcan
 {{--        <li class="nav-item{{ $activePage ?? '' ?? '' == 'table' ? ' active' : '' }}">--}}
 {{--            <a class="nav-link" href="{{ route('table') }}">--}}
 {{--                <i class="material-icons">content_paste</i>--}}
