@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Africa;
+use DB;
 use Illuminate\Http\Request;
 use App\Imports\AfricaImport;
 use App\Exports\AfricaExport;
@@ -133,5 +134,19 @@ class AfricaController extends Controller
     {
         $africa->delete();
         return redirect()->route('africas.index')->withStatus(__('Question successfully deleted.'));
+    }
+
+    public function deleteAll(Request $request)
+    {
+        $ids = $request->ids;
+        DB::table("africas")->whereIn('id',explode(",",$ids))->delete();
+        return response()->json(['success'=>"Question(s) Deleted successfully."]);
+    }
+
+    public function validateAll(Request $request){
+        $ids = $request->ids;
+        DB::table("africas")->whereIn('id',explode(",",$ids))->update(array('validated'=>true,
+            'validated_by'=>auth()->user()->username,'validated_at'=>\Carbon\Carbon::now()));
+        return response()->json(['success'=>"Question(s) Validated successfully!"]);
     }
 }

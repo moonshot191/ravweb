@@ -24,7 +24,7 @@ class ApolloController extends Controller
     public function index(Apollo $model)
     {
 
-        return view('bot.apollo.index', ['apollo' => $model->orderBy('created_at', 'desc')->paginate(50)]); #view('bot.apollo.index', ['apollo' => $model->latest()]);
+        return view('bot.apollo.index', ['apollo' => $model->orderBy('created_at', 'desc')->paginate(100)]); #view('bot.apollo.index', ['apollo' => $model->latest()]);
 
     }
 

@@ -39,52 +39,29 @@ Route::group( ['middleware' => ['auth']], function() {
     Route::get('sampleapollo', 'ApolloController@getDownload')->name('sampleapollo');
     Route::get('gexport', 'GaiaController@export')->name('gexport');
     Route::get('aexport', 'AfricaController@export')->name('aexport');
+    Route::get('seshatexport', 'SeshatController@export')->name('seshatexport');
     Route::get('sampleafrica', 'AfricaController@getDownload')->name('sampleafrica');
 
     Route::post('apollo/send',['as'=>'apollo.send','uses'=>'ApolloController@send']);
+//    apollo
     Route::delete('apollodel', 'ApolloController@deleteAll')->name('apollodel');
     Route::put('apolloval', 'ApolloController@validateAll')->name('apolloval');
+//    seshat
+    Route::delete('seshatdel', 'SeshatController@deleteAll')->name('seshatdel');
+    Route::put('seshatval', 'SeshatController@validateAll')->name('seshatval');
+    //    zalmo
+    Route::delete('zalmodel', 'ZalmoController@deleteAll')->name('zalmodel');
+    Route::put('zalmoval', 'ZalmoController@validateAll')->name('zalmoval');
 
+    //    gaia
+    Route::delete('gaiadel', 'GaiaController@deleteAll')->name('gaiadel');
+    Route::put('gaiaval', 'GaiaController@validateAll')->name('gaiaval');
 
+    //    africa
+    Route::delete('africadel', 'AfricaController@deleteAll')->name('africadel');
+    Route::put('africaval', 'AfricaController@validateAll')->name('africaval');
 
-
-
-    	Route::get('table-list', function () {
-		return view('pages.table_list');
-	})->name('table');
-
-	Route::get('typography', function () {
-		return view('pages.typography');
-	})->name('typography');
-
-	Route::get('icons', function () {
-		return view('pages.icons');
-	})->name('icons');
-
-	Route::get('map', function () {
-		return view('pages.map');
-	})->name('map');
-
-	Route::get('notifications', function () {
-		return view('pages.notifications');
-	})->name('notifications');
-
-	Route::get('rtl-support', function () {
-		return view('pages.language');
-	})->name('language');
-
-	Route::get('upgrade', function () {
-		return view('pages.upgrade');
-	})->name('upgrade');
 });
 
-//Route::group(['middleware' => 'auth'], function () {
-////	Route::resource('user', 'UserController', ['except' => ['show']]);
-//
-//});
 
-
-//Route::group(['middleware' => 'auth'], function () {
-
-//});
 

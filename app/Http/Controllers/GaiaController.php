@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use App\Gaia;
 use App\Imports\GaiaImport;
 use App\Exports\GaiaExport;
+use DB;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use Validator;
-
+use App\Authorizable;
 class GaiaController extends Controller
 {
+    use Authorizable;
     /**
      * Display a listing of the resource.
      *
@@ -122,5 +124,20 @@ class GaiaController extends Controller
     {
         $gaia->delete();
         return redirect()->route('gaias.index')->withStatus(__('Question successfully deleted.'));
+    }
+
+
+    public function deleteAll(Request $request)
+    {
+        $ids = $request->ids;
+        DB::table("gaias")->whereIn('id',explode(",",$ids))->delete();
+        return response()->json(['success'=>"Question(s) Deleted successfully."]);
+    }
+
+    public function validateAll(Request $request){
+        $ids = $request->ids;
+        DB::table("gaias")->whereIn('id',explode(",",$ids))->update(array('validated'=>true,
+            'validated_by'=>auth()->user()->username,'validated_at'=>\Carbon\Carbon::now()));
+        return response()->json(['success'=>"Question(s) Validated successfully!"]);
     }
 }

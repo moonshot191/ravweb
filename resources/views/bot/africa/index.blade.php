@@ -27,14 +27,22 @@
                             <div class="row">
                                 <div class="col-12 text-right">
                                     @can('add_africas')
+                                        <button  class="btn btn-warning btn-sm validate_all" data-url="{{ route('africaval') }}"><i class="material-icons">thumb_up</i>Validate</button>
+                                        <button  class="btn btn-danger btn-sm delete_all" data-url="{{ route('africadel') }}"><i class="material-icons">delete</i>Delete</button>
                                         <a href="{{ route('africas.create') }}" class="btn btn-sm btn-info">{{ __('Upload questions') }}</a>
                                         <a href="{{ route('aexport') }}" class="btn btn-sm btn-success">{{ __('Export to CSV') }}</a>
+                                        <a href="#" onclick="window.print()" class="btn btn-sm btn-warning"><i class="material-icons">print</i> Print</a>
                                     @endcan
                                 </div>
                             </div>
                             <div class="table-responsive">
-                                <table class="table">
+                                <table class="table" id="exampl">
+
                                     <thead class=" text-primary">
+                                    <th width="80px">
+                                        {{ __('#') }}
+                                    </th>
+                                    <th width="50px"><input type="checkbox" id="master"></th>
                                     <th>
                                         {{ __('Word(s)') }}
                                     </th>
@@ -79,8 +87,12 @@
                                     </thead>
                                     <tbody>
                                     @if($africa->total()>0)
-                                        @foreach($africa as $group)
-                                            <tr>
+                                        @foreach($africa  as $index =>$group)
+                                            <tr id="tr_{{$group->id}}">
+                                                <td>
+                                                    <strong>{{ $index+1 }}.</strong>
+                                                </td>
+                                                <td><input type="checkbox" class="sub_chk" data-id="{{$group->id}}"></td>
                                                 <td>
                                                     {{ $group->question}}
                                                 </td>
@@ -320,6 +332,134 @@
             </div>
         </div>
     </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#exampl').DataTable( {
+            "stateSave": true,
+            "ordering": true,
+            "info":true,
+            "paging":   true,
+            "pagingType": "full_numbers"
+        } );
 
+
+        $('#master').on('click', function(e) {
+            if($(this).is(':checked',true))
+            {
+                $(".sub_chk").prop('checked', true);
+            } else {
+                $(".sub_chk").prop('checked',false);
+            }
+        });
+
+
+        $('.delete_all').on('click', function(e) {
+
+
+            var allVals = [];
+            $(".sub_chk:checked").each(function() {
+                allVals.push($(this).attr('data-id'));
+            });
+
+
+            if(allVals.length <=0)
+            {
+                alert("Please select question(s).");
+            }  else {
+
+
+                var check = confirm("Are you sure you want to delete this question(s)?");
+                if(check == true){
+
+
+                    var join_selected_values = allVals.join(",");
+
+
+                    $.ajax({
+                        url: $(this).data('url'),
+                        type: 'DELETE',
+                        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                        data: 'ids='+join_selected_values,
+                        success: function (data) {
+                            if (data['success']) {
+                                $(".sub_chk:checked").each(function() {
+                                    $(this).parents("tr").remove();
+                                });
+                                alert(data['success']);
+                            } else if (data['error']) {
+                                alert(data['error']);
+                            } else {
+                                alert('Whoops Something went wrong!!');
+                            }
+                        },
+                        error: function (data) {
+                            alert(data.responseText);
+                        }
+                    });
+
+
+
+                }
+            }
+        });
+
+        $('.validate_all').on('click', function(e) {
+
+
+            var allVals = [];
+            $(".sub_chk:checked").each(function() {
+                allVals.push($(this).attr('data-id'));
+            });
+
+
+            if(allVals.length <=0)
+            {
+                alert("Please select question(s).");
+            }  else {
+
+
+                var check = confirm("Are you sure you want to validate this question(s)?");
+                if(check == true){
+
+
+                    var join_selected_values = allVals.join(",");
+
+
+                    $.ajax({
+                        url: $(this).data('url'),
+                        type: 'PUT',
+                        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                        data: 'ids='+join_selected_values,
+                        success: function (data) {
+                            if (data['success']) {
+                                setTimeout(function(){// wait for 5 secs(2)
+                                    location.reload(); // then reload the page.(3)
+                                }, 1000);
+                                alert(data['success']);
+                            } else if (data['error']) {
+                                alert(data['error']);
+                            } else {
+                                alert('Whoops Something went wrong!!');
+                            }
+                        },
+                        error: function (data) {
+                            alert(data.responseText);
+                        }
+                    });
+
+
+                }
+            }
+        });
+
+
+
+
+
+
+
+    } );
+</script>
 
 @endsection

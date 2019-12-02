@@ -366,7 +366,8 @@
             "stateSave": true,
             "ordering": true,
             "info":true,
-            "paging":   false,
+            "paging":   true,
+            "pagingType": "full_numbers"
         } );
 
 

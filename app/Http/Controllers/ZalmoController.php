@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Authorizable;
 use App\Group;
 use App\Zalmo;
+use DB;
 use Illuminate\Http\Request;
 use App\Exports\ZalmoExport;
 use App\Imports\ZalmoImport;
@@ -21,7 +22,7 @@ class ZalmoController extends Controller
      */
     public function index(Zalmo $model)
     {
-        return view('bot.zalmo.index', ['zalmo' => $model->orderBy('created_at', 'desc')->paginate(10)]);
+        return view('bot.zalmo.index', ['zalmo' => $model->orderBy('created_at', 'desc')->paginate(100)]);
 
     }
 
@@ -149,6 +150,21 @@ class ZalmoController extends Controller
     {
         $zalmo->delete();
         return redirect()->route('zalmos.index')->withStatus(__('Question successfully deleted.'));
+    }
+
+
+    public function deleteAll(Request $request)
+    {
+        $ids = $request->ids;
+        DB::table("zalmos")->whereIn('id',explode(",",$ids))->delete();
+        return response()->json(['success'=>"Question(s) Deleted successfully."]);
+    }
+
+    public function validateAll(Request $request){
+        $ids = $request->ids;
+        DB::table("zalmos")->whereIn('id',explode(",",$ids))->update(array('validated'=>true,
+            'validated_by'=>auth()->user()->username,'validated_at'=>\Carbon\Carbon::now()));
+        return response()->json(['success'=>"Question(s) Validated successfully!"]);
     }
 
 }

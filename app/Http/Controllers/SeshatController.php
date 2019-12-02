@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Seshat;
+use DB;
 use Illuminate\Http\Request;
 use App\Authorizable;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\SeshatExport;
 class SeshatController extends Controller
 {
-//    use Authorizable;
+    use Authorizable;
 
     /**
      * Display a listing of the resource.
@@ -16,7 +19,7 @@ class SeshatController extends Controller
      */
     public function index(Seshat $model)
     {
-        return view('bot.seshat.index', ['seshat' => $model->orderBy('created_at', 'desc')->paginate(50)]);
+        return view('bot.seshat.index', ['seshat' => $model->orderBy('created_at', 'desc')->paginate(100)]);
 
     }
 
@@ -73,6 +76,12 @@ class SeshatController extends Controller
     {
         //
     }
+
+    public function export()
+    {
+        return Excel::download(new SeshatExport, 'seshat.csv');
+    }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -149,5 +158,19 @@ class SeshatController extends Controller
     {
        $seshat->delete();
         return redirect()->route('seshats.index')->withStatus(__('Question successfully deleted.'));
+    }
+
+    public function deleteAll(Request $request)
+    {
+        $ids = $request->ids;
+        DB::table("seshats")->whereIn('id',explode(",",$ids))->delete();
+        return response()->json(['success'=>"Question(s) Deleted successfully."]);
+    }
+
+    public function validateAll(Request $request){
+        $ids = $request->ids;
+        DB::table("seshats")->whereIn('id',explode(",",$ids))->update(array('validated'=>true,
+            'validated_by'=>auth()->user()->username,'validated_at'=>\Carbon\Carbon::now()));
+        return response()->json(['success'=>"Question(s) Validated successfully!"]);
     }
 }
