@@ -13,6 +13,14 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+
+Route::post('login', 'Api\ApiController@login');
+Route::group(['middleware' => ['jwt.verify']], function() {
+    Route::get('logout', 'Api\ApiController@logout');
+    Route::get('user', 'Api\ApiController@getAuthUser');
+    Route::apiResource('apollo','Api\ApolloController');
+    Route::apiResource('africa','Api\AfricaController');
+    Route::apiResource('gaia','Api\GaiaController');
+    Route::apiResource('seshat','Api\SeshatController');
+    Route::apiResource('zalmo','Api\ZalmoController');
 });
