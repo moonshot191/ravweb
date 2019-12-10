@@ -20,6 +20,7 @@ Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 
 Route::group( ['middleware' => ['auth']], function() {
     Route::resource('roles', 'RoleController');
+    Route::resource('leizis', 'LeiziController');
     Route::resource('groups', 'GroupController');
     Route::resource('apollo', 'ApolloController');
     Route::resource('seshats', 'SeshatController');
@@ -60,6 +61,12 @@ Route::group( ['middleware' => ['auth']], function() {
     //    africa
     Route::delete('africadel', 'AfricaController@deleteAll')->name('africadel');
     Route::put('africaval', 'AfricaController@validateAll')->name('africaval');
+
+    //    leizi
+    Route::delete('leizidel', 'LeiziController@deleteAll')->name('leizidel');
+    Route::put('leizival', 'LeiziController@validateAll')->name('leizival');
+    Route::get('lexport', 'LeiziController@export')->name('lexport');
+    Route::get('sampleleizi', 'LeiziController@getDownload')->name('sampleleizi');
 
 });
 

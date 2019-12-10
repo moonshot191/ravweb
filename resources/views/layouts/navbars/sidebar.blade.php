@@ -94,6 +94,14 @@
                 </a>
             </li>
         @endcan
+        @can('add_leizis','edit_leizis', 'delete_leizis')
+            <li class="nav-item{{ $activePage ?? '' ?? '' == 'leizi-management' ? ' active' : '' }}">
+                <a class="nav-link" href="{{ route('leizis.index') }}">
+                    <i class="material-icons">compare_arrows</i>
+                    <p>{{ __('Leizi Management') }}</p>
+                </a>
+            </li>
+        @endcan
         @can('add_groups','edit_groups', 'delete_groups')
             <li class="nav-item{{ $activePage ?? '' ?? '' == 'groups-management' ? ' active' : '' }}">
                 <a class="nav-link" href="{{ route('groups.index') }}">
