@@ -3,52 +3,47 @@
 
     <div class="col-lg-6 col-md-12">
         <div class="row">
-            <div class="col-md-6">
-                <ul class="nav nav-pills nav-pills-icons flex-column" role="tablist">
-                    <!--
-                                        color-classes: "nav-pills-primary", "nav-pills-info", "nav-pills-success", "nav-pills-warning","nav-pills-danger"
-                                    -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="#{{ isset($title) ? str_slug($title) :  'permissionHeading' }}" role="tab" data-toggle="tab" aria-expanded="{{ isset($closed) ? 'on' : 'off' }}" aria-controls="{{ isset($title) ? str_slug($title) :  'permissionHeading' }}">
-                            <i class="material-icons">dashboard</i>  {{ $title ?? 'Override Permissions' }} {!! isset($user) ? '<span class="text-danger">(' . $user->getDirectPermissions()->count() . ')</span>' : '' !!}
+            <div class="card my-3">
+                <div class="card-header" role="tab" id="{{ isset($title) ? str_slug($title) :  'permissionHeading' }}">
+                    <h4 class="mb-0">
+                        <a role="button" data-toggle="collapse" href="#dd-{{ isset($title) ? str_slug($title) :  'permissionHeading' }}" aria-expanded="{{ isset($closed) ? 'true' : 'false' }}" aria-controls="dd-{{ isset($title) ? str_slug($title) :  'permissionHeading' }}">
+                            {{ $title ?? 'Override Permissions' }} {!! isset($user) ? '<span class="text-danger">(' . $user->getDirectPermissions()->count() . ')</span>' : '' !!}
                         </a>
-                    </li>
+                    </h4>
+                </div>
+                <div id="dd-{{ isset($title) ? str_slug($title) :  'permissionHeading' }}" class="card-collapse collapse {{ $closed ?? 'in' }}" role="tabcard" aria-labelledby="dd-{{ isset($title) ? str_slug($title) :  'permissionHeading' }}">
+                    <div class="card-body">
+                        <div class="row">
+                            @foreach($permissions as $perm)
+                                <?php
+                                $per_found = null;
 
-                </ul>
-            </div>
-            <div class="col-md-6">
-                <div class="tab-content">
-                    <div aria-labelledby="{{ isset($title) ? str_slug($title) :  'permissionHeading' }}" class="tab-pane {{ $closed ?? '' ?? '' == 'on' ? ' active' : ''}}" id="{{ isset($title) ? str_slug($title) :  'permissionHeading' }}">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="row">
-                                    @foreach($permissions as $perm)
-                                        <?php
-                                        $per_found = null;
-                                        if( isset($role) ) {
-                                            $per_found = $role->hasPermissionTo($perm->name);
-                                        }
-                                        if( isset($user)) {
-                                            $per_found = $user->hasDirectPermission($perm->name);
-                                        }
-                                        ?>
+                                if( isset($role) ) {
+                                    $per_found = $role->hasPermissionTo($perm->name);
+                                }
 
-                                        <div class="col-md-5">
-                                            <div class="checkbox">
-                                                <label class="{{ str_contains($perm->name, 'delete') ? 'text-danger' : '' }}">
-                                                    {!! Form::checkbox("permissions[]", $perm->name, $per_found, isset($options) ? $options : []) !!} {{ $perm->name }}
-                                                </label>
-                                            </div>
-                                        </div>
-                                    @endforeach
-                                        @can('edit_roles')
-                                            {!! Form::submit('Update', ['class' => 'btn btn-danger']) !!}
-                                        @endcan
+                                if( isset($user)) {
+                                    $per_found = $user->hasDirectPermission($perm->name);
+                                }
+                                ?>
+
+                                <div class="col-md-3">
+                                    <div class="checkbox">
+                                        <label class="{{ str_contains($perm->name, 'delete') ? 'text-danger' : '' }}">
+                                            {!! Form::checkbox("permissions[]", $perm->name, $per_found, isset($options) ? $options : []) !!} {{ $perm->name }}
+                                        </label>
+                                    </div>
+
                                 </div>
-                            </div>
+                            @endforeach
+                            @if($role->name!='Manager')
+                                @can('edit_roles')
+
+                                    {!! Form::submit('Save', ['class' => 'btn btn-primary btn-sm']) !!}
+                                @endcan
+                            @endif
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>

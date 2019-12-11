@@ -156,16 +156,16 @@
                                                 <td class="td-actions text-right">
                                                     {{--                              @include('shared._actions', ['entity' => 'users','id'=>$group->id])--}}
 
-                                                    <form action="{{ route('africas.destroy', $group) }}" method="post">
+                                                    <form action="{{ route('leizis.destroy', $group) }}" method="post">
                                                         @csrf
                                                         @method('delete')
-                                                        @can('edit_africas')
-                                                            <a rel="tooltip" class="btn btn-success btn-link" href="{{ route('africas.edit', $group) }}" data-original-title="" title="Edit">
+                                                        @can('edit_leizis')
+                                                            <a rel="tooltip" class="btn btn-success btn-link" href="{{ route('leizis.edit', $group) }}" data-original-title="" title="Edit">
                                                                 <i class="material-icons">edit</i>
                                                                 <div class="ripple-container"></div>
                                                             </a>
                                                         @endcan
-                                                        @can('delete_africas')
+                                                        @can('delete_leizis')
                                                             <button type="button" class="btn btn-danger btn-link" data-toggle="tooltip" rel="tooltip" title="Delete" onclick="confirm('{{ __("Are you sure you want to delete this question?") }}') ? this.parentElement.submit() : ''">
                                                                 <i class="material-icons">close</i>
                                                                 <div class="ripple-container"></div>

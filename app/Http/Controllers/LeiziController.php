@@ -31,7 +31,7 @@ class LeiziController extends Controller
      */
     public function create()
     {
-        return view('bot.leizi.create',compact('groups'));
+        return view('bot.leizi.create');
     }
 
     /**
@@ -76,7 +76,7 @@ class LeiziController extends Controller
      */
     public function edit(Leizi $leizi)
     {
-        //
+        return view('bot.leizi.edit',compact('leizi'));
     }
 
     /**
@@ -89,6 +89,27 @@ class LeiziController extends Controller
     public function update(Request $request, Leizi $leizi)
     {
         //
+        $rules = array(
+            'instruction'=>'required|string|min:3',
+            'alternative'=>'string|min:3',
+            'answer'=>'required|string|min:3',
+            'question'=>'required|string|min:3',
+            'level' => 'required|numeric',
+        );
+        $this->validate($request,$rules);
+        $data = request()->except(['_token','_method']);
+        if(isset($data['validated'])){
+            $data['validated']=true;
+            $data['validated_by']=auth()->user()->username;
+            $data['validated_at']=\Carbon\Carbon::now();
+        }else{
+            $data['validated']=false;
+        }
+        $data['edited_by']=auth()->user()->username;
+        Leizi::whereId($leizi->id)->update($data);
+
+
+        return redirect()->route('leizis.index')->withStatus(__('Question successfully updated.'));
     }
 
     /**

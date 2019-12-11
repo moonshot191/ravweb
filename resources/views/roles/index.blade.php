@@ -1,4 +1,4 @@
-@extends('layouts.app', ['activePage' => 'user-management', 'titlePage' => __('Roles & Permissions')])
+@extends('layouts.app', ['activePage' => 'roles-management', 'titlePage' => __('Roles & Permissions')])
 
 @section('content')
     <div class="content">
@@ -63,7 +63,7 @@
                                 @forelse ($roles as $role)
                                     {!! Form::model($role, ['method' => 'PUT', 'route' => ['roles.update',  $role->id ], 'class' => 'm-b']) !!}
 
-                                    @if($role->name === 'Admin')
+                                    @if($role->name === 'Manager')
                                         @include('shared._permissions', [
                                                       'title' => $role->name .' Permissions',
                                                       'options' => ['disabled'] ])
