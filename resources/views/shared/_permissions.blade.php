@@ -36,11 +36,11 @@
 
                                 </div>
                             @endforeach
-                            @if($role->name!='Manager')
+
                                 @can('edit_roles')
 
                                     {!! Form::submit('Save', ['class' => 'btn btn-primary btn-sm']) !!}
-                                @endcan
+
                             @endif
                         </div>
                     </div>
