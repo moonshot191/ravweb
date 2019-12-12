@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Exports\LeiziExport;
-use App\Imports\LeiziImport;
-use App\Leizi;
+use App\Exports\TycheExport;
+use App\Tyche;
 use DB;
 use Illuminate\Http\Request;
 use App\Authorizable;
+use App\Imports\TycheImport;
 use Maatwebsite\Excel\Facades\Excel;
 use Validator;
 
-class LeiziController extends Controller
+class TycheController extends Controller
 {
     use Authorizable;
     /**
@@ -19,9 +19,9 @@ class LeiziController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Leizi $model)
+    public function index(Tyche $model)
     {
-        return view('bot.leizi.index', ['leizi' => $model->orderBy('created_at', 'desc')->paginate(100)]);
+        return view('bot.tyche.index', ['tyche' => $model->orderBy('created_at', 'desc')->paginate(50)]);
     }
 
     /**
@@ -31,7 +31,7 @@ class LeiziController extends Controller
      */
     public function create()
     {
-        return view('bot.leizi.create');
+        return view('bot.tyche.create');
     }
 
     /**
@@ -48,11 +48,11 @@ class LeiziController extends Controller
         ]);
         if ($validator->passes()) {
 
-            Excel::import(new LeiziImport,request()->file('csv_file'));
-            return redirect()->route('leizis.index')->withStatus(__('File uploaded.'));
+            Excel::import(new TycheImport,request()->file('csv_file'));
+            return redirect()->route('tyches.index')->withStatus(__('File uploaded.'));
 
         }else{
-            return redirect()->route('leizis.index')->withStatus(__('File not a CSV.'));
+            return redirect()->route('tyches.create')->withStatus(__('File not a CSV.'));
 
         }
     }
@@ -60,10 +60,10 @@ class LeiziController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Leizi  $leizi
+     * @param  \App\Tyche  $tyche
      * @return \Illuminate\Http\Response
      */
-    public function show(Leizi $leizi)
+    public function show(Tyche $tyche)
     {
         //
     }
@@ -71,28 +71,24 @@ class LeiziController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Leizi  $leizi
+     * @param  \App\Tyche  $tyche
      * @return \Illuminate\Http\Response
      */
-    public function edit(Leizi $leizi)
+    public function edit(Tyche $tyche)
     {
-        return view('bot.leizi.edit',compact('leizi'));
+        return view('bot.tyche.edit',compact('tyche'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Leizi  $leizi
+     * @param  \App\Tyche  $tyche
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Leizi $leizi)
+    public function update(Request $request, Tyche $tyche)
     {
-        //
         $rules = array(
-            'instruction'=>'required|string|min:3',
-            'alternative'=>'string|min:3',
-            'answer'=>'required|string|min:3',
             'question'=>'required|string|min:3',
             'level' => 'required|numeric',
         );
@@ -106,54 +102,53 @@ class LeiziController extends Controller
             $data['validated']=false;
         }
         $data['edited_by']=auth()->user()->username;
-        Leizi::whereId($leizi->id)->update($data);
+        Tyche::whereId($tyche->id)->update($data);
 
 
-        return redirect()->route('leizis.index')->withStatus(__('Question successfully updated.'));
+        return redirect()->route('tyches.index')->withStatus(__('Question successfully updated.'));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Leizi  $leizi
+     * @param  \App\Tyche  $tyche
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Leizi $leizi)
+    public function destroy(Tyche $tyche)
     {
-        $leizi->delete();
+        $tyche->delete();
 
-        return redirect()->route('leizis.index')->withStatus(__('Question successfully deleted.'));
+        return redirect()->route('tyches.index')->withStatus(__('Question successfully deleted.'));
     }
-
 
     public function deleteAll(Request $request)
     {
         $ids = $request->ids;
-        DB::table("leizis")->whereIn('id',explode(",",$ids))->delete();
+        DB::table("tyches")->whereIn('id',explode(",",$ids))->delete();
         return response()->json(['success'=>"Question(s) Deleted successfully."]);
     }
 
     public function validateAll(Request $request){
         $ids = $request->ids;
-        DB::table("leizis")->whereIn('id',explode(",",$ids))->update(array('validated'=>true,
+        DB::table("tyches")->whereIn('id',explode(",",$ids))->update(array('validated'=>true,
             'validated_by'=>auth()->user()->username,'validated_at'=>\Carbon\Carbon::now()));
         return response()->json(['success'=>"Question(s) Validated successfully!"]);
     }
 
     public function export()
     {
-        return Excel::download(new LeiziExport, 'leizi.csv');
+        return Excel::download(new TycheExport, 'tyche.csv');
     }
 
     public function getDownload()
     {
         //PDF file is stored under project/public/download/info.pdf
-        $file= public_path(). "/sample_leizi.csv";
+        $file= public_path(). "/sample_odin.csv";
 
         $headers = [
             'Content-Type' => 'text/csv',
         ];
 
-        return response()->download($file, 'sample_leizi.csv', $headers);
+        return response()->download($file, 'sample_tyche.csv', $headers);
     }
 }

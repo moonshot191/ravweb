@@ -102,6 +102,22 @@
                 </a>
             </li>
         @endcan
+        @can('add_odins','edit_odins', 'delete_odins')
+            <li class="nav-item{{ $activePage  == 'odin-management' ? ' active' : '' }}">
+                <a class="nav-link" href="{{ route('odins.index') }}">
+                    <i class="material-icons">remove_red_eye</i>
+                    <p>{{ __('Odin Management') }}</p>
+                </a>
+            </li>
+        @endcan
+        @can('add_tyches','edit_tyches', 'delete_tyches')
+            <li class="nav-item{{ $activePage  == 'tyche-management' ? ' active' : '' }}">
+                <a class="nav-link" href="{{ route('tyches.index') }}">
+                    <i class="material-icons">sort_by_alpha</i>
+                    <p>{{ __('Tyche Management') }}</p>
+                </a>
+            </li>
+        @endcan
         @can('add_groups','edit_groups', 'delete_groups')
             <li class="nav-item{{ $activePage  == 'groups-management' ? ' active' : '' }}">
                 <a class="nav-link" href="{{ route('groups.index') }}">

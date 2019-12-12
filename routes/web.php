@@ -28,6 +28,8 @@ Route::group( ['middleware' => ['auth']], function() {
     Route::resource('zalmos', 'ZalmoController');
     Route::resource('gaias','GaiaController');
     Route::resource('africas','AfricaController');
+    Route::resource('odins','OdinController');
+    Route::resource('tyches','TycheController');
     Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
     Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
     Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
@@ -67,6 +69,17 @@ Route::group( ['middleware' => ['auth']], function() {
     Route::put('leizival', 'LeiziController@validateAll')->name('leizival');
     Route::get('lexport', 'LeiziController@export')->name('lexport');
     Route::get('sampleleizi', 'LeiziController@getDownload')->name('sampleleizi');
+    //Odin
+    Route::delete('odindel', 'OdinController@deleteAll')->name('odindel');
+    Route::put('odinval', 'OdinController@validateAll')->name('odinval');
+    Route::get('oexport', 'OdinController@export')->name('oexport');
+    Route::get('sampleodin', 'OdinController@getDownload')->name('sampleodin');
+
+    //Tyche
+    Route::delete('tychedel', 'TycheController@deleteAll')->name('tychedel');
+    Route::put('tycheval', 'TycheController@validateAll')->name('tycheval');
+    Route::get('texport', 'TycheController@export')->name('texport');
+    Route::get('sampletyche', 'TycheController@getDownload')->name('sampletyche');
 
 });
 

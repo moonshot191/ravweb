@@ -25,10 +25,8 @@ class ApolloImport implements ToModel, WithHeadingRow,WithBatchInserts,WithChunk
     {
         $value=DB::table('apollos')->where('answer', $row['answer'])->get();
         if($value->count() == 0) {
-            return new Apollo(['answer' => $row['answer'],
-                'level' => $row['level'],
+            return new Apollo(['level' => $row['level'],
                 'question' => ApolloImport::shuffler($row['answer']),
-                'group_id' => -1001278314934,
                 'username' => auth()->user()->username,
             ]);
         }
