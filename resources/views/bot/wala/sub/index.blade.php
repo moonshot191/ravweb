@@ -1,4 +1,4 @@
-@extends('layouts.app', ['activePage' => 'wala-management', 'titlePage' => __('Wala Management')])
+@extends('layouts.app', ['activePage' => 'walaq-management', 'titlePage' => __('Wala Questions Management')])
 
 @section('content')
 
@@ -8,8 +8,8 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header card-header-primary">
-                            <h4 class="card-title ">{{ $wala->total() }} {{str_plural('Question',$wala->count())}}</h4>
-                            <p class="card-category"> {{ __('Here you can manage Wala questions') }}</p>
+                            <h4 class="card-title ">{{ $walaq->total() }} {{str_plural('Question',$walaq->count())}}</h4>
+                            <p class="card-category"> {{ __('Here you can manage Wala associate questions') }}</p>
                         </div>
                         <div class="card-body">
                             @if (session('status'))
@@ -53,10 +53,25 @@
                                     <th width="50px"><input type="checkbox" id="master"></th>
 
                                     <th>
-                                        {{ __('Title') }}
+                                        {{ __('Main uestion') }}
                                     </th>
                                     <th>
-                                        {{ __('Question') }}
+                                        {{ __('Associate Question') }}
+                                    </th>
+                                    <th>
+                                        {{ __('Answer A') }}
+                                    </th>
+                                    <th>
+                                        {{ __('Answer B') }}
+                                    </th>
+                                    <th>
+                                        {{ __('Answer C ') }}
+                                    </th>
+                                    <th>
+                                        {{ __('Answer D') }}
+                                    </th>
+                                    <th>
+                                        {{ __('Correct Answer ') }}
                                     </th>
                                     <th>
                                         {{ __('Level') }}
@@ -89,7 +104,7 @@
                                     </th>
 
                                     <th class="text-right">
-                                        @can('edit_walas','delete_walas')
+                                        @can('edit_walaqs','delete_walaqs')
                                             {{ __('Actions') }}
                                         @endcan
                                     </th>
@@ -97,8 +112,8 @@
 
                                     </thead>
                                     <tbody>
-                                    @if($wala->total()>0)
-                                        @foreach($wala as  $index =>$data)
+                                    @if($walaq->total()>0)
+                                        @foreach($walaq as  $index =>$data)
                                             <tr id="tr_{{$data->id}}">
                                                 <td>
                                                     <strong>{{ $index+1 }}.</strong>
@@ -588,7 +603,7 @@
                                             </div>
                                         </div>
 
-                                        {{$wala->links()}}
+                                        {{$walaq->links()}}
                                     @else
                                         <td>
                                             <p>No Wala created at the moment</p>

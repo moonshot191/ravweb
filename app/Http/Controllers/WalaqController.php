@@ -4,17 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Walaq;
 use Illuminate\Http\Request;
-
+use App\Authorizable;
 class WalaqController extends Controller
 {
+    use Authorizable;
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Walaq $walaq)
     {
-        //
+        return view('bot.wala.sub.index', ['walaq' => $walaq->orderBy('created_at', 'desc')->paginate(50)]);
     }
 
     /**
@@ -35,7 +36,7 @@ class WalaqController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return $request->all();
     }
 
     /**

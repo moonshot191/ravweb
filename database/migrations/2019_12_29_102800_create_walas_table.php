@@ -14,7 +14,7 @@ class CreateWalasTable extends Migration
     public function up()
     {
         Schema::create('walas', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
             $table->longText('question')->nullable();
             $table->string('language')->nullable();
             $table->string('title')->nullable();

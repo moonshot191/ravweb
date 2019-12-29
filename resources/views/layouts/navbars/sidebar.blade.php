@@ -136,13 +136,15 @@
                         </a>
                     </li>
                     @endcan
-{{--                    @can('add_users','edit_users', 'delete_users')--}}
-{{--                        <li class="nav-item{{ $activePage == 'user-management' ? ' active' : '' }}">--}}
-{{--                            <a class="nav-link" href="{{ route('users.index') }}">--}}
-{{--                                <span class="sidebar-mini"> UM </span>--}}
-{{--                                <span class="sidebar-normal"> {{ __('User Management') }} </span>--}}
-{{--                            </a>--}}
-{{--                        </li>--}}
+                        @can('add_walaqs','edit_walaqs', 'delete_walaqs')
+
+                        <li class="nav-item{{ $activePage == 'walaq-management' ? ' active' : '' }}">
+                            <a class="nav-link" href="{{ route('walaqs.index') }}">
+                                <span class="sidebar-mini"> WAM </span>
+                                <span class="sidebar-normal"> {{ __('Associate Questions') }} </span>
+                            </a>
+                        </li>
+                        @endcan
 {{--                        <li class="nav-item{{ $activePage == 'roles-management' ? ' active' : '' }}">--}}
 {{--                            <a class="nav-link" href="{{ route('roles.index') }}">--}}
 {{--                                <span class="sidebar-mini"> RM </span>--}}
