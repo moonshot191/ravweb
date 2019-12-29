@@ -1,4 +1,4 @@
-@extends('layouts.app', ['activePage' => 'apollo-management', 'titlePage' => __('Apollo Management')])
+@extends('layouts.app', ['activePage' => 'wala-management', 'titlePage' => __('Wala Management')])
 
 @section('content')
 
@@ -8,8 +8,8 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header card-header-primary">
-                            <h4 class="card-title ">{{ $apollo->total() }} {{str_plural('Question',$apollo->count())}}</h4>
-                            <p class="card-category"> {{ __('Here you can manage Apollo questions') }}</p>
+                            <h4 class="card-title ">{{ $wala->total() }} {{str_plural('Question',$wala->count())}}</h4>
+                            <p class="card-category"> {{ __('Here you can manage Wala questions') }}</p>
                         </div>
                         <div class="card-body">
                             @if (session('status'))
@@ -27,13 +27,13 @@
                             <div class="row">
                                 <div class="col-12 text-right">
 
-                                    @can('add_apollo','delete_apollo')
-                                        <button  class="btn btn-warning btn-sm validate_all" data-url="{{ url('apolloval') }}"><i class="material-icons">thumb_up</i>Validate</button>
-                                        <button  class="btn btn-danger btn-sm delete_all" data-url="{{ url('apollodel') }}"><i class="material-icons">delete</i>Delete</button>
-                                        <a href="{{ route('apollexport') }}" class="btn btn-sm btn-success">{{ __('Export to Csv') }}</a>
+                                    @can('add_walas','delete_walas')
+                                        <button  class="btn btn-warning btn-sm validate_all" data-url="{{ url('walaval') }}"><i class="material-icons">thumb_up</i>Validate</button>
+                                        <button  class="btn btn-danger btn-sm delete_all" data-url="{{ url('waladel') }}"><i class="material-icons">delete</i>Delete</button>
+{{--                                        <a href="{{ route('apollexport') }}" class="btn btn-sm btn-success">{{ __('Export to Csv') }}</a>--}}
                                         <a href="#" onclick="window.print()" class="btn btn-sm btn-warning"><i class="material-icons">print</i> Print</a>
-                                        <a href="{{ route('apolloview') }}" class="btn btn-sm btn-info">{{ __('Upload bulk') }}</a>
-                                        <a href="{{ route('apollo.create') }}" class="btn btn-sm btn-primary">{{ __('Add Single') }}</a>
+{{--                                        <a href="{{ route('walaview') }}" class="btn btn-sm btn-info">{{ __('Upload bulk') }}</a>--}}
+                                        <a href="{{ route('walas.create') }}" class="btn btn-sm btn-primary">{{ __('Add Question') }}</a>
                                     @endcan
                                 </div>
                             </div>
@@ -47,10 +47,10 @@
                                     <th width="50px"><input type="checkbox" id="master"></th>
 
                                     <th>
-                                        {{ __('Question') }}
+                                        {{ __('Title') }}
                                     </th>
                                     <th>
-                                        {{ __('Answer') }}
+                                        {{ __('Question') }}
                                     </th>
                                     <th>
                                         {{ __('Level') }}
@@ -83,7 +83,7 @@
                                     </th>
 
                                     <th class="text-right">
-                                        @can('edit_apollo','delete_apollo')
+                                        @can('edit_walas','delete_walas')
                                             {{ __('Actions') }}
                                         @endcan
                                     </th>
@@ -92,31 +92,31 @@
 
                                     </thead>
                                     <tbody>
-                                    @if($apollo->total()>0)
-                                        @foreach($apollo as  $index =>$group)
-                                            <tr id="tr_{{$group->id}}">
+                                    @if($wala->total()>0)
+                                        @foreach($wala as  $index =>$data)
+                                            <tr id="tr_{{$data->id}}">
                                                 <td>
                                                     <strong>{{ $index+1 }}.</strong>
                                                 </td>
-                                                <td><input type="checkbox" class="sub_chk" data-id="{{$group->id}}"></td>
+                                                <td><input type="checkbox" class="sub_chk" data-id="{{$data->id}}"></td>
 
                                                 <td>
-                                                    {{ $group->question }}
+                                                    {{ $data->title }}
                                                 </td>
                                                 <td>
-                                                    {{ $group->answer }}
+                                                    {{ $data->question }}
                                                 </td>
                                                 <td>
-                                                    @if($group->level==1)
+                                                    @if($data->level==1)
                                                         <span class="badge badge-pill badge-primary">Elementary</span>
-                                                    @elseif($group->level==2)
+                                                    @elseif($data->level==2)
                                                         <span class="badge badge-pill badge-warning">Intermediate</span>
-                                                    @elseif($group->level==3)
+                                                    @elseif($data->level==3)
                                                         <span class="badge badge-pill badge-danger">Advanced</span>
                                                     @endif
 
                                                 </td>
-                                                @if($group->validated==0)
+                                                @if($data->validated==0)
                                                     <td>
 
                                                         <span class="badge badge-pill badge-info">Not Validated</span>
@@ -128,62 +128,63 @@
                                                     </td>
                                                 @endif
                                                 <td>
-                                                    @if($group->validated_by==null)
+                                                    @if($data->validated_by==null)
                                                         <span class="badge badge-pill badge-info">No one</span>
                                                     @else
-                                                        <a href="https://t.me/{{ $group->validated_by }}">{{ $group->validated_by }}</a>
+                                                        <a href="https://t.me/{{ $data->validated_by }}">{{ $data->validated_by }}</a>
                                                     @endif
                                                 </td>
                                                 <td>
-                                                    @if($group->validated_at==null)
+                                                    @if($data->validated_at==null)
                                                         <span class="badge badge-pill badge-info">No date</span>
                                                     @else
-                                                        {{ $group->validated_at }}
+                                                        {{ $data->validated_at }}
                                                     @endif
                                                 </td>
 
                                                 <td>
-                                                    @if($group->edited_by==null)
+                                                    @if($data->edited_by==null)
                                                         No one
                                                     @else
-                                                        <a href="https://t.me/{{ $group->edited_by }}">{{ $group->edited_by }}</a>
+                                                        <a href="https://t.me/{{ $data->edited_by }}">{{ $data->edited_by }}</a>
                                                     @endif
                                                 </td>
                                                 <td>
-                                                    @if($group->updated_at==null)
+                                                    @if($data->updated_at==null)
                                                         <span class="badge badge-pill badge-info">No date</span>
                                                     @else
-                                                        {{ $group->updated_at }}
+                                                        {{ $data->updated_at }}
                                                     @endif
                                                 </td>
-                                                <td><a href="https://t.me/{{ $group->username }}">{{ $group->username }}</a></td>
+                                                <td><a href="https://t.me/{{ $data->created_by }}">{{ $data->created_by }}</a></td>
                                                 <td>
-                                                    {{ $group->created_at }}
+                                                    {{ $data->created_at }}
                                                 </td>
 
                                                 <td class="td-actions text-right">
-                                                    {{--                              @include('shared._actions', ['entity' => 'users','id'=>$group->id])--}}
-                                                    <form action="{{ route('apollo.destroy', $group) }}" method="post">
+                                                    {{--                              @include('shared._actions', ['entity' => 'users','id'=>$data->id])--}}
+                                                    <form action="{{ route('walas.destroy', $data) }}" method="post">
                                                         @csrf
                                                         @method('delete')
-
-                                                        @can('edit_apollo')
-                                                            <a rel="tooltip" class="btn btn-success btn-link" href="{{ route('apollo.edit', $group) }}" data-original-title="" title="Edit">
+                                                        @can('view_walas')
+                                                            <button type="button" class="btn btn-danger btn-link" data-toggle="modal" data-target=".bd-example-modal-lg" rel="tooltip" title="View" >
+                                                                <i class="material-icons">chat</i>
+                                                                <div class="ripple-container"></div>
+                                                            </button>
+                                                        @endcan
+                                                        @can('edit_walas')
+                                                            <a rel="tooltip" class="btn btn-success btn-link" href="{{ route('walas.edit', $data) }}" data-original-title="" title="Edit">
                                                                 <i class="material-icons">edit</i>
                                                                 <div class="ripple-container"></div>
                                                             </a>
                                                         @endcan
-                                                        @can('delete_apollo')
+                                                        @can('delete_walas')
 
                                                             <button type="button" class="btn btn-danger btn-link" data-toggle="tooltip" rel="tooltip" title="Delete" onclick="confirm('{{ __("Are you sure you want to delete this question?") }}') ? this.parentElement.submit() : ''">
                                                                 <i class="material-icons">close</i>
                                                                 <div class="ripple-container"></div>
                                                             </button>
                                                         @endcan
-                                                        <button type="button" class="btn btn-danger btn-link" data-toggle="modal" data-target=".bd-example-modal-lg" rel="tooltip" title="View" >
-                                                            <i class="material-icons">chat</i>
-                                                            <div class="ripple-container"></div>
-                                                        </button>
 
                                                     </form>
                                                 </td>
@@ -208,20 +209,20 @@
                                                         </div>
                                                         <div class="modal-body">
                                                             <div class="row">
-                                                                <label class="col-sm-2 col-form-label"><span class="badge badge-pill badge-info">{{ __('Question') }}</span>:</label>
+                                                                <label class="col-sm-2 col-form-label"><span class="badge badge-pill badge-info">{{ __('Title') }}</span>:</label>
                                                                 <div class="col-sm-7">
                                                                     <div class="form-group">
-                                                                        <input class="form-control" type="text"  value="{{ old('question',$group->question) }}"  disabled>
+                                                                        <input class="form-control" type="text"  value="{{ old('title',$data->title) }}"  disabled>
 
                                                                     </div>
                                                                 </div>
                                                             </div>
 
                                                             <div class="row">
-                                                                <label class="col-sm-2 col-form-label"><span class="badge badge-pill badge-info">{{ __('Answer') }}</span>:</label>
+                                                                <label class="col-sm-2 col-form-label"><span class="badge badge-pill badge-info">{{ __('Question') }}</span>:</label>
                                                                 <div class="col-sm-7">
                                                                     <div class="form-group">
-                                                                        <input class="form-control" type="text"  value="{{ old('question',$group->answer) }}"  disabled>
+                                                                        <input class="form-control" type="text"  value="{{ old('question',$data->question) }}"  disabled>
 
                                                                     </div>
                                                                 </div>
@@ -230,11 +231,11 @@
                                                                 <label class="col-sm-2 col-form-label"><span class="badge badge-pill badge-info">{{ __('Level') }}</span>:</label>
                                                                 <div class="col-sm-7">
                                                                     <div class="form-group">
-                                                                        @if($group->level==1)
+                                                                        @if($data->level==1)
                                                                             <span class="badge badge-pill badge-primary">Elementary</span>
-                                                                        @elseif($group->level==2)
+                                                                        @elseif($data->level==2)
                                                                             <span class="badge badge-pill badge-warning">Intermediate</span>
-                                                                        @elseif($group->level==3)
+                                                                        @elseif($data->level==3)
                                                                             <span class="badge badge-pill badge-danger">Advanced</span>
                                                                         @endif
                                                                     </div>
@@ -244,7 +245,7 @@
                                                                 <label class="col-sm-2 col-form-label"><span class="badge badge-pill badge-info">{{ __('Validated') }}</span>:</label>
                                                                 <div class="col-sm-7">
                                                                     <div class="form-group">
-                                                                        @if($group->validated==0)
+                                                                        @if($data->validated==0)
 
 
                                                                             <span class="badge badge-pill badge-warning">False</span>
@@ -263,10 +264,10 @@
                                                                 <label class="col-sm-2 col-form-label"><span class="badge badge-pill badge-info">{{ __('Validated by') }}</span>:</label>
                                                                 <div class="col-sm-7">
                                                                     <div class="form-group">
-                                                                        @if($group->validated_by==null)
+                                                                        @if($data->validated_by==null)
                                                                             <span class="badge badge-pill badge-warning">No one</span>
                                                                         @else
-                                                                            <a href="https://t.me/{{ $group->validated_by }}">{{ $group->validated_by }}</a>
+                                                                            <a href="https://t.me/{{ $data->validated_by }}">{{ $data->validated_by }}</a>
                                                                         @endif
 
                                                                     </div>
@@ -276,10 +277,10 @@
                                                                 <label class="col-sm-2 col-form-label"><span class="badge badge-pill badge-info">{{ __('Validated on') }}</span>:</label>
                                                                 <div class="col-sm-7">
                                                                     <div class="form-group">
-                                                                        @if($group->validated_at==null)
+                                                                        @if($data->validated_at==null)
                                                                             <span class="badge badge-pill badge-warning">No date</span>
                                                                         @else
-                                                                            {{ $group->validated_at }}
+                                                                            {{ $data->validated_at }}
                                                                         @endif
 
                                                                     </div>
@@ -289,10 +290,10 @@
                                                                 <label class="col-sm-2 col-form-label"><span class="badge badge-pill badge-info">{{ __('Last Edited by') }}</span>:</label>
                                                                 <div class="col-sm-7">
                                                                     <div class="form-group">
-                                                                        @if($group->edited_by==null)
+                                                                        @if($data->edited_by==null)
                                                                             No one
                                                                         @else
-                                                                            <a href="https://t.me/{{ $group->edited_by }}">{{ $group->edited_by }}</a>
+                                                                            <a href="https://t.me/{{ $data->edited_by }}">{{ $data->edited_by }}</a>
                                                                         @endif
 
                                                                     </div>
@@ -302,10 +303,10 @@
                                                                 <label class="col-sm-2 col-form-label"><span class="badge badge-pill badge-info">{{ __('Last edited on') }}</span>:</label>
                                                                 <div class="col-sm-7">
                                                                     <div class="form-group">
-                                                                        @if($group->updated_at==null)
+                                                                        @if($data->updated_at==null)
                                                                             <span class="badge badge-pill badge-warning">No date</span>
                                                                         @else
-                                                                            {{ $group->updated_at }}
+                                                                            {{ $data->updated_at }}
                                                                         @endif
 
                                                                     </div>
@@ -315,7 +316,7 @@
                                                                 <label class="col-sm-2 col-form-label"><span class="badge badge-pill badge-info">{{ __('Created by') }}</span>:</label>
                                                                 <div class="col-sm-7">
                                                                     <div class="form-group">
-                                                                        <a href="https://t.me/{{ $group->username }}">{{ $group->username }}</a>
+                                                                        <a href="https://t.me/{{ $data->created_by }}">{{ $data->created_by }}</a>
 
                                                                     </div>
                                                                 </div>
@@ -324,7 +325,7 @@
                                                                 <label class="col-sm-2 col-form-label"><span class="badge badge-pill badge-info">{{ __('Created on') }}</span>:</label>
                                                                 <div class="col-sm-7">
                                                                     <div class="form-group">
-                                                                        {{ $group->created_at }}
+                                                                        {{ $data->created_at }}
 
                                                                     </div>
                                                                 </div>
@@ -340,10 +341,10 @@
                                             </div>
                                         </div>
 
-                                        {{$apollo->links()}}
+                                        {{$wala->links()}}
                                     @else
                                         <td>
-                                            <p>No apollo created at the moment</p>
+                                            <p>No Wala created at the moment</p>
                                         </td>
                                     @endif
 

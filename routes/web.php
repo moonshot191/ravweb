@@ -30,6 +30,7 @@ Route::group( ['middleware' => ['auth']], function() {
     Route::resource('africas','AfricaController');
     Route::resource('odins','OdinController');
     Route::resource('tyches','TycheController');
+    Route::resource('walas','WalaController');
     Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
     Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
     Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
@@ -80,7 +81,9 @@ Route::group( ['middleware' => ['auth']], function() {
     Route::put('tycheval', 'TycheController@validateAll')->name('tycheval');
     Route::get('texport', 'TycheController@export')->name('texport');
     Route::get('sampletyche', 'TycheController@getDownload')->name('sampletyche');
-
+// Wala
+    Route::delete('waladel', 'WalaController@deleteAll')->name('waladel');
+    Route::put('walaval', 'WalaController@validateAll')->name('walaval');
 });
 
 

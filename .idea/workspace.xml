@@ -2,20 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d91204ff-3e2e-4135-9e44-4de859a9ea5e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Exports/OdinExport.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Exports/TycheExport.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Imports/OdinImport.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Imports/TycheImport.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/sample_odin.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/bot/odin/create.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/bot/odin/edit.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/bot/odin/index.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/bot/tyche/create.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/bot/tyche/edit.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/bot/tyche/index.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/bot/wala/create.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/bot/wala/edit.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/bot/wala/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/LeiziController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/LeiziController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Imports/ApolloImport.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Imports/ApolloImport.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/bot/apollo/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/bot/apollo/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/navbars/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/navbars/sidebar.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
@@ -47,29 +38,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TycheController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="254">
-              <caret line="145" column="43" selection-start-line="145" selection-start-column="39" selection-end-line="145" selection-end-column="43" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/bot/tyche/index.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="16">
-              <caret line="26" column="45" lean-forward="true" selection-start-line="26" selection-start-column="45" selection-end-line="26" selection-end-column="45" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/routes/web.php">
+        <entry file="file://$PROJECT_DIR$/app/Wala.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="265">
-              <caret line="81" column="36" selection-start-line="81" selection-start-column="36" selection-end-line="81" selection-end-column="36" />
+            <state relative-caret-position="128">
+              <caret line="8" column="34" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -86,10 +59,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>info_start</find>
-      <find>rest</find>
-      <find>Fr.</find>
-      <find>makeWaveform();</find>
       <find>recordFor5</find>
       <find>restore();</find>
       <find>this.recognition.stop();</find>
@@ -100,14 +69,12 @@
       <find>zamol-&gt;</find>
       <find>zalmo</find>
       <find>gaia</find>
-      <find>apollo.</find>
       <find>$gaia</find>
       <find>tbody</find>
       <find>$id</find>
       <find>example</find>
       <find>export</find>
       <find>alternative</find>
-      <find>africas</find>
       <find>$africa</find>
       <find>$user</find>
       <find>?? '' ?? ''</find>
@@ -116,14 +83,16 @@
       <find>leizi</find>
       <find>$odin</find>
       <find>odin</find>
+      <find>Apollo</find>
+      <find>$group</find>
+      <find>apollo.</find>
+      <find>africas</find>
+      <find>$apollo</find>
+      <find>answer</find>
     </findStrings>
     <replaceStrings>
-      <replace>error text-danger</replace>
-      <replace>users.</replace>
-      <replace>{{route('login')}}</replace>
       <replace>$group</replace>
       <replace>groups.</replace>
-      <replace>apollo</replace>
       <replace>seshat</replace>
       <replace>img_path</replace>
       <replace>seshats.</replace>
@@ -145,6 +114,13 @@
       <replace>tyche</replace>
       <replace>odin</replace>
       <replace>$tyche</replace>
+      <replace>wala</replace>
+      <replace>$data</replace>
+      <replace>apollo</replace>
+      <replace>walas.</replace>
+      <replace>walas</replace>
+      <replace>$wala</replace>
+      <replace>title</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -153,13 +129,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/Http/Kernel.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Api/ApiController.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" />
-        <option value="$PROJECT_DIR$/config/app.php" />
-        <option value="$PROJECT_DIR$/app/Exceptions/Handler.php" />
-        <option value="$PROJECT_DIR$/config/json-api-paginate.php" />
-        <option value="$PROJECT_DIR$/app/Http/Resources/ApolloResource.php" />
         <option value="$PROJECT_DIR$/app/Http/Resources/AfricaResource.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Api/ApolloController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Api/AfricaController.php" />
@@ -197,13 +166,20 @@
         <option value="$PROJECT_DIR$/app/Imports/TycheImport.php" />
         <option value="$PROJECT_DIR$/app/Exports/TycheExport.php" />
         <option value="$PROJECT_DIR$/resources/views/bot/tyche/index.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/layouts/navbars/sidebar.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/bot/tyche/create.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/bot/tyche/edit.blade.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_12_12_141958_create_tyches_table.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/TycheController.php" />
         <option value="$PROJECT_DIR$/app/Tyche.php" />
+        <option value="$PROJECT_DIR$/resources/views/layouts/navbars/sidebar.blade.php" />
+        <option value="$PROJECT_DIR$/app/Wala.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_12_29_102800_create_walas_table.php" />
+        <option value="$PROJECT_DIR$/resources/views/bot/apollo/index.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/bot/wala/create.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/bot/wala/edit.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/WalaController.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
+        <option value="$PROJECT_DIR$/resources/views/bot/wala/index.blade.php" />
       </list>
     </option>
   </component>
@@ -335,10 +311,10 @@
     </include_path>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-11" />
-    <option name="y" value="-11" />
-    <option name="width" value="1943" />
-    <option name="height" value="1043" />
+    <option name="x" value="-12" />
+    <option name="y" value="-12" />
+    <option name="width" value="1944" />
+    <option name="height" value="1044" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -348,7 +324,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -364,28 +339,26 @@
             <path>
               <item name="ravweb" type="b2602c69:ProjectViewProjectNode" />
               <item name="ravweb" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Http" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ravweb" type="b2602c69:ProjectViewProjectNode" />
               <item name="ravweb" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Http" type="462c0819:PsiDirectoryNode" />
+              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ravweb" type="b2602c69:ProjectViewProjectNode" />
               <item name="ravweb" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="bot" type="462c0819:PsiDirectoryNode" />
+              <item name="database" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ravweb" type="b2602c69:ProjectViewProjectNode" />
               <item name="ravweb" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="bot" type="462c0819:PsiDirectoryNode" />
-              <item name="tyche" type="462c0819:PsiDirectoryNode" />
+              <item name="database" type="462c0819:PsiDirectoryNode" />
+              <item name="migrations" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ravweb" type="b2602c69:ProjectViewProjectNode" />
@@ -396,6 +369,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -404,23 +378,23 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="add_unversioned_files" value="true" />
     <property name="editor.config.ad.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/bot/tyche" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/bot/wala" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\laragon\www\ravweb\public\material\vendor" />
-      <recent name="C:\laragon\www\ravweb\public\material" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\laragon\www\ravweb\resources\views\bot\wala" />
       <recent name="C:\laragon\www\ravweb\resources\views\bot\tyche" />
       <recent name="C:\laragon\www\ravweb\public" />
       <recent name="C:\laragon\www\ravweb\resources\views\bot\odin" />
       <recent name="C:\laragon\www\ravweb\resources\views\bot\leizi" />
-      <recent name="C:\laragon\www\ravweb\app\Exports" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\laragon\www\ravweb\public\material\vendor" />
+      <recent name="C:\laragon\www\ravweb\public\material" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -488,17 +462,43 @@
       <workItem from="1576051039706" duration="95000" />
       <workItem from="1576051164528" duration="546000" />
       <workItem from="1576060093142" duration="16650000" />
+      <workItem from="1576218131022" duration="610000" />
+      <workItem from="1576225017903" duration="408000" />
+      <workItem from="1577614414117" duration="9987000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="436731000" />
+    <option name="totallyTimeSpent" value="447736000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23686337" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2489895" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info id="DB Browser" order="3" weight="0.32983023" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" visible="true" weight="0.32978722" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Database Changes" order="7" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" sideWeight="0.4995958" visible="true" weight="0.3617021" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5004042" side_tool="true" weight="0.20567375" />
+      <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
+      <window_info anchor="bottom" id="DB Execution Console" order="12" />
+      <window_info anchor="bottom" id="File Transfer" order="13" weight="0.32624114" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Database" order="3" weight="0.31851253" />
+    </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2489895" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="DB Browser" order="3" weight="0.32983023" />
@@ -512,30 +512,6 @@
       <window_info anchor="bottom" id="Database Changes" order="7" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.4995958" visible="true" weight="0.3617021" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5004042" side_tool="true" weight="0.20567375" />
-      <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
-      <window_info anchor="bottom" id="DB Execution Console" order="12" />
-      <window_info anchor="bottom" id="File Transfer" order="13" weight="0.32624114" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Database" order="3" weight="0.31851253" />
-    </layout>
-    <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23686337" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info id="DB Browser" order="3" weight="0.32983023" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" visible="true" weight="0.32978722" />
-      <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Database Changes" order="7" />
-      <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.4995958" visible="true" weight="0.27482268" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5004042" side_tool="true" weight="0.20567375" />
       <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
       <window_info anchor="bottom" id="DB Execution Console" order="12" />
@@ -566,92 +542,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/views/bot/africa/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="112" column="52" lean-forward="true" selection-end-line="465" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Seshat.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="12" column="5" lean-forward="true" selection-start-line="8" selection-start-column="4" selection-end-line="12" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Leizi.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="8" column="85" selection-start-line="8" selection-start-column="85" selection-end-line="8" selection-end-column="85" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/bot/africa/create.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="16">
-          <caret line="1" column="48" selection-start-line="1" selection-start-column="48" selection-end-line="1" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ApolloController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="38" column="59" lean-forward="true" selection-start-line="38" selection-start-column="8" selection-end-line="38" selection-end-column="59" />
-          <folding>
-            <element signature="e#39#60#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_12_10_133950_create_leizis_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="22" column="55" lean-forward="true" selection-start-line="22" selection-start-column="55" selection-end-line="22" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Imports/LeiziImport.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="25" column="49" selection-start-line="25" selection-start-column="49" selection-end-line="25" selection-end-column="49" />
-          <folding>
-            <element signature="e#31#45#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/bot/leizi/create.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="560">
-          <caret line="35" column="70" selection-start-line="35" selection-start-column="70" selection-end-line="35" selection-end-column="70" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Exports/AfricaExport.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="17" selection-end-line="17" />
-          <folding>
-            <element signature="e#31#46#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/bot/leizi/edit.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="71" column="282" selection-start-line="71" selection-start-column="282" selection-end-line="71" selection-end-column="282" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/seeds/DatabaseSeeder.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-144">
-          <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Authorizable.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="188">
@@ -873,24 +763,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/layouts/navbars/sidebar.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="265">
-          <caret line="115" column="59" selection-start-line="115" selection-start-column="59" selection-end-line="115" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/bot/tyche/create.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
           <caret line="35" column="69" selection-start-line="35" selection-start-column="69" selection-end-line="35" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/bot/tyche/edit.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="548">
-          <caret line="67" column="54" selection-start-line="67" selection-start-column="54" selection-end-line="67" selection-end-column="54" />
         </state>
       </provider>
     </entry>
@@ -918,41 +794,132 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Tyche.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/bot/tyche/index.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+        <state relative-caret-position="416">
+          <caret line="26" column="45" selection-start-line="26" selection-start-column="45" selection-end-line="26" selection-end-column="45" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2019_12_12_141958_create_tyches_table.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-48">
-          <caret line="6" column="18" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
+        <state relative-caret-position="224">
+          <caret line="28" column="38" lean-forward="true" selection-start-line="19" selection-start-column="11" selection-end-line="28" selection-end-column="38" />
           <folding>
             <element signature="e#7#52#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TycheController.php">
+    <entry file="file://$PROJECT_DIR$/app/User.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="145" column="43" selection-start-line="145" selection-start-column="39" selection-end-line="145" selection-end-column="43" />
+        <state relative-caret-position="208">
+          <caret line="16" column="6" lean-forward="true" selection-start-line="14" selection-start-column="4" selection-end-line="16" selection-end-column="6" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/bot/tyche/index.blade.php">
+    <entry file="file://$PROJECT_DIR$/app/Tyche.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="16">
-          <caret line="26" column="45" lean-forward="true" selection-start-line="26" selection-start-column="45" selection-end-line="26" selection-end-column="45" />
+        <state relative-caret-position="144">
+          <caret line="9" lean-forward="true" selection-start-line="8" selection-start-column="4" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_12_29_102800_create_walas_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="19" column="33" selection-start-line="19" selection-start-column="33" selection-end-line="19" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/bot/apollo/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="239">
+          <caret line="175" column="76" selection-start-line="175" selection-start-column="76" selection-end-line="175" selection-end-column="76" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/GaiaController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-640">
+          <caret line="12" column="6" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/bot/apollo/edit.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="11" column="43" lean-forward="true" selection-end-line="118" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/bot/tyche/edit.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-321">
+          <caret line="67" column="54" selection-start-line="67" selection-start-column="54" selection-end-line="67" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TycheController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="135" column="5" lean-forward="true" selection-start-line="123" selection-start-column="4" selection-end-line="135" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/layouts/navbars/sidebar.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="317">
+          <caret line="160" column="31" selection-start-line="160" selection-start-column="31" selection-end-line="160" selection-end-column="31" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/web.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="265">
-          <caret line="81" column="36" selection-start-line="81" selection-start-column="36" selection-end-line="81" selection-end-column="36" />
+        <state relative-caret-position="356">
+          <caret line="85" column="67" selection-start-line="85" selection-start-column="67" selection-end-line="85" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/WalaController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="388">
+          <caret line="129" column="24" selection-start-line="129" selection-start-column="24" selection-end-line="129" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/bot/wala/edit.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="244">
+          <caret line="88" column="78" lean-forward="true" selection-start-line="88" selection-start-column="78" selection-end-line="88" selection-end-column="78" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/bot/wala/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-304">
+          <caret line="32" column="145" lean-forward="true" selection-start-line="32" selection-start-column="145" selection-end-line="32" selection-end-column="145" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ApolloController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="167" column="8" selection-start-line="167" selection-start-column="8" selection-end-line="179" selection-end-column="99" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/bot/wala/create.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-column="98" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Wala.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="8" column="34" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="34" />
         </state>
       </provider>
     </entry>

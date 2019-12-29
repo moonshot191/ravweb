@@ -118,6 +118,42 @@
                 </a>
             </li>
         @endcan
+
+        <li class="nav-item {{ ($activePage == 'wala' || $activePage == 'wala-management') ? ' active' : '' }}">
+            <a class="nav-link" data-toggle="collapse" href="#wala" aria-expanded="true">
+                <i class="material-icons">extension</i>
+                <p>{{ __('Wala Management') }}
+                    <b class="caret"></b>
+                </p>
+            </a>
+            <div class="collapse" id="wala">
+                <ul class="nav">
+                    @can('add_walas','edit_walas', 'delete_walas')
+                    <li class="nav-item{{ $activePage  == 'wala' ? ' active' : '' }}">
+                        <a class="nav-link" href="{{ route('walas.index') }}">
+                            <span class="sidebar-mini"> WM </span>
+                            <span class="sidebar-normal">{{ __('Main Exercises') }} </span>
+                        </a>
+                    </li>
+                    @endcan
+{{--                    @can('add_users','edit_users', 'delete_users')--}}
+{{--                        <li class="nav-item{{ $activePage == 'user-management' ? ' active' : '' }}">--}}
+{{--                            <a class="nav-link" href="{{ route('users.index') }}">--}}
+{{--                                <span class="sidebar-mini"> UM </span>--}}
+{{--                                <span class="sidebar-normal"> {{ __('User Management') }} </span>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                        <li class="nav-item{{ $activePage == 'roles-management' ? ' active' : '' }}">--}}
+{{--                            <a class="nav-link" href="{{ route('roles.index') }}">--}}
+{{--                                <span class="sidebar-mini"> RM </span>--}}
+{{--                                <span class="sidebar-normal"> {{ __('Roles & Permissions') }} </span>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                    @endcan--}}
+
+                </ul>
+            </div>
+        </li>
         @can('add_groups','edit_groups', 'delete_groups')
             <li class="nav-item{{ $activePage  == 'groups-management' ? ' active' : '' }}">
                 <a class="nav-link" href="{{ route('groups.index') }}">
@@ -126,7 +162,6 @@
                 </a>
             </li>
         @endcan
-
     </ul>
   </div>
 </div>
