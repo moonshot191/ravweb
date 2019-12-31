@@ -2,15 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d91204ff-3e2e-4135-9e44-4de859a9ea5e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/bot/wala/sub/edit.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/bot/wala/sub/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/WalaqController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/WalaqController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Wala.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Wala.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Walaq.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Walaq.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_12_29_102800_create_walas_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_12_29_102800_create_walas_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/migrations/2019_12_29_155236_create_walaqs_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_12_29_155236_create_walaqs_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/bot/wala/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/bot/wala/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/bot/wala/sub/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/bot/wala/sub/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/bot/wala/sub/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/bot/wala/sub/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/navbars/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/navbars/sidebar.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
@@ -43,32 +42,82 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ZalmoController.php">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/WalaqController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="24" column="106" lean-forward="true" selection-start-line="24" selection-start-column="8" selection-end-line="24" selection-end-column="106" />
+            <state relative-caret-position="324">
+              <caret line="135" column="5" lean-forward="true" selection-start-line="135" selection-start-column="5" selection-end-line="135" selection-end-column="5" />
+              <folding>
+                <element signature="e#40#53#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/WalaqController.php">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/WalaController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="405">
+              <caret line="132" column="5" lean-forward="true" selection-start-line="120" selection-start-column="4" selection-end-line="132" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/bot/wala/sub/index.blade.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="240">
-              <caret line="17" column="39" selection-start-line="17" selection-start-column="39" selection-end-line="17" selection-end-column="39" />
+              <caret line="33" column="113" lean-forward="true" selection-start-line="33" selection-start-column="113" selection-end-line="33" selection-end-column="113" />
+              <folding>
+                <element signature="e#15248#15255#1#HTML" expanded="true" />
+                <element signature="e#15965#16740#0#HTML" />
+                <element signature="e#16363#17123#0#HTML" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/routes/web.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="404">
+              <caret line="90" column="70" selection-start-line="90" selection-start-column="70" selection-end-line="90" selection-end-column="70" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/views/bot/wala/sub/index.blade.php">
+        <entry file="file://$PROJECT_DIR$/resources/views/bot/wala/index.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="106" column="72" selection-start-line="106" selection-start-column="72" selection-end-line="106" selection-end-column="72" />
+            <state relative-caret-position="237">
+              <caret line="202" column="165" selection-start-line="202" selection-start-column="165" selection-end-line="202" selection-end-column="165" />
               <folding>
-                <element signature="e#14943#14950#1#HTML" expanded="true" />
-                <element signature="e#29070#29077#1#HTML" expanded="true" />
+                <element signature="e#13710#27830#0#HTML" />
+                <element signature="e#15207#16189#0#HTML" />
+                <element signature="e#16251#17242#0#HTML" />
+                <element signature="e#17303#18906#0#HTML" />
+                <element signature="e#18967#20239#0#HTML" />
+                <element signature="e#20300#21599#0#HTML" />
+                <element signature="e#21660#22907#0#HTML" />
+                <element signature="e#29335#31373#0#HTML" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Walaq.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="192">
+              <caret line="12" column="24" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Wala.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="71">
+              <caret line="16" column="5" lean-forward="true" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -85,12 +134,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>this.recognition.stop();</find>
-      <find>here</find>
-      <find>thank</find>
-      <find>final_spa</find>
-      <find>zalmox</find>
-      <find>zamol-&gt;</find>
       <find>zalmo</find>
       <find>gaia</find>
       <find>$gaia</find>
@@ -115,10 +158,14 @@
       <find>answer</find>
       <find>inlineRadioOptions</find>
       <find>option2</find>
+      <find>question_id</find>
+      <find>apollo</find>
+      <find>$wala</find>
+      <find>$walaqq</find>
+      <find>data</find>
+      <find>delete</find>
     </findStrings>
     <replaceStrings>
-      <replace>groups.</replace>
-      <replace>seshat</replace>
       <replace>img_path</replace>
       <replace>seshats.</replace>
       <replace>$seshat</replace>
@@ -147,6 +194,8 @@
       <replace>$wala</replace>
       <replace>title</replace>
       <replace>c_answer</replace>
+      <replace>walaqs</replace>
+      <replace>$walaq</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -155,7 +204,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Api/GaiaController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Api/SeshatController.php" />
         <option value="$PROJECT_DIR$/app/Http/Resources/SeshatResource.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Api/ZalmoController.php" />
@@ -197,15 +245,16 @@
         <option value="$PROJECT_DIR$/resources/views/bot/wala/edit.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/WalaController.php" />
         <option value="$PROJECT_DIR$/resources/views/bot/wala/create.blade.php" />
-        <option value="$PROJECT_DIR$/routes/web.php" />
-        <option value="$PROJECT_DIR$/app/Wala.php" />
-        <option value="$PROJECT_DIR$/app/Walaq.php" />
-        <option value="$PROJECT_DIR$/database/migrations/2019_12_29_155236_create_walaqs_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_12_29_102800_create_walas_table.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/WalaqController.php" />
-        <option value="$PROJECT_DIR$/resources/views/bot/wala/index.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/navbars/sidebar.blade.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_12_29_155236_create_walaqs_table.php" />
+        <option value="$PROJECT_DIR$/app/Walaq.php" />
+        <option value="$PROJECT_DIR$/app/Wala.php" />
+        <option value="$PROJECT_DIR$/resources/views/bot/wala/sub/edit.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/WalaqController.php" />
+        <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/resources/views/bot/wala/sub/index.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/bot/wala/index.blade.php" />
       </list>
     </option>
   </component>
@@ -378,32 +427,6 @@
             <path>
               <item name="ravweb" type="b2602c69:ProjectViewProjectNode" />
               <item name="ravweb" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ravweb" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ravweb" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ravweb" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ravweb" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="layouts" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ravweb" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ravweb" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="layouts" type="462c0819:PsiDirectoryNode" />
-              <item name="navbars" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ravweb" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ravweb" type="462c0819:PsiDirectoryNode" />
               <item name="routes" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -506,17 +529,18 @@
       <workItem from="1576218131022" duration="610000" />
       <workItem from="1576225017903" duration="408000" />
       <workItem from="1577614414117" duration="21953000" />
+      <workItem from="1577796254535" duration="11428000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="459702000" />
+    <option name="totallyTimeSpent" value="471130000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.2489895" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2489895" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="DB Browser" order="3" weight="0.32983023" />
@@ -540,7 +564,7 @@
       <window_info anchor="right" id="Database" order="3" weight="0.31851253" />
     </layout>
     <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2489895" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2489895" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="DB Browser" order="3" weight="0.32983023" />
@@ -553,7 +577,7 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Database Changes" order="7" />
       <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="9" sideWeight="0.4995958" visible="true" weight="0.3102837" />
+      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.4995958" visible="true" weight="0.3102837" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5004042" side_tool="true" weight="0.20567375" />
       <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
       <window_info anchor="bottom" id="DB Execution Console" order="12" />
@@ -584,13 +608,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/views/users/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="50" column="37" lean-forward="true" selection-end-line="110" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UserController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
@@ -832,27 +849,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/bot/tyche/edit.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-321">
-          <caret line="67" column="54" selection-start-line="67" selection-start-column="54" selection-end-line="67" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TycheController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="135" column="5" lean-forward="true" selection-start-line="123" selection-start-column="4" selection-end-line="135" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/WalaController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="388">
-          <caret line="129" column="24" selection-start-line="129" selection-start-column="24" selection-end-line="129" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/bot/wala/edit.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="244">
@@ -864,20 +860,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="192">
           <caret line="167" column="8" selection-start-line="167" selection-start-column="8" selection-end-line="179" selection-end-column="99" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="32" column="46" lean-forward="true" selection-start-line="32" selection-start-column="46" selection-end-line="32" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/bot/apollo/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2353">
-          <caret line="175" column="76" selection-start-line="175" selection-start-column="76" selection-end-line="175" selection-end-column="76" />
         </state>
       </provider>
     </entry>
@@ -900,13 +882,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Wala.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="9" lean-forward="true" selection-start-line="8" selection-start-column="4" selection-end-line="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2019_12_29_102800_create_walas_table.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="104">
@@ -914,55 +889,127 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ZalmoController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="24" column="106" selection-start-line="24" selection-start-column="8" selection-end-line="24" selection-end-column="106" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TycheController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="90" column="8" selection-start-line="90" selection-start-column="8" selection-end-line="95" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2019_12_29_155236_create_walaqs_table.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="101">
-          <caret line="12" column="7" lean-forward="true" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
+        <state relative-caret-position="309">
+          <caret line="34" column="33" selection-start-line="34" selection-start-column="33" selection-end-line="34" selection-end-column="33" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Walaq.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="10" selection-start-line="10" selection-end-line="11" />
+        <state relative-caret-position="192">
+          <caret line="12" column="24" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="24" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ZalmoController.php">
+    <entry file="file://$PROJECT_DIR$/app/Wala.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="24" column="106" lean-forward="true" selection-start-line="24" selection-start-column="8" selection-end-line="24" selection-end-column="106" />
+        <state relative-caret-position="71">
+          <caret line="16" column="5" lean-forward="true" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/WalaqController.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/bot/apollo/index.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="17" column="39" selection-start-line="17" selection-start-column="39" selection-end-line="17" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/bot/wala/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="46" lean-forward="true" selection-start-column="46" selection-end-column="46" />
+        <state relative-caret-position="48">
+          <caret line="177" column="83" lean-forward="true" selection-end-line="492" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/layouts/navbars/sidebar.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="143" column="88" selection-start-line="143" selection-start-column="88" selection-end-line="143" selection-end-column="88" />
+        <state relative-caret-position="224">
+          <caret line="140" column="78" selection-start-line="140" selection-start-column="62" selection-end-line="140" selection-end-column="78" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/bot/tyche/edit.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="134">
+          <caret line="93" column="78" lean-forward="true" selection-start-line="63" selection-start-column="32" selection-end-line="93" selection-end-column="78" />
+          <folding>
+            <element signature="e#4161#6091#0#HTML" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/WalaController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="132" column="5" lean-forward="true" selection-start-line="120" selection-start-column="4" selection-end-line="132" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/WalaqController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="135" column="5" lean-forward="true" selection-start-line="135" selection-start-column="5" selection-end-line="135" selection-end-column="5" />
+          <folding>
+            <element signature="e#40#53#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/bot/wala/sub/edit.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3517">
+          <caret line="288" column="88" selection-start-line="288" selection-start-column="88" selection-end-line="288" selection-end-column="88" />
+          <folding>
+            <element signature="e#12444#13322#0#HTML" />
+            <element signature="e#15656#16534#0#HTML" />
+            <element signature="e#17786#18664#0#HTML" />
+            <element signature="e#19402#21332#0#HTML" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="404">
+          <caret line="90" column="70" selection-start-line="90" selection-start-column="70" selection-end-line="90" selection-end-column="70" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/bot/wala/sub/index.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="106" column="72" selection-start-line="106" selection-start-column="72" selection-end-line="106" selection-end-column="72" />
+        <state relative-caret-position="240">
+          <caret line="33" column="113" lean-forward="true" selection-start-line="33" selection-start-column="113" selection-end-line="33" selection-end-column="113" />
           <folding>
-            <element signature="e#14943#14950#1#HTML" expanded="true" />
-            <element signature="e#29070#29077#1#HTML" expanded="true" />
+            <element signature="e#15248#15255#1#HTML" expanded="true" />
+            <element signature="e#15965#16740#0#HTML" />
+            <element signature="e#16363#17123#0#HTML" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/bot/wala/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="237">
+          <caret line="202" column="165" selection-start-line="202" selection-start-column="165" selection-end-line="202" selection-end-column="165" />
+          <folding>
+            <element signature="e#13710#27830#0#HTML" />
+            <element signature="e#15207#16189#0#HTML" />
+            <element signature="e#16251#17242#0#HTML" />
+            <element signature="e#17303#18906#0#HTML" />
+            <element signature="e#18967#20239#0#HTML" />
+            <element signature="e#20300#21599#0#HTML" />
+            <element signature="e#21660#22907#0#HTML" />
+            <element signature="e#29335#31373#0#HTML" />
           </folding>
         </state>
       </provider>

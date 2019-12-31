@@ -9,7 +9,7 @@ class Wala extends Model
     protected $fillable = [ 'title','language','question','created_by','level','edited_by','validated','validated_by'];
 
 
-    public function sub_question(){
+    public function walaq(){
         return $this->hasMany(Walaq::class);
     }
 
@@ -18,7 +18,7 @@ class Wala extends Model
         parent::boot();
 
         static::deleting(function($question){
-            $question->sub_question()->delete();
+            $question->walaq()->delete();
         });
     }
 

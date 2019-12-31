@@ -129,7 +129,7 @@
             <div class="collapse" id="wala">
                 <ul class="nav">
                     @can('add_walas','edit_walas', 'delete_walas')
-                    <li class="nav-item{{ $activePage  == 'wala' ? ' active' : '' }}">
+                    <li class="nav-item{{ $activePage  == 'wala-management' ? ' active' : '' }}">
                         <a class="nav-link" href="{{ route('walas.index') }}">
                             <span class="sidebar-mini"> WM </span>
                             <span class="sidebar-normal">{{ __('Main Exercises') }} </span>

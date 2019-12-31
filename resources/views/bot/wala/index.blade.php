@@ -200,7 +200,7 @@
 
                                                             <button type="button" class="btn btn-danger btn-link"
                                                                     data-toggle="tooltip" rel="tooltip" title="Delete"
-                                                                    onclick="confirm('{{ __("Are you sure you want to delete this question?") }}') ? this.parentElement.submit() : ''">
+                                                                    onclick="confirm('{{ __("Note: This will delete all associate questions under this question,proceed?") }}') ? this.parentElement.submit() : ''">
                                                                 <i class="material-icons">close</i>
                                                                 <div class="ripple-container"></div>
                                                             </button>
@@ -519,7 +519,6 @@
                                                                                 <input class="form-check-input"
                                                                                        type="radio"
                                                                                        name="c_answer"
-                                                                                       id="inlineRadio1"
                                                                                        value="answer_a" required> A
                                                                                 <span class="circle">
                                                                             <span class="check"></span>
@@ -532,7 +531,7 @@
                                                                                 <input class="form-check-input"
                                                                                        type="radio"
                                                                                        name="c_answer"
-                                                                                       id="inlineRadio2"
+
                                                                                        value="answer_b" required> B
                                                                                 <span class="circle">
                                                                                         <span class="check"></span>
@@ -545,7 +544,7 @@
                                                                                 <input class="form-check-input"
                                                                                        type="radio"
                                                                                        name="c_answer"
-                                                                                       id="inlineRadio2"
+
                                                                                        value="answer_c" required> C
                                                                                 <span class="circle">
                                                                                         <span class="check"></span>
@@ -558,7 +557,7 @@
                                                                                 <input class="form-check-input"
                                                                                        type="radio"
                                                                                        name="c_answer"
-                                                                                       id="inlineRadio2"
+
                                                                                        value="answer_d" required> D
                                                                                 <span class="circle">
                                                                                         <span class="check"></span>
@@ -574,7 +573,7 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <input type="text" name="question_id" value=" {{$data->id}}" hidden>
+                                                            <input type="text" name="wala_id" value=" {{$data->id}}" hidden>
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="submit" class="btn btn-primary">{{ __('Save Question') }}</button>
@@ -642,7 +641,7 @@
                 } else {
 
 
-                    var check = confirm("Are you sure you want to delete this question(s)?");
+                    var check = confirm("Note: This will delete all associate questions under this question,proceed?");
                     if (check == true) {
 
 

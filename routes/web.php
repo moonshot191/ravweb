@@ -85,6 +85,10 @@ Route::group( ['middleware' => ['auth']], function() {
 // Wala
     Route::delete('waladel', 'WalaController@deleteAll')->name('waladel');
     Route::put('walaval', 'WalaController@validateAll')->name('walaval');
+
+    // Walaq
+    Route::delete('walaqdel', 'WalaqController@deleteAll')->name('walaqdel');
+    Route::put('walaqval', 'WalaqController@validateAll')->name('walaqval');
 });
 
 

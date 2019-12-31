@@ -15,7 +15,7 @@ class CreateWalaqsTable extends Migration
     {
         Schema::create('walaqs', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('question_id')->unsigned()->nullable();
+            $table->integer('wala_id')->unsigned()->nullable();
             $table->longText('question')->nullable();
             $table->string('answer_a')->nullable();
             $table->string('answer_b')->nullable();
@@ -32,7 +32,7 @@ class CreateWalaqsTable extends Migration
         });
 
         Schema::table('walaqs', function (Blueprint $table) {
-            $table->foreign('question_id')->references('id')->on('walas')->onDelete('cascade');
+            $table->foreign('wala_id')->references('id')->on('walas')->onDelete('cascade');
         });
 
 
