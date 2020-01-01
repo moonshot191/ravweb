@@ -145,13 +145,39 @@
                             </a>
                         </li>
                         @endcan
-{{--                        <li class="nav-item{{ $activePage == 'roles-management' ? ' active' : '' }}">--}}
-{{--                            <a class="nav-link" href="{{ route('roles.index') }}">--}}
-{{--                                <span class="sidebar-mini"> RM </span>--}}
-{{--                                <span class="sidebar-normal"> {{ __('Roles & Permissions') }} </span>--}}
+
+
+                </ul>
+            </div>
+        </li>
+
+        <li class="nav-item {{ ($activePage == 'kadlu-management' || $activePage == 'kadlu-management') ? ' active' : '' }}">
+            <a class="nav-link" data-toggle="collapse" href="#kadlu" aria-expanded="true">
+                <i class="material-icons">perm_camera_mic</i>
+                <p>{{ __('Kadlu Management') }}
+                    <b class="caret"></b>
+                </p>
+            </a>
+            <div class="collapse" id="kadlu">
+                <ul class="nav">
+                    @can('add_kadlus','edit_kadlus', 'delete_kadlus')
+                        <li class="nav-item{{ $activePage  == 'kadlu-management' ? ' active' : '' }}">
+                            <a class="nav-link" href="{{ route('kadlus.index') }}">
+                                <span class="sidebar-mini"> WM </span>
+                                <span class="sidebar-normal">{{ __('Main Exercises') }} </span>
+                            </a>
+                        </li>
+                    @endcan
+{{--                    @can('add_walaqs','edit_walaqs', 'delete_walaqs')--}}
+
+{{--                        <li class="nav-item{{ $activePage == 'walaq-management' ? ' active' : '' }}">--}}
+{{--                            <a class="nav-link" href="{{ route('walaqs.index') }}">--}}
+{{--                                <span class="sidebar-mini"> WAM </span>--}}
+{{--                                <span class="sidebar-normal"> {{ __('Associate Questions') }} </span>--}}
 {{--                            </a>--}}
 {{--                        </li>--}}
 {{--                    @endcan--}}
+
 
                 </ul>
             </div>

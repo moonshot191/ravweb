@@ -119,7 +119,7 @@
                                                 <td><input type="checkbox" class="sub_chk" data-id="{{$group->id}}"></td>
 
                                                 <td>
-                                                    {{ $group->wala->question }}
+                                                    {{ $group->wala->title }}
                                                 </td>
                                                 <td>
                                                     {{ $group->question }}

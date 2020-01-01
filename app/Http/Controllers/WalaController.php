@@ -46,7 +46,7 @@ class WalaController extends Controller
         $data =$request->except(['_method','_token']);
         $data['created_by']=auth()->user()->username;
 
-        $apollo= Wala::create($data);
+        Wala::create($data);
 //return $data;
         return redirect()->route('walas.index')->withStatus(__('Question created successfully!.'));
     }
