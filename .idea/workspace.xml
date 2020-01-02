@@ -2,23 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d91204ff-3e2e-4135-9e44-4de859a9ea5e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/bot/kadlu/sub/edit.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/bot/kadlu/sub/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Kadlu.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Kadlu.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/bot/africa/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/bot/africa/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/bot/apollo/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/bot/apollo/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/bot/gaia/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/bot/gaia/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/bot/kadlu/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/bot/kadlu/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/bot/leizi/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/bot/leizi/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/bot/odin/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/bot/odin/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/bot/seshat/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/bot/seshat/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/bot/tyche/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/bot/tyche/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/bot/wala/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/bot/wala/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/bot/wala/sub/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/bot/wala/sub/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/bot/zalmo/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/bot/zalmo/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/navbars/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/navbars/sidebar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -47,7 +34,52 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/views/dashboard.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="319">
+              <caret line="178" column="60" selection-start-line="178" selection-start-column="60" selection-end-line="178" selection-end-column="60" />
+              <folding>
+                <element signature="e#201#1062#0#HTML" />
+                <element signature="e#198#910#0#HTML" />
+                <element signature="e#1793#2640#0#HTML" />
+                <element signature="e#2650#3468#0#HTML" />
+                <element signature="e#3527#4354#0#HTML" />
+                <element signature="e#4377#5215#0#HTML" />
+                <element signature="e#5215#6041#0#HTML" />
+                <element signature="e#2698#3444#0#HTML" />
+                <element signature="e#6909#7759#0#HTML" />
+                <element signature="e#8629#9478#0#HTML" />
+                <element signature="e#3452#4174#0#HTML" />
+                <element signature="e#4184#10328#0#HTML" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/layouts/navbars/sidebar.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="505">
+              <caret line="141" column="51" selection-start-line="141" selection-start-column="42" selection-end-line="141" selection-end-column="51" />
+              <folding>
+                <element signature="n#li#5;n#ul#0;n#div#1;n#div#0;n#!!top" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="371">
+              <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -129,8 +161,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/resources/views/users/_form.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/layouts/navbars/navs/auth.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/bot/odin/create.blade.php" />
         <option value="$PROJECT_DIR$/app/Odin.php" />
         <option value="$PROJECT_DIR$/resources/views/bot/odin/edit.blade.php" />
@@ -173,13 +203,15 @@
         <option value="$PROJECT_DIR$/resources/views/bot/zalmo/index.blade.php" />
         <option value="$PROJECT_DIR$/app/Kadluq.php" />
         <option value="$PROJECT_DIR$/app/Kadlu.php" />
-        <option value="$PROJECT_DIR$/resources/views/layouts/navbars/sidebar.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/bot/kadlu/index.blade.php" />
         <option value="$PROJECT_DIR$/database/migrations/2020_01_02_083107_create_kadluqs_table.php" />
         <option value="$PROJECT_DIR$/resources/views/bot/kadlu/sub/edit.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/KadluqController.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/resources/views/bot/kadlu/sub/index.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
+        <option value="$PROJECT_DIR$/resources/views/layouts/navbars/sidebar.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/dashboard.blade.php" />
       </list>
     </option>
   </component>
@@ -340,6 +372,19 @@
             <path>
               <item name="ravweb" type="b2602c69:ProjectViewProjectNode" />
               <item name="ravweb" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Http" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ravweb" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ravweb" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Http" type="462c0819:PsiDirectoryNode" />
+              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ravweb" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ravweb" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -353,7 +398,15 @@
               <item name="ravweb" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="bot" type="462c0819:PsiDirectoryNode" />
+              <item name="layouts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ravweb" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ravweb" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="layouts" type="462c0819:PsiDirectoryNode" />
+              <item name="navbars" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -455,17 +508,18 @@
       <workItem from="1576225017903" duration="408000" />
       <workItem from="1577614414117" duration="21953000" />
       <workItem from="1577796254535" duration="28794000" />
-      <workItem from="1577945988909" duration="10112000" />
+      <workItem from="1577945988909" duration="12217000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="498608000" />
+    <option name="totallyTimeSpent" value="500713000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23676248" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.23676248" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="DB Browser" order="3" weight="0.32983023" />
@@ -478,7 +532,7 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Database Changes" order="7" />
       <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="9" sideWeight="0.4995958" visible="true" weight="0.43862522" />
+      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.4995958" weight="0.43862522" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5004042" side_tool="true" weight="0.20567375" />
       <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
       <window_info anchor="bottom" id="DB Execution Console" order="12" />
@@ -536,27 +590,15 @@
           <line>116</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/resources/views/dashboard.blade.php</url>
+          <line>214</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/views/bot/tyche/create.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="35" column="69" selection-start-line="35" selection-start-column="69" selection-end-line="35" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/OdinController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="154" column="5" lean-forward="true" selection-start-line="125" selection-start-column="3" selection-end-line="154" selection-end-column="5" />
-          <folding>
-            <element signature="e#41#69#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2019_12_12_131201_create_odins_table.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="288">
@@ -849,13 +891,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/layouts/navbars/sidebar.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="173" column="84" lean-forward="true" selection-start-line="173" selection-start-column="84" selection-end-line="173" selection-end-column="84" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2019_12_29_155236_create_walaqs_table.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="250">
@@ -946,6 +981,44 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="286">
           <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="371">
+          <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/layouts/navbars/sidebar.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="505">
+          <caret line="141" column="51" selection-start-line="141" selection-start-column="42" selection-end-line="141" selection-end-column="51" />
+          <folding>
+            <element signature="n#li#5;n#ul#0;n#div#1;n#div#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/dashboard.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="319">
+          <caret line="178" column="60" selection-start-line="178" selection-start-column="60" selection-end-line="178" selection-end-column="60" />
+          <folding>
+            <element signature="e#201#1062#0#HTML" />
+            <element signature="e#198#910#0#HTML" />
+            <element signature="e#1793#2640#0#HTML" />
+            <element signature="e#2650#3468#0#HTML" />
+            <element signature="e#3527#4354#0#HTML" />
+            <element signature="e#4377#5215#0#HTML" />
+            <element signature="e#5215#6041#0#HTML" />
+            <element signature="e#2698#3444#0#HTML" />
+            <element signature="e#6909#7759#0#HTML" />
+            <element signature="e#8629#9478#0#HTML" />
+            <element signature="e#3452#4174#0#HTML" />
+            <element signature="e#4184#10328#0#HTML" />
+          </folding>
         </state>
       </provider>
     </entry>

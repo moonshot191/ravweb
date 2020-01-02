@@ -50,31 +50,19 @@
           </ul>
         </div>
       </li>
-
+        @can('add_africas','edit_africas', 'delete_africas')
+            <li class="nav-item{{ $activePage  == 'africa-management' ? ' active' : '' }}">
+                <a class="nav-link" href="{{ route('africas.index') }}">
+                    <i class="material-icons">swap_horizontal_circle</i>
+                    <p>{{ __('Africa Management') }}</p>
+                </a>
+            </li>
+        @endcan
         @can('add_apollo','edit_apollo', 'delete_apollo')
             <li class="nav-item{{ $activePage == 'apollo-management' ? ' active' : '' }}">
                 <a class="nav-link" href="{{ route('apollo.index') }}">
                     <i class="material-icons">help</i>
                     <p>{{ __('Apollo Management') }}</p>
-                </a>
-            </li>
-        @endcan
-
-        @can('add_seshats','edit_seshats', 'delete_seshats')
-            <li class="nav-item{{ $activePage  == 'seshat-management' ? ' active' : '' }}">
-                <a class="nav-link" href="{{ route('seshats.index') }}">
-                    <i class="material-icons">add_a_photo</i>
-                    <p>{{ __('Seshat Management') }}</p>
-                </a>
-            </li>
-        @endcan
-
-
-        @can('add_zalmos','edit_zalmos', 'delete_zalmos')
-            <li class="nav-item{{ $activePage  == 'seshat-management' ? ' active' : '' }}">
-                <a class="nav-link" href="{{ route('zalmos.index') }}">
-                    <i class="material-icons">mic</i>
-                    <p>{{ __('Zalmoxis Management') }}</p>
                 </a>
             </li>
         @endcan
@@ -86,71 +74,6 @@
                 </a>
             </li>
         @endcan
-        @can('add_africas','edit_africas', 'delete_africas')
-            <li class="nav-item{{ $activePage  == 'africa-management' ? ' active' : '' }}">
-                <a class="nav-link" href="{{ route('africas.index') }}">
-                    <i class="material-icons">swap_horizontal_circle</i>
-                    <p>{{ __('Africa Management') }}</p>
-                </a>
-            </li>
-        @endcan
-        @can('add_leizis','edit_leizis', 'delete_leizis')
-            <li class="nav-item{{ $activePage  == 'leizi-management' ? ' active' : '' }}">
-                <a class="nav-link" href="{{ route('leizis.index') }}">
-                    <i class="material-icons">compare_arrows</i>
-                    <p>{{ __('Leizi Management') }}</p>
-                </a>
-            </li>
-        @endcan
-        @can('add_odins','edit_odins', 'delete_odins')
-            <li class="nav-item{{ $activePage  == 'odin-management' ? ' active' : '' }}">
-                <a class="nav-link" href="{{ route('odins.index') }}">
-                    <i class="material-icons">remove_red_eye</i>
-                    <p>{{ __('Odin Management') }}</p>
-                </a>
-            </li>
-        @endcan
-        @can('add_tyches','edit_tyches', 'delete_tyches')
-            <li class="nav-item{{ $activePage  == 'tyche-management' ? ' active' : '' }}">
-                <a class="nav-link" href="{{ route('tyches.index') }}">
-                    <i class="material-icons">sort_by_alpha</i>
-                    <p>{{ __('Tyche Management') }}</p>
-                </a>
-            </li>
-        @endcan
-
-        <li class="nav-item {{ ($activePage == 'wala' || $activePage == 'wala-management') ? ' active' : '' }}">
-            <a class="nav-link" data-toggle="collapse" href="#wala" aria-expanded="true">
-                <i class="material-icons">extension</i>
-                <p>{{ __('Wala Management') }}
-                    <b class="caret"></b>
-                </p>
-            </a>
-            <div class="collapse" id="wala">
-                <ul class="nav">
-                    @can('add_walas','edit_walas', 'delete_walas')
-                    <li class="nav-item{{ $activePage  == 'wala-management' ? ' active' : '' }}">
-                        <a class="nav-link" href="{{ route('walas.index') }}">
-                            <span class="sidebar-mini"> WM </span>
-                            <span class="sidebar-normal">{{ __('Main Exercises') }} </span>
-                        </a>
-                    </li>
-                    @endcan
-                        @can('add_walaqs','edit_walaqs', 'delete_walaqs')
-
-                        <li class="nav-item{{ $activePage == 'walaq-management' ? ' active' : '' }}">
-                            <a class="nav-link" href="{{ route('walaqs.index') }}">
-                                <span class="sidebar-mini"> WAM </span>
-                                <span class="sidebar-normal"> {{ __('Associate Questions') }} </span>
-                            </a>
-                        </li>
-                        @endcan
-
-
-                </ul>
-            </div>
-        </li>
-
         <li class="nav-item {{ ($activePage == 'kadlu-management' || $activePage == 'kadlu-management') ? ' active' : '' }}">
             <a class="nav-link" data-toggle="collapse" href="#kadlu" aria-expanded="true">
                 <i class="material-icons">perm_camera_mic</i>
@@ -182,14 +105,92 @@
                 </ul>
             </div>
         </li>
-        @can('add_groups','edit_groups', 'delete_groups')
-            <li class="nav-item{{ $activePage  == 'groups-management' ? ' active' : '' }}">
-                <a class="nav-link" href="{{ route('groups.index') }}">
-                    <i class="material-icons">groups-management</i>
-                    <p>{{ __('Groups Management') }}</p>
+        @can('add_leizis','edit_leizis', 'delete_leizis')
+            <li class="nav-item{{ $activePage  == 'leizi-management' ? ' active' : '' }}">
+                <a class="nav-link" href="{{ route('leizis.index') }}">
+                    <i class="material-icons">compare_arrows</i>
+                    <p>{{ __('Leizi Management') }}</p>
                 </a>
             </li>
         @endcan
+        @can('add_odins','edit_odins', 'delete_odins')
+            <li class="nav-item{{ $activePage  == 'odin-management' ? ' active' : '' }}">
+                <a class="nav-link" href="{{ route('odins.index') }}">
+                    <i class="material-icons">remove_red_eye</i>
+                    <p>{{ __('Odin Management') }}</p>
+                </a>
+            </li>
+        @endcan
+        @can('add_seshats','edit_seshats', 'delete_seshats')
+            <li class="nav-item{{ $activePage  == 'seshat-management' ? ' active' : '' }}">
+                <a class="nav-link" href="{{ route('seshats.index') }}">
+                    <i class="material-icons">add_a_photo</i>
+                    <p>{{ __('Seshat Management') }}</p>
+                </a>
+            </li>
+        @endcan
+        @can('add_tyches','edit_tyches', 'delete_tyches')
+            <li class="nav-item{{ $activePage  == 'tyche-management' ? ' active' : '' }}">
+                <a class="nav-link" href="{{ route('tyches.index') }}">
+                    <i class="material-icons">sort_by_alpha</i>
+                    <p>{{ __('Tyche Management') }}</p>
+                </a>
+            </li>
+        @endcan
+        <li class="nav-item {{ ($activePage == 'wala' || $activePage == 'wala-management') ? ' active' : '' }}">
+            <a class="nav-link" data-toggle="collapse" href="#wala" aria-expanded="true">
+                <i class="material-icons">extension</i>
+                <p>{{ __('Wala Management') }}
+                    <b class="caret"></b>
+                </p>
+            </a>
+            <div class="collapse" id="wala">
+                <ul class="nav">
+                    @can('add_walas','edit_walas', 'delete_walas')
+                        <li class="nav-item{{ $activePage  == 'wala-management' ? ' active' : '' }}">
+                            <a class="nav-link" href="{{ route('walas.index') }}">
+                                <span class="sidebar-mini"> WM </span>
+                                <span class="sidebar-normal">{{ __('Main Exercises') }} </span>
+                            </a>
+                        </li>
+                    @endcan
+                    @can('add_walaqs','edit_walaqs', 'delete_walaqs')
+
+                        <li class="nav-item{{ $activePage == 'walaq-management' ? ' active' : '' }}">
+                            <a class="nav-link" href="{{ route('walaqs.index') }}">
+                                <span class="sidebar-mini"> WAM </span>
+                                <span class="sidebar-normal"> {{ __('Associate Questions') }} </span>
+                            </a>
+                        </li>
+                    @endcan
+
+
+                </ul>
+            </div>
+        </li>
+        @can('add_zalmos','edit_zalmos', 'delete_zalmos')
+            <li class="nav-item{{ $activePage  == 'seshat-management' ? ' active' : '' }}">
+                <a class="nav-link" href="{{ route('zalmos.index') }}">
+                    <i class="material-icons">mic</i>
+                    <p>{{ __('Zalmoxis Management') }}</p>
+                </a>
+            </li>
+        @endcan
+
+
+
+
+
+
+
+{{--        @can('add_groups','edit_groups', 'delete_groups')--}}
+{{--            <li class="nav-item{{ $activePage  == 'groups-management' ? ' active' : '' }}">--}}
+{{--                <a class="nav-link" href="{{ route('groups.index') }}">--}}
+{{--                    <i class="material-icons">groups-management</i>--}}
+{{--                    <p>{{ __('Groups Management') }}</p>--}}
+{{--                </a>--}}
+{{--            </li>--}}
+{{--        @endcan--}}
     </ul>
   </div>
 </div>

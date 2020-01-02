@@ -27,11 +27,20 @@ class HomeController extends Controller
     public function index()
     {
         $apollo = Apollo::all()->count();
-        $seshat = Seshat::all()->count();
-        $zalmo = Zalmo::all()->count();
-        $gaia = Gaia::all()->count();
         $africa = Africa::all()->count();
+        $gaia = Gaia::all()->count();
+        $kadlu = \App\Kadlu::all()->count();
+        $kadluq = \App\Kadluq::all()->count();
+        $leizi = \App\Leizi::all()->count();
+        $odin = \App\Odin::all()->count();
+        $seshat = Seshat::all()->count();
+        $tyche = \App\Tyche::all()->count();
+        $wala = \App\Wala::all()->count();
+        $walaq = \App\Walaq::all()->count();
+        $zalmo = Zalmo::all()->count();
+
+
         $users = User::all();
-        return view('dashboard',compact('apollo','seshat','zalmo','gaia','africa','users'));
+        return view('dashboard',compact('apollo','seshat','zalmo','gaia','africa','users','wala','walaq','tyche','odin','leizi','kadlu','kadluq'));
     }
 }
