@@ -167,7 +167,7 @@
                                                                 <div class="ripple-container"></div>
                                                             </button>
                                                         @endcan
-                                                        <button type="button" class="btn btn-danger btn-link" data-toggle="modal" data-target=".bd-example-modal-lg" rel="tooltip" title="View" >
+                                                        <button type="button" class="btn btn-danger btn-link" data-toggle="modal" data-target=".bd-example-modal-lg{{$group->id}}" rel="tooltip" title="View" >
                                                             <i class="material-icons">chat</i>
                                                             <div class="ripple-container"></div>
                                                         </button>
@@ -176,145 +176,146 @@
                                                 </td>
 
                                             </tr>
-                                        @endforeach
-                                        {{--    -    modal--}}
-                                        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog modal-lg">
-                                                <div class="modal-content">
-                                                    <form action="" method="post">
-                                                        @csrf
-{{--                                                        @method('post')--}}
-                                                        <div class="modal-header card-header card-header-danger">
-                                                            <h5 class="modal-title" id="exampleModalLabel">View question</h5>
-                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                <span aria-hidden="true">&times;</span>
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body">
+                                            {{--    -    modal--}}
+                                            <div class="modal fade bd-example-modal-lg{{$group->id}}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog modal-lg">
+                                                    <div class="modal-content">
+                                                        <form action="" method="post">
+                                                            @csrf
+                                                            {{--                                                        @method('post')--}}
+                                                            <div class="modal-header card-header card-header-danger">
+                                                                <h5 class="modal-title" id="exampleModalLabel">View question</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
 
 
-                                                            <div class="row">
-                                                                <label class="col-sm-2 col-form-label"><span class="badge badge-pill badge-info">{{ __('Answer') }}</span>:</label>
-                                                                <div class="col-sm-7">
-                                                                    <div class="form-group">
-                                                                        <input class="form-control" type="text"  value="{{ old('question',$group->answer) }}"  disabled>
+                                                                <div class="row">
+                                                                    <label class="col-sm-2 col-form-label"><span class="badge badge-pill badge-info">{{ __('Answer') }}</span>:</label>
+                                                                    <div class="col-sm-7">
+                                                                        <div class="form-group">
+                                                                            <input class="form-control" type="text"  value="{{ old('question',$group->answer) }}"  disabled>
 
+                                                                        </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                            <div class="row">
-                                                                <label class="col-sm-2 col-form-label"><span class="badge badge-pill badge-info">{{ __('Level') }}</span>:</label>
-                                                                <div class="col-sm-7">
-                                                                    <div class="form-group">
-                                                                        @if($group->level==1)
-                                                                            <span class="badge badge-pill badge-primary">Elementary</span>
-                                                                        @elseif($group->level==2)
-                                                                            <span class="badge badge-pill badge-warning">Intermediate</span>
-                                                                        @elseif($group->level==3)
-                                                                            <span class="badge badge-pill badge-danger">Advanced</span>
-                                                                        @endif
+                                                                <div class="row">
+                                                                    <label class="col-sm-2 col-form-label"><span class="badge badge-pill badge-info">{{ __('Level') }}</span>:</label>
+                                                                    <div class="col-sm-7">
+                                                                        <div class="form-group">
+                                                                            @if($group->level==1)
+                                                                                <span class="badge badge-pill badge-primary">Elementary</span>
+                                                                            @elseif($group->level==2)
+                                                                                <span class="badge badge-pill badge-warning">Intermediate</span>
+                                                                            @elseif($group->level==3)
+                                                                                <span class="badge badge-pill badge-danger">Advanced</span>
+                                                                            @endif
+                                                                        </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                            <div class="row">
-                                                                <label class="col-sm-2 col-form-label"><span class="badge badge-pill badge-info">{{ __('Validated') }}</span>:</label>
-                                                                <div class="col-sm-7">
-                                                                    <div class="form-group">
-                                                                        @if($group->validated==0)
+                                                                <div class="row">
+                                                                    <label class="col-sm-2 col-form-label"><span class="badge badge-pill badge-info">{{ __('Validated') }}</span>:</label>
+                                                                    <div class="col-sm-7">
+                                                                        <div class="form-group">
+                                                                            @if($group->validated==0)
 
 
                                                                                 <span class="badge badge-pill badge-warning">False</span>
 
-                                                                        @else
+                                                                            @else
 
 
                                                                                 <span class="badge badge-pill badge-danger">True</span>
 
-                                                                        @endif
+                                                                            @endif
 
+                                                                        </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                            <div class="row">
-                                                                <label class="col-sm-2 col-form-label"><span class="badge badge-pill badge-info">{{ __('Validated by') }}</span>:</label>
-                                                                <div class="col-sm-7">
-                                                                    <div class="form-group">
-                                                                        @if($group->validated_by==null)
-                                                                            <span class="badge badge-pill badge-warning">No one</span>
-                                                                        @else
-                                                                            <a href="https://t.me/{{ $group->validated_by }}">{{ $group->validated_by }}</a>
-                                                                        @endif
+                                                                <div class="row">
+                                                                    <label class="col-sm-2 col-form-label"><span class="badge badge-pill badge-info">{{ __('Validated by') }}</span>:</label>
+                                                                    <div class="col-sm-7">
+                                                                        <div class="form-group">
+                                                                            @if($group->validated_by==null)
+                                                                                <span class="badge badge-pill badge-warning">No one</span>
+                                                                            @else
+                                                                                <a href="https://t.me/{{ $group->validated_by }}">{{ $group->validated_by }}</a>
+                                                                            @endif
 
+                                                                        </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                            <div class="row">
-                                                                <label class="col-sm-2 col-form-label"><span class="badge badge-pill badge-info">{{ __('Validated on') }}</span>:</label>
-                                                                <div class="col-sm-7">
-                                                                    <div class="form-group">
-                                                                        @if($group->validated_at==null)
-                                                                            <span class="badge badge-pill badge-warning">No date</span>
-                                                                        @else
-                                                                            {{ $group->validated_at }}
-                                                                        @endif
+                                                                <div class="row">
+                                                                    <label class="col-sm-2 col-form-label"><span class="badge badge-pill badge-info">{{ __('Validated on') }}</span>:</label>
+                                                                    <div class="col-sm-7">
+                                                                        <div class="form-group">
+                                                                            @if($group->validated_at==null)
+                                                                                <span class="badge badge-pill badge-warning">No date</span>
+                                                                            @else
+                                                                                {{ $group->validated_at }}
+                                                                            @endif
 
+                                                                        </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                            <div class="row">
-                                                                <label class="col-sm-2 col-form-label"><span class="badge badge-pill badge-info">{{ __('Last Edited by') }}</span>:</label>
-                                                                <div class="col-sm-7">
-                                                                    <div class="form-group">
-                                                                        @if($group->edited_by==null)
-                                                                            No one
-                                                                        @else
-                                                                            <a href="https://t.me/{{ $group->edited_by }}">{{ $group->edited_by }}</a>
-                                                                        @endif
+                                                                <div class="row">
+                                                                    <label class="col-sm-2 col-form-label"><span class="badge badge-pill badge-info">{{ __('Last Edited by') }}</span>:</label>
+                                                                    <div class="col-sm-7">
+                                                                        <div class="form-group">
+                                                                            @if($group->edited_by==null)
+                                                                                No one
+                                                                            @else
+                                                                                <a href="https://t.me/{{ $group->edited_by }}">{{ $group->edited_by }}</a>
+                                                                            @endif
 
+                                                                        </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                            <div class="row">
-                                                                <label class="col-sm-2 col-form-label"><span class="badge badge-pill badge-info">{{ __('Last edited on') }}</span>:</label>
-                                                                <div class="col-sm-7">
-                                                                    <div class="form-group">
-                                                                        @if($group->updated_at==null)
-                                                                            <span class="badge badge-pill badge-warning">No date</span>
-                                                                        @else
-                                                                            {{ $group->updated_at }}
-                                                                        @endif
+                                                                <div class="row">
+                                                                    <label class="col-sm-2 col-form-label"><span class="badge badge-pill badge-info">{{ __('Last edited on') }}</span>:</label>
+                                                                    <div class="col-sm-7">
+                                                                        <div class="form-group">
+                                                                            @if($group->updated_at==null)
+                                                                                <span class="badge badge-pill badge-warning">No date</span>
+                                                                            @else
+                                                                                {{ $group->updated_at }}
+                                                                            @endif
 
+                                                                        </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                            <div class="row">
-                                                                <label class="col-sm-2 col-form-label"><span class="badge badge-pill badge-info">{{ __('Created by') }}</span>:</label>
-                                                                <div class="col-sm-7">
-                                                                    <div class="form-group">
-                                                                        <a href="https://t.me/{{ $group->username }}">{{ $group->username }}</a>
+                                                                <div class="row">
+                                                                    <label class="col-sm-2 col-form-label"><span class="badge badge-pill badge-info">{{ __('Created by') }}</span>:</label>
+                                                                    <div class="col-sm-7">
+                                                                        <div class="form-group">
+                                                                            <a href="https://t.me/{{ $group->username }}">{{ $group->username }}</a>
 
+                                                                        </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                            <div class="row">
-                                                                <label class="col-sm-2 col-form-label"><span class="badge badge-pill badge-info">{{ __('Created on') }}</span>:</label>
-                                                                <div class="col-sm-7">
-                                                                    <div class="form-group">
-                                                                        {{ $group->created_at }}
+                                                                <div class="row">
+                                                                    <label class="col-sm-2 col-form-label"><span class="badge badge-pill badge-info">{{ __('Created on') }}</span>:</label>
+                                                                    <div class="col-sm-7">
+                                                                        <div class="form-group">
+                                                                            {{ $group->created_at }}
 
+                                                                        </div>
                                                                     </div>
                                                                 </div>
+
                                                             </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-
-                                                        </div>
-                                                    </form>
+                                                            </div>
+                                                        </form>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
+
+                                        @endforeach
 
                                         {{$gaia->links()}}
                                     @else

@@ -168,15 +168,15 @@
                             </a>
                         </li>
                     @endcan
-{{--                    @can('add_walaqs','edit_walaqs', 'delete_walaqs')--}}
+                    @can('add_kadluqs','edit_kadluqs', 'delete_kadluqs')
 
-{{--                        <li class="nav-item{{ $activePage == 'walaq-management' ? ' active' : '' }}">--}}
-{{--                            <a class="nav-link" href="{{ route('walaqs.index') }}">--}}
-{{--                                <span class="sidebar-mini"> WAM </span>--}}
-{{--                                <span class="sidebar-normal"> {{ __('Associate Questions') }} </span>--}}
-{{--                            </a>--}}
-{{--                        </li>--}}
-{{--                    @endcan--}}
+                        <li class="nav-item{{ $activePage == 'kadluq-management' ? ' active' : '' }}">
+                            <a class="nav-link" href="{{ route('kadluqs.index') }}">
+                                <span class="sidebar-mini"> KAM </span>
+                                <span class="sidebar-normal"> {{ __('Associate Questions') }} </span>
+                            </a>
+                        </li>
+                    @endcan
 
 
                 </ul>

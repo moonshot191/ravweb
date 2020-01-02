@@ -1,4 +1,6 @@
-@extends('layouts.app', ['activePage' => 'tyche-management', 'titlePage' => __('Tyche Management')])
+@extends('layouts.app', ['activePage' => 'kadluq-management', 'titlePage' => __('Kadlu Associate Questions Management')])
+
+
 
 @section('content')
 
@@ -8,8 +10,8 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header card-header-primary">
-                            <h4 class="card-title ">{{ $tyche->total() }} {{str_plural('Question',$tyche->count())}}</h4>
-                            <p class="card-category"> {{ __('Here you can manage tyche questions') }}</p>
+                            <h4 class="card-title ">{{ $kadluq->total() }} {{str_plural('Question',$kadluq->count())}}</h4>
+                            <p class="card-category"> {{ __('Here you can manage Kadlu Associate questions') }}</p>
                         </div>
                         <div class="card-body">
                             @if (session('status'))
@@ -26,12 +28,14 @@
                             @endif
                             <div class="row">
                                 <div class="col-12 text-right">
-                                    @can('add_tyches')
-                                        <button  class="btn btn-warning btn-sm validate_all" data-url="{{ route('tycheval') }}"><i class="material-icons">thumb_up</i>Validate</button>
-                                        <button  class="btn btn-danger btn-sm delete_all" data-url="{{ route('tychedel') }}"><i class="material-icons">delete</i>Delete</button>
-                                        <a href="{{ route('tyches.create') }}" class="btn btn-sm btn-info">{{ __('Upload questions') }}</a>
-                                        <a href="{{ route('texport') }}" class="btn btn-sm btn-success">{{ __('Export to CSV') }}</a>
-                                        <a href="#" onclick="window.print()" class="btn btn-sm btn-warning"><i class="material-icons">print</i> Print</a>
+
+                                    @can('add_kadluqs','delete_kadluqs')
+                                        <button  class="btn btn-warning btn-sm validate_all" data-url="{{ url('kadluqsval') }}"><i class="material-icons">thumb_up</i>Validate</button>
+                                        <button  class="btn btn-danger btn-sm delete_all" data-url="{{ url('kadluqsdel') }}"><i class="material-icons">delete</i>Delete</button>
+{{--                                        <a href="{{ route('apollexport') }}" class="btn btn-sm btn-success">{{ __('Export to Csv') }}</a>--}}
+{{--                                        <a href="#" onclick="window.print()" class="btn btn-sm btn-warning"><i class="material-icons">print</i> Print</a>--}}
+{{--                                        <a href="{{ route('kadluqsview') }}" class="btn btn-sm btn-info">{{ __('Upload bulk') }}</a>--}}
+{{--                                        <a href="{{ route('kadluqs.create') }}" class="btn btn-sm btn-primary">{{ __('Add Single') }}</a>--}}
                                     @endcan
                                 </div>
                             </div>
@@ -45,10 +49,27 @@
                                     <th width="50px"><input type="checkbox" id="master"></th>
 
                                     <th>
-                                        {{ __('Question') }}
+                                        {{ __('Main question') }}
+                                    </th>
+                                    <th>
+                                        {{ __('Associate Question') }}
                                     </th>
 
-
+                                    <th>
+                                        {{ __('Answer A') }}
+                                    </th>
+                                    <th>
+                                        {{ __('Answer B') }}
+                                    </th>
+                                    <th>
+                                        {{ __('Answer C') }}
+                                    </th>
+                                    <th>
+                                        {{ __('Answer D') }}
+                                    </th>
+                                    <th>
+                                        {{ __('Correct Answer') }}
+                                    </th>
                                     <th>
                                         {{ __('Level') }}
                                     </th>
@@ -60,34 +81,37 @@
                                         {{ __('Validated by') }}
 
                                     </th>
-                                    {{--                                    <th>--}}
-                                    {{--                                        {{ __('Validation date') }}--}}
+                                    <th>
+                                        {{ __('Validation date') }}
 
-                                    {{--                                    </th>--}}
+                                    </th>
 
                                     <th>
                                         {{ __('Last edited by') }}
                                     </th>
-                                    {{--                                    <th>--}}
-                                    {{--                                        {{ __('Date edited') }}--}}
-                                    {{--                                    </th>--}}
+                                    <th>
+                                        {{ __('Date edited') }}
+                                    </th>
                                     <th>
                                         {{ __('Created by') }}
 
                                     </th>
-                                    {{--                                    <th>--}}
-                                    {{--                                        {{ __('Creation date') }}--}}
-                                    {{--                                    </th>--}}
+                                    <th>
+                                        {{ __('Creation date') }}
+                                    </th>
+
                                     <th class="text-right">
-                                        @can('edit_tyches','delete_tyches')
+                                        @can('edit_kadluqs','delete_kadluqs')
                                             {{ __('Actions') }}
                                         @endcan
                                     </th>
 
+
+
                                     </thead>
                                     <tbody>
-                                    @if($tyche->total()>0)
-                                        @foreach($tyche  as $index =>$group)
+                                    @if($kadluq->total()>0)
+                                        @foreach($kadluq as  $index =>$group)
                                             <tr id="tr_{{$group->id}}">
                                                 <td>
                                                     <strong>{{ $index+1 }}.</strong>
@@ -95,16 +119,41 @@
                                                 <td><input type="checkbox" class="sub_chk" data-id="{{$group->id}}"></td>
 
                                                 <td>
-                                                    {{ $group->question}}
+                                                    {{ $group->kadlu->title }}
                                                 </td>
-
-
                                                 <td>
-                                                    @if($group->level==1)
+                                                    {{ $group->question }}
+                                                </td>
+                                                <td>
+                                                    {{ $group->answer_a }}
+                                                </td>
+                                                <td>
+                                                    {{ $group->answer_b }}
+                                                </td>
+                                                <td>
+                                                    {{ $group->answer_c }}
+                                                </td>
+                                                <td>
+                                                    {{ $group->answer_d }}
+                                                </td>
+                                                <td>
+                                                    @if($group->c_answer=="answer_a")
+                                                        <span class="badge badge-pill badge-danger">Answer A</span>
+                                                    @elseif($group->c_answer=="answer_b")
+                                                        <span class="badge badge-pill badge-danger">Answer B</span>
+                                                    @elseif($group->c_answer=="answer_c")
+                                                        <span class="badge badge-pill badge-danger">Answer C</span>
+                                                    @elseif($group->c_answer=="answer_d")
+                                                        <span class="badge badge-pill badge-danger">Answer D</span>
+                                                    @endif
+
+                                                </td>
+                                                <td>
+                                                    @if($group->kadlu->level==1)
                                                         <span class="badge badge-pill badge-primary">Elementary</span>
-                                                    @elseif($group->level==2)
+                                                    @elseif($group->kadlu->level==2)
                                                         <span class="badge badge-pill badge-warning">Intermediate</span>
-                                                    @elseif($group->level==3)
+                                                    @elseif($group->kadlu->level==3)
                                                         <span class="badge badge-pill badge-danger">Advanced</span>
                                                     @endif
 
@@ -127,7 +176,13 @@
                                                         <a href="https://t.me/{{ $group->validated_by }}">{{ $group->validated_by }}</a>
                                                     @endif
                                                 </td>
-
+                                                <td>
+                                                    @if($group->validated_at==null)
+                                                        <span class="badge badge-pill badge-info">No date</span>
+                                                    @else
+                                                        {{ $group->validated_at }}
+                                                    @endif
+                                                </td>
 
                                                 <td>
                                                     @if($group->edited_by==null)
@@ -136,40 +191,51 @@
                                                         <a href="https://t.me/{{ $group->edited_by }}">{{ $group->edited_by }}</a>
                                                     @endif
                                                 </td>
+                                                <td>
+                                                    @if($group->updated_at==null)
+                                                        <span class="badge badge-pill badge-info">No date</span>
+                                                    @else
+                                                        {{ $group->updated_at }}
+                                                    @endif
+                                                </td>
+                                                <td><a href="https://t.me/{{ $group->created_by }}">{{ $group->created_by  }}</a></td>
+                                                <td>
+                                                    {{ $group->created_at }}
+                                                </td>
 
-                                                <td><a href="https://t.me/{{ $group->username }}">{{ $group->username }}</a></td>
-                                                {{--                                                <td>--}}
-                                                {{--                                                    {{ $group->created_at }}--}}
-                                                {{--                                                </td>--}}
                                                 <td class="td-actions text-right">
                                                     {{--                              @include('shared._actions', ['entity' => 'users','id'=>$group->id])--}}
-
-                                                    <form action="{{ route('tyches.destroy', $group) }}" method="post">
+                                                    <form action="{{ route('kadluqs.destroy', $group) }}" method="post">
                                                         @csrf
                                                         @method('delete')
-                                                        @can('edit_tyches')
-                                                            <a rel="tooltip" class="btn btn-success btn-link" href="{{ route('tyches.edit', $group) }}" data-original-title="" title="Edit">
+
+                                                        @can('edit_kadluqs')
+                                                            <a rel="tooltip" class="btn btn-success btn-link" href="{{ route('kadluqs.edit', $group) }}" data-original-title="" title="Edit">
                                                                 <i class="material-icons">edit</i>
                                                                 <div class="ripple-container"></div>
                                                             </a>
                                                         @endcan
-                                                        @can('delete_tyches')
-                                                            <button type="button" class="btn btn-danger btn-link" data-toggle="tooltip"  onclick="confirm('{{ __("Are you sure you want to delete this question?") }}') ? this.parentElement.submit() : ''">
+                                                        @can('delete_kadluqs')
+
+                                                            <button type="button" class="btn btn-danger btn-link" data-toggle="tooltip" onclick="confirm('{{ __("Are you sure you want to delete this question?") }}') ? this.parentElement.submit() : ''">
                                                                 <i class="material-icons">close</i>
                                                                 <div class="ripple-container"></div>
                                                             </button>
                                                         @endcan
-                                                        <button type="button" class="btn btn-danger btn-link" data-toggle="modal" data-target=".bd-example-modal-lg{{$group->id}}"  >
+                                                        <button type="button" class="btn btn-danger btn-link" data-toggle="modal" data-target=".bd-example-modal-lg{{$group->id}}" >
                                                             <i class="material-icons">chat</i>
                                                             <div class="ripple-container"></div>
                                                         </button>
-                                                    </form>
 
+                                                    </form>
                                                 </td>
+
+
 
                                             </tr>
 
-                                        {{--    -    modal--}}
+
+
                                         <div class="modal fade bd-example-modal-lg{{$group->id}}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-lg">
                                                 <div class="modal-content">
@@ -183,9 +249,18 @@
                                                             </button>
                                                         </div>
                                                         <div class="modal-body">
+                                                            <div class="row">
+                                                                <label class="col-sm-2 col-form-label"><span class="badge badge-pill badge-info">{{ __('Main Question') }}</span>:</label>
+                                                                <div class="col-sm-7">
+                                                                    <div class="form-group">
+                                                                        <input class="form-control" type="text"  value="{{ old('question',$group->kadlu->title) }}"  disabled>
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
 
                                                             <div class="row">
-                                                                <label class="col-sm-2 col-form-label"><span class="badge badge-pill badge-info">{{ __('Question') }}</span>:</label>
+                                                                <label class="col-sm-2 col-form-label"><span class="badge badge-pill badge-info">{{ __('Associate Question') }}</span></label>
                                                                 <div class="col-sm-7">
                                                                     <div class="form-group">
                                                                         <input class="form-control" type="text"  value="{{ old('question',$group->question) }}"  disabled>
@@ -193,18 +268,60 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
+                                                            <div class="row">
+                                                                <label class="col-sm-2 col-form-label"><span class="badge badge-pill badge-info">{{ __('Question type') }}</span></label>
+                                                                <div class="col-sm-7">
+                                                                    <div class="form-group">
+                                                                        <input class="form-control" type="text"  value="{{ old('question',$group->kadlu->c_type) }}"  disabled>
 
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <label class="col-sm-2 col-form-label"><span class="badge badge-pill badge-info">{{ __('Answer A') }}</span></label>
+                                                                <div class="col-sm-7">
+                                                                    <div class="form-group">
+                                                                        <input class="form-control" type="text"  value="{{ old('question',$group->answer_a) }}"  disabled>
 
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <label class="col-sm-2 col-form-label"><span class="badge badge-pill badge-info">{{ __('Answer B') }}</span></label>
+                                                                <div class="col-sm-7">
+                                                                    <div class="form-group">
+                                                                        <input class="form-control" type="text"  value="{{ old('question',$group->answer_b) }}"  disabled>
 
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <label class="col-sm-2 col-form-label"><span class="badge badge-pill badge-info">{{ __('Answer C') }}</span></label>
+                                                                <div class="col-sm-7">
+                                                                    <div class="form-group">
+                                                                        <input class="form-control" type="text"  value="{{ old('question',$group->answer_c) }}"  disabled>
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <label class="col-sm-2 col-form-label"><span class="badge badge-pill badge-info">{{ __('Answer D') }}</span></label>
+                                                                <div class="col-sm-7">
+                                                                    <div class="form-group">
+                                                                        <input class="form-control" type="text"  value="{{ old('question',$group->answer_d) }}"  disabled>
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                             <div class="row">
                                                                 <label class="col-sm-2 col-form-label"><span class="badge badge-pill badge-info">{{ __('Level') }}</span>:</label>
                                                                 <div class="col-sm-7">
                                                                     <div class="form-group">
-                                                                        @if($group->level==1)
+                                                                        @if($group->kadlu->level==1)
                                                                             <span class="badge badge-pill badge-primary">Elementary</span>
-                                                                        @elseif($group->level==2)
+                                                                        @elseif($group->kadlu->level==2)
                                                                             <span class="badge badge-pill badge-warning">Intermediate</span>
-                                                                        @elseif($group->level==3)
+                                                                        @elseif($group->kadlu->level==3)
                                                                             <span class="badge badge-pill badge-danger">Advanced</span>
                                                                         @endif
                                                                     </div>
@@ -282,10 +399,11 @@
                                                                 </div>
                                                             </div>
                                                             <div class="row">
-                                                                <label class="col-sm-2 col-form-label"><span class="badge badge-pill badge-info">{{ __('Created by') }}</span>:</label>
+                                                                <label class="col-sm-2 col-form-label"><span
+                                                                        class="badge badge-pill badge-info">{{ __('Created by') }}</span>:</label>
                                                                 <div class="col-sm-7">
                                                                     <div class="form-group">
-                                                                        <a href="https://t.me/{{ $group->username }}">{{ $group->username }}</a>
+                                                                        <a href="https://t.me/{{ $group->created_by }}">{{ $group->created_by }}</a>
 
                                                                     </div>
                                                                 </div>
@@ -310,16 +428,19 @@
                                             </div>
                                         </div>
                                         @endforeach
-                                        {{$tyche->links()}}
+                                        {{$kadluq->links()}}
                                     @else
                                         <td>
-                                            <p>No tyche created at the moment</p>
+                                            <p>No kadluqs created at the moment</p>
                                         </td>
                                     @endif
 
                                     </tbody>
+
                                 </table>
                             </div>
+
+
                         </div>
                     </div>
                 </div>

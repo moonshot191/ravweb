@@ -33,6 +33,7 @@ Route::group( ['middleware' => ['auth']], function() {
     Route::resource('walas','WalaController');
     Route::resource('walaqs','WalaqController');
     Route::resource('kadlus','KadluController');
+    Route::resource('kadluqs','KadluqController');
     Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
     Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
     Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
@@ -90,9 +91,14 @@ Route::group( ['middleware' => ['auth']], function() {
     // Walaq
     Route::delete('walaqdel', 'WalaqController@deleteAll')->name('walaqdel');
     Route::put('walaqval', 'WalaqController@validateAll')->name('walaqval');
-    // Walaq
+    // kadlu
     Route::delete('kadlusdel', 'KadluController@deleteAll')->name('kadlusdel');
     Route::put('kadlusval', 'KadluController@validateAll')->name('kadlusval');
+
+    // kadluq
+    Route::delete('kadluqsdel', 'KadluqController@deleteAll')->name('kadluqsdel');
+    Route::put('kadluqsval', 'KadluqController@validateAll')->name('kadluqsval');
+
 });
 
 

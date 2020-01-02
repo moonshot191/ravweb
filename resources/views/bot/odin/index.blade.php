@@ -154,12 +154,12 @@
                                                             </a>
                                                         @endcan
                                                         @can('delete_odins')
-                                                            <button type="button" class="btn btn-danger btn-link" data-toggle="tooltip" rel="tooltip" title="Delete" onclick="confirm('{{ __("Are you sure you want to delete this question?") }}') ? this.parentElement.submit() : ''">
+                                                            <button type="button" class="btn btn-danger btn-link" data-toggle="tooltip"  onclick="confirm('{{ __("Are you sure you want to delete this question?") }}') ? this.parentElement.submit() : ''">
                                                                 <i class="material-icons">close</i>
                                                                 <div class="ripple-container"></div>
                                                             </button>
                                                         @endcan
-                                                        <button type="button" class="btn btn-danger btn-link" data-toggle="modal" data-target=".bd-example-modal-lg" rel="tooltip" title="View" >
+                                                        <button type="button" class="btn btn-danger btn-link" data-toggle="modal" data-target=".bd-example-modal-lg{{$group->id}}"  >
                                                             <i class="material-icons">chat</i>
                                                             <div class="ripple-container"></div>
                                                         </button>
@@ -168,9 +168,9 @@
                                                 </td>
 
                                             </tr>
-                                        @endforeach
+
                                         {{--    -    modal--}}
-                                        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                                        <div class="modal fade bd-example-modal-lg{{$group->id}}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-lg">
                                                 <div class="modal-content">
                                                     <form action="" method="post">
@@ -309,7 +309,7 @@
                                                 </div>
                                             </div>
                                         </div>
-
+                                        @endforeach
                                         {{$odin->links()}}
                                     @else
                                         <td>

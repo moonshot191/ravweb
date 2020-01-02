@@ -174,16 +174,14 @@
                                                         @csrf
                                                         @method('delete')
                                                         <button type="button" class="btn btn-danger btn-link"
-                                                                data-toggle="modal" data-target=".add-question"
-                                                                rel="tooltip" title="Add Question">
+                                                                data-toggle="modal" data-target=".add-question{{$data->id}}">
                                                             <i class="material-icons">note_add</i>
                                                             <div class="ripple-container"></div>
                                                         </button>
                                                         @can('view_walas')
                                                             <button type="button" class="btn btn-danger btn-link"
                                                                     data-toggle="modal"
-                                                                    data-target=".bd-example-modal-lg" rel="tooltip"
-                                                                    title="View">
+                                                                    data-target=".bd-example-modal-lg{{$data->id}}" >
                                                                 <i class="material-icons">chat</i>
                                                                 <div class="ripple-container"></div>
                                                             </button>
@@ -199,7 +197,7 @@
                                                         @can('delete_walas')
 
                                                             <button type="button" class="btn btn-danger btn-link"
-                                                                    data-toggle="tooltip" rel="tooltip" title="Delete"
+                                                                    data-toggle="tooltip"
                                                                     onclick="confirm('{{ __("Note: This will delete all associate questions under this question,proceed?") }}') ? this.parentElement.submit() : ''">
                                                                 <i class="material-icons">close</i>
                                                                 <div class="ripple-container"></div>
@@ -214,7 +212,7 @@
 
 
                                         @endforeach
-                                        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
+                                        <div class="modal fade bd-example-modal-lg{{$data->id}}" tabindex="-1" role="dialog"
                                              aria-labelledby="mySmallModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-lg">
                                                 <div class="modal-content">
@@ -384,7 +382,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="modal fade add-question" tabindex="-1" role="dialog"
+                                        <div class="modal fade add-question{{$data->id}}" tabindex="-1" role="dialog"
                                              aria-labelledby="mySmallModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-lg">
                                                 <div class="modal-content">

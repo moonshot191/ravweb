@@ -174,7 +174,7 @@
                                                         @csrf
                                                         @method('delete')
                                                         <button type="button" class="btn btn-danger btn-link"
-                                                                data-toggle="modal" data-target=".add-question"
+                                                                data-toggle="modal" data-target=".add-question{{$data->id}}"
                                                                 rel="tooltip" title="Add Question">
                                                             <i class="material-icons">note_add</i>
                                                             <div class="ripple-container"></div>
@@ -182,7 +182,7 @@
                                                         @can('view_kadlus')
                                                             <button type="button" class="btn btn-danger btn-link"
                                                                     data-toggle="modal"
-                                                                    data-target=".bd-example-modal-lg" rel="tooltip"
+                                                                    data-target=".bd-example-modal-lg{{$data->id}}" rel="tooltip"
                                                                     title="View">
                                                                 <i class="material-icons">chat</i>
                                                                 <div class="ripple-container"></div>
@@ -191,7 +191,7 @@
                                                         @can('edit_kadlus')
                                                             <a rel="tooltip" class="btn btn-success btn-link"
                                                                href="{{ route('kadlus.edit', $data) }}"
-                                                               data-original-title="" title="Edit">
+                                                               data-original-title="" >
                                                                 <i class="material-icons">edit</i>
                                                                 <div class="ripple-container"></div>
                                                             </a>
@@ -212,403 +212,403 @@
 
                                             </tr>
 
-
-                                        @endforeach
-                                        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
-                                             aria-labelledby="mySmallModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog modal-lg">
-                                                <div class="modal-content">
-                                                    <form action="" method="post">
-                                                        @csrf
-                                                        {{--                                                        @method('post')--}}
-                                                        <div class="modal-header card-header card-header-danger">
-                                                            <h5 class="modal-title" id="exampleModalLabel">View
-                                                                question</h5>
-                                                            <button type="button" class="close" data-dismiss="modal"
-                                                                    aria-label="Close">
-                                                                <span aria-hidden="true">&times;</span>
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <div class="row">
-                                                                <label class="col-sm-2 col-form-label"><span
-                                                                        class="badge badge-pill badge-info">{{ __('Title') }}</span>:</label>
-                                                                <div class="col-sm-7">
-                                                                    <div class="form-group">
-                                                                        <input class="form-control" type="text"
-                                                                               value="{{ old('title',$data->title) }}"
-                                                                               disabled>
-
-                                                                    </div>
-                                                                </div>
+                                            <div class="modal fade bd-example-modal-lg{{$data->id}}" tabindex="-1" role="dialog"
+                                                 aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog modal-lg">
+                                                    <div class="modal-content">
+                                                        <form action="" method="post">
+                                                            @csrf
+                                                            {{--                                                        @method('post')--}}
+                                                            <div class="modal-header card-header card-header-danger">
+                                                                <h5 class="modal-title" id="exampleModalLabel">View
+                                                                    question</h5>
+                                                                <button type="button" class="close" data-dismiss="modal"
+                                                                        aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
                                                             </div>
-
-                                                            <div class="row">
-                                                                <label class="col-sm-2 col-form-label"><span
-                                                                        class="badge badge-pill badge-info">{{ __('Question Type') }}</span>:</label>
-                                                                <div class="col-sm-7">
-                                                                    <div class="form-group">
-                                                                        <input class="form-control" type="text"
-                                                                               value="{{ old('question',$data->c_type) }}"
-                                                                               disabled>
-
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            @if($data->c_type=='audio')
+                                                            <div class="modal-body">
                                                                 <div class="row">
                                                                     <label class="col-sm-2 col-form-label"><span
-                                                                            class="badge badge-pill badge-info">{{ __('Preview') }}</span>:</label>
+                                                                            class="badge badge-pill badge-info">{{ __('Title') }}</span>:</label>
                                                                     <div class="col-sm-7">
                                                                         <div class="form-group">
-                                                                            <audio controls src="data:audio/wav;base64,{{$data->filename}}" id="audio"></audio>
+                                                                            <input class="form-control" type="text"
+                                                                                   value="{{ old('title',$data->title) }}"
+                                                                                   disabled>
 
                                                                         </div>
                                                                     </div>
                                                                 </div>
+
+                                                                <div class="row">
+                                                                    <label class="col-sm-2 col-form-label"><span
+                                                                            class="badge badge-pill badge-info">{{ __('Question Type') }}</span>:</label>
+                                                                    <div class="col-sm-7">
+                                                                        <div class="form-group">
+                                                                            <input class="form-control" type="text"
+                                                                                   value="{{ old('question',$data->c_type) }}"
+                                                                                   disabled>
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                @if($data->c_type=='audio')
+                                                                    <div class="row">
+                                                                        <label class="col-sm-2 col-form-label"><span
+                                                                                class="badge badge-pill badge-info">{{ __('Preview') }}</span>:</label>
+                                                                        <div class="col-sm-7">
+                                                                            <div class="form-group">
+                                                                                <audio controls src="data:audio/wav;base64,{{$data->filename}}" id="audio"></audio>
+
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
                                                                 @elseif($data->c_type='video')
+                                                                    <div class="row">
+                                                                        <label class="col-sm-2 col-form-label"><span
+                                                                                class="badge badge-pill badge-info">{{ __('Preview') }}</span>:</label>
+                                                                        <div class="col-sm-7">
+                                                                            <div class="form-group">
+                                                                                <video width="500" height="200" controls src="data:audio/wav;base64,{{$data->filename}}" id="video"></video>
+
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                @endif
                                                                 <div class="row">
                                                                     <label class="col-sm-2 col-form-label"><span
-                                                                            class="badge badge-pill badge-info">{{ __('Preview') }}</span>:</label>
+                                                                            class="badge badge-pill badge-info">{{ __('Level') }}</span>:</label>
                                                                     <div class="col-sm-7">
                                                                         <div class="form-group">
-                                                                            <video width="500" height="200" controls src="data:audio/wav;base64,{{$data->filename}}" id="video"></video>
+                                                                            @if($data->level==1)
+                                                                                <span
+                                                                                    class="badge badge-pill badge-primary">Elementary</span>
+                                                                            @elseif($data->level==2)
+                                                                                <span
+                                                                                    class="badge badge-pill badge-warning">Intermediate</span>
+                                                                            @elseif($data->level==3)
+                                                                                <span class="badge badge-pill badge-danger">Advanced</span>
+                                                                            @endif
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <label class="col-sm-2 col-form-label"><span
+                                                                            class="badge badge-pill badge-info">{{ __('Validated') }}</span>:</label>
+                                                                    <div class="col-sm-7">
+                                                                        <div class="form-group">
+                                                                            @if($data->validated==0)
+
+
+                                                                                <span
+                                                                                    class="badge badge-pill badge-warning">False</span>
+
+                                                                            @else
+
+
+                                                                                <span class="badge badge-pill badge-danger">True</span>
+
+                                                                            @endif
 
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                @endif
-                                                            <div class="row">
-                                                                <label class="col-sm-2 col-form-label"><span
-                                                                        class="badge badge-pill badge-info">{{ __('Level') }}</span>:</label>
-                                                                <div class="col-sm-7">
-                                                                    <div class="form-group">
-                                                                        @if($data->level==1)
-                                                                            <span
-                                                                                class="badge badge-pill badge-primary">Elementary</span>
-                                                                        @elseif($data->level==2)
-                                                                            <span
-                                                                                class="badge badge-pill badge-warning">Intermediate</span>
-                                                                        @elseif($data->level==3)
-                                                                            <span class="badge badge-pill badge-danger">Advanced</span>
-                                                                        @endif
+                                                                <div class="row">
+                                                                    <label class="col-sm-2 col-form-label"><span
+                                                                            class="badge badge-pill badge-info">{{ __('Validated by') }}</span>:</label>
+                                                                    <div class="col-sm-7">
+                                                                        <div class="form-group">
+                                                                            @if($data->validated_by==null)
+                                                                                <span
+                                                                                    class="badge badge-pill badge-warning">No one</span>
+                                                                            @else
+                                                                                <a href="https://t.me/{{ $data->validated_by }}">{{ $data->validated_by }}</a>
+                                                                            @endif
+
+                                                                        </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                            <div class="row">
-                                                                <label class="col-sm-2 col-form-label"><span
-                                                                        class="badge badge-pill badge-info">{{ __('Validated') }}</span>:</label>
-                                                                <div class="col-sm-7">
-                                                                    <div class="form-group">
-                                                                        @if($data->validated==0)
+                                                                <div class="row">
+                                                                    <label class="col-sm-2 col-form-label"><span
+                                                                            class="badge badge-pill badge-info">{{ __('Validated on') }}</span>:</label>
+                                                                    <div class="col-sm-7">
+                                                                        <div class="form-group">
+                                                                            @if($data->validated_at==null)
+                                                                                <span
+                                                                                    class="badge badge-pill badge-warning">No date</span>
+                                                                            @else
+                                                                                {{ $data->validated_at }}
+                                                                            @endif
 
-
-                                                                            <span
-                                                                                class="badge badge-pill badge-warning">False</span>
-
-                                                                        @else
-
-
-                                                                            <span class="badge badge-pill badge-danger">True</span>
-
-                                                                        @endif
-
+                                                                        </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                            <div class="row">
-                                                                <label class="col-sm-2 col-form-label"><span
-                                                                        class="badge badge-pill badge-info">{{ __('Validated by') }}</span>:</label>
-                                                                <div class="col-sm-7">
-                                                                    <div class="form-group">
-                                                                        @if($data->validated_by==null)
-                                                                            <span
-                                                                                class="badge badge-pill badge-warning">No one</span>
-                                                                        @else
-                                                                            <a href="https://t.me/{{ $data->validated_by }}">{{ $data->validated_by }}</a>
-                                                                        @endif
+                                                                <div class="row">
+                                                                    <label class="col-sm-2 col-form-label"><span
+                                                                            class="badge badge-pill badge-info">{{ __('Last Edited by') }}</span>:</label>
+                                                                    <div class="col-sm-7">
+                                                                        <div class="form-group">
+                                                                            @if($data->edited_by==null)
+                                                                                No one
+                                                                            @else
+                                                                                <a href="https://t.me/{{ $data->edited_by }}">{{ $data->edited_by }}</a>
+                                                                            @endif
 
+                                                                        </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                            <div class="row">
-                                                                <label class="col-sm-2 col-form-label"><span
-                                                                        class="badge badge-pill badge-info">{{ __('Validated on') }}</span>:</label>
-                                                                <div class="col-sm-7">
-                                                                    <div class="form-group">
-                                                                        @if($data->validated_at==null)
-                                                                            <span
-                                                                                class="badge badge-pill badge-warning">No date</span>
-                                                                        @else
-                                                                            {{ $data->validated_at }}
-                                                                        @endif
+                                                                <div class="row">
+                                                                    <label class="col-sm-2 col-form-label"><span
+                                                                            class="badge badge-pill badge-info">{{ __('Last edited on') }}</span>:</label>
+                                                                    <div class="col-sm-7">
+                                                                        <div class="form-group">
+                                                                            @if($data->updated_at==null)
+                                                                                <span
+                                                                                    class="badge badge-pill badge-warning">No date</span>
+                                                                            @else
+                                                                                {{ $data->updated_at }}
+                                                                            @endif
 
+                                                                        </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                            <div class="row">
-                                                                <label class="col-sm-2 col-form-label"><span
-                                                                        class="badge badge-pill badge-info">{{ __('Last Edited by') }}</span>:</label>
-                                                                <div class="col-sm-7">
-                                                                    <div class="form-group">
-                                                                        @if($data->edited_by==null)
-                                                                            No one
-                                                                        @else
-                                                                            <a href="https://t.me/{{ $data->edited_by }}">{{ $data->edited_by }}</a>
-                                                                        @endif
+                                                                <div class="row">
+                                                                    <label class="col-sm-2 col-form-label"><span
+                                                                            class="badge badge-pill badge-info">{{ __('Created by') }}</span>:</label>
+                                                                    <div class="col-sm-7">
+                                                                        <div class="form-group">
+                                                                            <a href="https://t.me/{{ $data->created_by }}">{{ $data->created_by }}</a>
 
+                                                                        </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                            <div class="row">
-                                                                <label class="col-sm-2 col-form-label"><span
-                                                                        class="badge badge-pill badge-info">{{ __('Last edited on') }}</span>:</label>
-                                                                <div class="col-sm-7">
-                                                                    <div class="form-group">
-                                                                        @if($data->updated_at==null)
-                                                                            <span
-                                                                                class="badge badge-pill badge-warning">No date</span>
-                                                                        @else
-                                                                            {{ $data->updated_at }}
-                                                                        @endif
+                                                                <div class="row">
+                                                                    <label class="col-sm-2 col-form-label"><span
+                                                                            class="badge badge-pill badge-info">{{ __('Created on') }}</span>:</label>
+                                                                    <div class="col-sm-7">
+                                                                        <div class="form-group">
+                                                                            {{ $data->created_at }}
 
+                                                                        </div>
                                                                     </div>
                                                                 </div>
+
                                                             </div>
-                                                            <div class="row">
-                                                                <label class="col-sm-2 col-form-label"><span
-                                                                        class="badge badge-pill badge-info">{{ __('Created by') }}</span>:</label>
-                                                                <div class="col-sm-7">
-                                                                    <div class="form-group">
-                                                                        <a href="https://t.me/{{ $data->created_by }}">{{ $data->created_by }}</a>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary"
+                                                                        data-dismiss="modal">Close
+                                                                </button>
 
-                                                                    </div>
-                                                                </div>
                                                             </div>
-                                                            <div class="row">
-                                                                <label class="col-sm-2 col-form-label"><span
-                                                                        class="badge badge-pill badge-info">{{ __('Created on') }}</span>:</label>
-                                                                <div class="col-sm-7">
-                                                                    <div class="form-group">
-                                                                        {{ $data->created_at }}
-
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary"
-                                                                    data-dismiss="modal">Close
-                                                            </button>
-
-                                                        </div>
-                                                    </form>
+                                                        </form>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="modal fade add-question" tabindex="-1" role="dialog"
-                                             aria-labelledby="mySmallModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog modal-lg">
-                                                <div class="modal-content">
-                                                    <form action="{{ route('walaqs.store') }}" method="post">
-                                                        @csrf
-                                                        @method('post')
-                                                        <div class="modal-header card-header card-header-success">
-                                                            <h5 class="modal-title" id="exampleModalLabel">Add associate
-                                                                question</h5>
-                                                            <button type="button" class="close" data-dismiss="modal"
-                                                                    aria-label="Close">
-                                                                <span aria-hidden="true">&times;</span>
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body">
+                                            <div class="modal fade add-question{{$data->id}}" tabindex="-1" role="dialog"
+                                                 aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog modal-lg">
+                                                    <div class="modal-content">
+                                                        <form action="{{ route('kadluqs.store') }}" method="post">
+                                                            @csrf
+                                                            @method('post')
+                                                            <div class="modal-header card-header card-header-success">
+                                                                <h5 class="modal-title" id="exampleModalLabel">Add associate
+                                                                    question</h5>
+                                                                <button type="button" class="close" data-dismiss="modal"
+                                                                        aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
 
-                                                            <div class="row">
-                                                                <label
-                                                                    class="col-sm-2 col-form-label">{{ __('Question') }}</label>
-                                                                <div class="col-sm-7">
-                                                                    <div
-                                                                        class="form-group{{ $errors->has('question') ? ' has-danger' : '' }}">
-                                                                        <input
-                                                                            class="form-control{{ $errors->has('question') ? ' is-invalid' : '' }}"
-                                                                            name="question" id="input-question"
-                                                                            type="text"
-                                                                            placeholder="{{ __('Question description') }}"
-                                                                            value="{{ old('question') }}"
-                                                                            required="true" aria-required="true">
-                                                                        @if ($errors->has('question'))
-                                                                            <span id="question-error"
-                                                                                  class="error text-danger"
-                                                                                  for="input-question">{{ $errors->first('question') }}</span>
-                                                                        @endif
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="row">
-                                                                <label
-                                                                    class="col-sm-2 col-form-label">{{ __('Answer A') }}</label>
-                                                                <div class="col-sm-7">
-                                                                    <div
-                                                                        class="form-group{{ $errors->has('answer_a') ? ' has-danger' : '' }}">
-                                                                        <input
-                                                                            class="form-control{{ $errors->has('answer_a') ? ' is-invalid' : '' }}"
-                                                                            name="answer_a" id="input-answer_a"
-                                                                            type="text"
-                                                                            placeholder="{{ __('Answer A') }}"
-                                                                            value="{{ old('answer_a') }}"
-                                                                            required="true" aria-required="true"/>
-                                                                        @if ($errors->has('answer_a'))
-                                                                            <span id="answer_a-error"
-                                                                                  class="error text-danger"
-                                                                                  for="input-answer_a">{{ $errors->first('answer_a') }}</span>
-                                                                        @endif
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="row">
-                                                                <label
-                                                                    class="col-sm-2 col-form-label">{{ __('Answer B') }}</label>
-                                                                <div class="col-sm-7">
-                                                                    <div
-                                                                        class="form-group{{ $errors->has('answer_b') ? ' has-danger' : '' }}">
-                                                                        <input
-                                                                            class="form-control{{ $errors->has('answer_b') ? ' is-invalid' : '' }}"
-                                                                            name="answer_b" id="input-answer_b"
-                                                                            type="text"
-                                                                            placeholder="{{ __('Answer B') }}"
-                                                                            value="{{ old('answer_b') }}"
-                                                                            required="true" aria-required="true"/>
-                                                                        @if ($errors->has('answer_b'))
-                                                                            <span id="answer_b-error"
-                                                                                  class="error text-danger"
-                                                                                  for="input-answer_b">{{ $errors->first('answer_b') }}</span>
-                                                                        @endif
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="row">
-                                                                <label
-                                                                    class="col-sm-2 col-form-label">{{ __('Answer C') }}</label>
-                                                                <div class="col-sm-7">
-                                                                    <div
-                                                                        class="form-group{{ $errors->has('answer_c') ? ' has-danger' : '' }}">
-                                                                        <input
-                                                                            class="form-control{{ $errors->has('answer_c') ? ' is-invalid' : '' }}"
-                                                                            name="answer_c" id="input-answer_c"
-                                                                            type="text"
-                                                                            placeholder="{{ __('Answer C') }}"
-                                                                            value="{{ old('answer_c') }}"
-                                                                            required="true" aria-required="true"/>
-                                                                        @if ($errors->has('answer_c'))
-                                                                            <span id="answer_c-error"
-                                                                                  class="error text-danger"
-                                                                                  for="input-answer_c">{{ $errors->first('answer_c') }}</span>
-                                                                        @endif
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="row">
-                                                                <label
-                                                                    class="col-sm-2 col-form-label">{{ __('Answer D') }}</label>
-                                                                <div class="col-sm-7">
-                                                                    <div
-                                                                        class="form-group{{ $errors->has('answer_d') ? ' has-danger' : '' }}">
-                                                                        <input
-                                                                            class="form-control{{ $errors->has('answer_d') ? ' is-invalid' : '' }}"
-                                                                            name="answer_d" id="input-answer_d"
-                                                                            type="text"
-                                                                            placeholder="{{ __('Answer D') }}"
-                                                                            value="{{ old('answer_d') }}"
-                                                                            required="true" aria-required="true"/>
-                                                                        @if ($errors->has('answer_d'))
-                                                                            <span id="answer_d-error"
-                                                                                  class="error text-danger"
-                                                                                  for="input-answer_d">{{ $errors->first('answer_d') }}</span>
-                                                                        @endif
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="row">
-                                                                <label
-                                                                    class="col-sm-2 col-form-label">{{ __('Correct Answer') }}</label>
-                                                                <div class="col-sm-7">
-                                                                    <div
-                                                                        class="form-group{{ $errors->has('c_answer') ? ' has-danger' : '' }}">
+                                                                <div class="row">
+                                                                    <label
+                                                                        class="col-sm-2 col-form-label">{{ __('Question') }}</label>
+                                                                    <div class="col-sm-7">
                                                                         <div
-                                                                            class="form-check form-check-radio form-check-inline">
-                                                                            <label class="form-check-label">
-                                                                                <input class="form-check-input"
-                                                                                       type="radio"
-                                                                                       name="c_answer"
-                                                                                       value="answer_a" required> A
-                                                                                <span class="circle">
+                                                                            class="form-group{{ $errors->has('question') ? ' has-danger' : '' }}">
+                                                                            <input
+                                                                                class="form-control{{ $errors->has('question') ? ' is-invalid' : '' }}"
+                                                                                name="question" id="input-question"
+                                                                                type="text"
+                                                                                placeholder="{{ __('Question description') }}"
+                                                                                value="{{ old('question') }}"
+                                                                                required="true" aria-required="true">
+                                                                            @if ($errors->has('question'))
+                                                                                <span id="question-error"
+                                                                                      class="error text-danger"
+                                                                                      for="input-question">{{ $errors->first('question') }}</span>
+                                                                            @endif
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="row">
+                                                                    <label
+                                                                        class="col-sm-2 col-form-label">{{ __('Answer A') }}</label>
+                                                                    <div class="col-sm-7">
+                                                                        <div
+                                                                            class="form-group{{ $errors->has('answer_a') ? ' has-danger' : '' }}">
+                                                                            <input
+                                                                                class="form-control{{ $errors->has('answer_a') ? ' is-invalid' : '' }}"
+                                                                                name="answer_a" id="input-answer_a"
+                                                                                type="text"
+                                                                                placeholder="{{ __('Answer A') }}"
+                                                                                value="{{ old('answer_a') }}"
+                                                                                required="true" aria-required="true"/>
+                                                                            @if ($errors->has('answer_a'))
+                                                                                <span id="answer_a-error"
+                                                                                      class="error text-danger"
+                                                                                      for="input-answer_a">{{ $errors->first('answer_a') }}</span>
+                                                                            @endif
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <label
+                                                                        class="col-sm-2 col-form-label">{{ __('Answer B') }}</label>
+                                                                    <div class="col-sm-7">
+                                                                        <div
+                                                                            class="form-group{{ $errors->has('answer_b') ? ' has-danger' : '' }}">
+                                                                            <input
+                                                                                class="form-control{{ $errors->has('answer_b') ? ' is-invalid' : '' }}"
+                                                                                name="answer_b" id="input-answer_b"
+                                                                                type="text"
+                                                                                placeholder="{{ __('Answer B') }}"
+                                                                                value="{{ old('answer_b') }}"
+                                                                                required="true" aria-required="true"/>
+                                                                            @if ($errors->has('answer_b'))
+                                                                                <span id="answer_b-error"
+                                                                                      class="error text-danger"
+                                                                                      for="input-answer_b">{{ $errors->first('answer_b') }}</span>
+                                                                            @endif
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <label
+                                                                        class="col-sm-2 col-form-label">{{ __('Answer C') }}</label>
+                                                                    <div class="col-sm-7">
+                                                                        <div
+                                                                            class="form-group{{ $errors->has('answer_c') ? ' has-danger' : '' }}">
+                                                                            <input
+                                                                                class="form-control{{ $errors->has('answer_c') ? ' is-invalid' : '' }}"
+                                                                                name="answer_c" id="input-answer_c"
+                                                                                type="text"
+                                                                                placeholder="{{ __('Answer C') }}"
+                                                                                value="{{ old('answer_c') }}"
+                                                                                required="true" aria-required="true"/>
+                                                                            @if ($errors->has('answer_c'))
+                                                                                <span id="answer_c-error"
+                                                                                      class="error text-danger"
+                                                                                      for="input-answer_c">{{ $errors->first('answer_c') }}</span>
+                                                                            @endif
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <label
+                                                                        class="col-sm-2 col-form-label">{{ __('Answer D') }}</label>
+                                                                    <div class="col-sm-7">
+                                                                        <div
+                                                                            class="form-group{{ $errors->has('answer_d') ? ' has-danger' : '' }}">
+                                                                            <input
+                                                                                class="form-control{{ $errors->has('answer_d') ? ' is-invalid' : '' }}"
+                                                                                name="answer_d" id="input-answer_d"
+                                                                                type="text"
+                                                                                placeholder="{{ __('Answer D') }}"
+                                                                                value="{{ old('answer_d') }}"
+                                                                                required="true" aria-required="true"/>
+                                                                            @if ($errors->has('answer_d'))
+                                                                                <span id="answer_d-error"
+                                                                                      class="error text-danger"
+                                                                                      for="input-answer_d">{{ $errors->first('answer_d') }}</span>
+                                                                            @endif
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <label
+                                                                        class="col-sm-2 col-form-label">{{ __('Correct Answer') }}</label>
+                                                                    <div class="col-sm-7">
+                                                                        <div
+                                                                            class="form-group{{ $errors->has('c_answer') ? ' has-danger' : '' }}">
+                                                                            <div
+                                                                                class="form-check form-check-radio form-check-inline">
+                                                                                <label class="form-check-label">
+                                                                                    <input class="form-check-input"
+                                                                                           type="radio"
+                                                                                           name="c_answer"
+                                                                                           value="answer_a" required> A
+                                                                                    <span class="circle">
                                                                             <span class="check"></span>
                                                                                 </span>
-                                                                            </label>
-                                                                        </div>
-                                                                        <div
-                                                                            class="form-check form-check-radio form-check-inline">
-                                                                            <label class="form-check-label">
-                                                                                <input class="form-check-input"
-                                                                                       type="radio"
-                                                                                       name="c_answer"
+                                                                                </label>
+                                                                            </div>
+                                                                            <div
+                                                                                class="form-check form-check-radio form-check-inline">
+                                                                                <label class="form-check-label">
+                                                                                    <input class="form-check-input"
+                                                                                           type="radio"
+                                                                                           name="c_answer"
 
-                                                                                       value="answer_b" required> B
-                                                                                <span class="circle">
+                                                                                           value="answer_b" required> B
+                                                                                    <span class="circle">
                                                                                         <span class="check"></span>
                                                                                 </span>
-                                                                            </label>
-                                                                        </div>
-                                                                        <div
-                                                                            class="form-check form-check-radio form-check-inline">
-                                                                            <label class="form-check-label">
-                                                                                <input class="form-check-input"
-                                                                                       type="radio"
-                                                                                       name="c_answer"
+                                                                                </label>
+                                                                            </div>
+                                                                            <div
+                                                                                class="form-check form-check-radio form-check-inline">
+                                                                                <label class="form-check-label">
+                                                                                    <input class="form-check-input"
+                                                                                           type="radio"
+                                                                                           name="c_answer"
 
-                                                                                       value="answer_c" required> C
-                                                                                <span class="circle">
+                                                                                           value="answer_c" required> C
+                                                                                    <span class="circle">
                                                                                         <span class="check"></span>
                                                                                 </span>
-                                                                            </label>
-                                                                        </div>
-                                                                        <div
-                                                                            class="form-check form-check-radio form-check-inline">
-                                                                            <label class="form-check-label">
-                                                                                <input class="form-check-input"
-                                                                                       type="radio"
-                                                                                       name="c_answer"
+                                                                                </label>
+                                                                            </div>
+                                                                            <div
+                                                                                class="form-check form-check-radio form-check-inline">
+                                                                                <label class="form-check-label">
+                                                                                    <input class="form-check-input"
+                                                                                           type="radio"
+                                                                                           name="c_answer"
 
-                                                                                       value="answer_d" required> D
-                                                                                <span class="circle">
+                                                                                           value="answer_d" required> D
+                                                                                    <span class="circle">
                                                                                         <span class="check"></span>
                                                                                 </span>
-                                                                            </label>
-                                                                        </div>
+                                                                                </label>
+                                                                            </div>
 
-                                                                        @if ($errors->has('c_answer'))
-                                                                            <span id="c_answer-error"
-                                                                                  class="error text-danger"
-                                                                                  for="input-c_answer">{{ $errors->first('c_answer') }}</span>
-                                                                        @endif
+                                                                            @if ($errors->has('c_answer'))
+                                                                                <span id="c_answer-error"
+                                                                                      class="error text-danger"
+                                                                                      for="input-c_answer">{{ $errors->first('c_answer') }}</span>
+                                                                            @endif
+                                                                        </div>
                                                                     </div>
                                                                 </div>
+                                                                <input type="text" name="kadlu_id" value=" {{$data->id}}" hidden>
                                                             </div>
-                                                            <input type="text" name="wala_id" value=" {{$data->id}}" hidden>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="submit" class="btn btn-primary">{{ __('Save Question') }}</button>
-                                                            <button type="button" class="btn btn-secondary"
-                                                                    data-dismiss="modal">Close
-                                                            </button>
+                                                            <div class="modal-footer">
+                                                                <button type="submit" class="btn btn-primary">{{ __('Save Question') }}</button>
+                                                                <button type="button" class="btn btn-secondary"
+                                                                        data-dismiss="modal">Close
+                                                                </button>
 
-                                                        </div>
-                                                    </form>
+                                                            </div>
+                                                        </form>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        @endforeach
+
 
                                         {{$kadlu->links()}}
                                     @else
