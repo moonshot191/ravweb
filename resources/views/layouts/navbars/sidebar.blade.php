@@ -113,6 +113,14 @@
                 </a>
             </li>
         @endcan
+        @can('add_nuwas','edit_nuwas', 'delete_nuwas')
+            <li class="nav-item{{ $activePage  == 'nuwa-management' ? ' active' : '' }}">
+                <a class="nav-link" href="{{ route('nuwas.index') }}">
+                    <i class="material-icons">hearing</i>
+                    <p>{{ __('Nuwa Management') }}</p>
+                </a>
+            </li>
+        @endcan
         @can('add_odins','edit_odins', 'delete_odins')
             <li class="nav-item{{ $activePage  == 'odin-management' ? ' active' : '' }}">
                 <a class="nav-link" href="{{ route('odins.index') }}">

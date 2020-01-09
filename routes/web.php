@@ -34,6 +34,7 @@ Route::group( ['middleware' => ['auth']], function() {
     Route::resource('walaqs','WalaqController');
     Route::resource('kadlus','KadluController');
     Route::resource('kadluqs','KadluqController');
+    Route::resource('nuwas','NuwaController');
     Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
     Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
     Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
@@ -98,6 +99,12 @@ Route::group( ['middleware' => ['auth']], function() {
     // kadluq
     Route::delete('kadluqsdel', 'KadluqController@deleteAll')->name('kadluqsdel');
     Route::put('kadluqsval', 'KadluqController@validateAll')->name('kadluqsval');
+
+//    Nuwa
+    Route::get('nuwadownload', 'NuwaController@getDownload')->name('nuwadownload');
+    Route::delete('nuwadel', 'NuwaController@deleteAll')->name('nuwadel');
+    Route::put('nuwaval', 'NuwaController@validateAll')->name('nuwaval');
+    Route::get('nuwaexport', 'NuwaController@export')->name('nuwaexport');
 
 });
 
