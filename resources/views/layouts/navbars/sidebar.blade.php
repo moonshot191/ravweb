@@ -33,18 +33,24 @@
               </a>
             </li>
               @can('add_users','edit_users', 'delete_users')
-                  <li class="nav-item{{ $activePage == 'user-management' ? ' active' : '' }}">
-              <a class="nav-link" href="{{ route('users.index') }}">
-                <span class="sidebar-mini"> UM </span>
-                <span class="sidebar-normal"> {{ __('User Management') }} </span>
-              </a>
-            </li>
-                  <li class="nav-item{{ $activePage == 'roles-management' ? ' active' : '' }}">
-                      <a class="nav-link" href="{{ route('roles.index') }}">
-                          <span class="sidebar-mini"> RM </span>
-                          <span class="sidebar-normal"> {{ __('Roles & Permissions') }} </span>
-                      </a>
-                  </li>
+                <li class="nav-item{{ $activePage == 'user-management' ? ' active' : '' }}">
+                    <a class="nav-link" href="{{ route('users.index') }}">
+                        <span class="sidebar-mini"> UM </span>
+                        <span class="sidebar-normal"> {{ __('User Management') }} </span>
+                    </a>
+                </li>
+              <li class="nav-item{{ $activePage == 'roles-management' ? ' active' : '' }}">
+                  <a class="nav-link" href="{{ route('roles.index') }}">
+                      <span class="sidebar-mini"> RM </span>
+                      <span class="sidebar-normal"> {{ __('Roles & Permissions') }} </span>
+                  </a>
+              </li>
+              <li class="nav-item{{ $activePage == 'user-invitation' ? ' active' : '' }}">
+                    <a class="nav-link" href="{{ route('invite.index') }}">
+                        <span class="sidebar-mini"> UI </span>
+                        <span class="sidebar-normal"> {{ __('User Invitation') }} </span>
+                    </a>
+                </li>
               @endcan
 
           </ul>

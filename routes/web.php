@@ -18,6 +18,10 @@ Auth::routes((['register' => false]));
 
 Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 
+Route::get('/invite_by_mail', 'MailController@invitation_mail')->name('invite_by_mail')->middleware('auth');
+
+Route::get('/register', 'HomeController@register')->name('register');
+
 Route::group( ['middleware' => ['auth']], function() {
     Route::resource('roles', 'RoleController');
     Route::resource('leizis', 'LeiziController');
@@ -25,6 +29,7 @@ Route::group( ['middleware' => ['auth']], function() {
     Route::resource('apollo', 'ApolloController');
     Route::resource('seshats', 'SeshatController');
     Route::resource('users', 'UserController');
+    Route::resource('invite', 'InviteController');
     Route::resource('zalmos', 'ZalmoController');
     Route::resource('gaias','GaiaController');
     Route::resource('africas','AfricaController');
@@ -35,6 +40,7 @@ Route::group( ['middleware' => ['auth']], function() {
     Route::resource('kadlus','KadluController');
     Route::resource('kadluqs','KadluqController');
     Route::resource('nuwas','NuwaController');
+
     Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
     Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
     Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);

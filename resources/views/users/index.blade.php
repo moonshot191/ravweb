@@ -8,7 +8,7 @@
             <div class="card">
               <div class="card-header card-header-primary">
                 <h4 class="card-title ">{{ $users->total() }} {{str_plural('User',$users->count())}}</h4>
-                <p class="card-category"> {{ __('Here you can manage users') }}</p>
+                <p class="card-category"> {{ __('Here you can manage users and invite a new teacher.') }}</p>
               </div>
               <div class="card-body">
                 @if (session('status'))
@@ -24,10 +24,15 @@
                   </div>
                 @endif
                 <div class="row">
-                  <div class="col-12 text-right">
+                  <div class="col-6 text-right">
                       @can('add_users')
                     <a href="{{ route('users.create') }}" class="btn btn-sm btn-primary">{{ __('Add user') }}</a>
                     @endcan
+                  </div>
+                  <div class="col-6 text-right">
+                     
+                    <a href="{{ route('invite.index') }}" class="btn btn-sm btn-primary">{{ __('Invite a new teacher') }}</a>
+              
                   </div>
                 </div>
                 <div class="table-responsive">
