@@ -24,12 +24,8 @@ Route::group( ['middleware' => ['auth']], function() {
     Route::resource('apollo', 'ApolloController');
     Route::resource('seshats', 'SeshatController');
     Route::resource('users', 'UserController');
-<<<<<<< Updated upstream
-    Route::resource('invite', 'InviteController');
-=======
     Route::get('invite','UserController@invite')->name('users.invite');
     Route::get('/send-email', 'UserController@send_email')->name('users.send_email');
->>>>>>> Stashed changes
     Route::resource('zalmos', 'ZalmoController');
     Route::resource('gaias','GaiaController');
     Route::resource('africas','AfricaController');

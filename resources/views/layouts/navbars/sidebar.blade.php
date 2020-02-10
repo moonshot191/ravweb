@@ -8,45 +8,6 @@
         <a href="#" class="simple-text logo-normal">
             {{ __('Learning Creators') }}
         </a>
-<<<<<<< Updated upstream
-        <div class="collapse" id="laravelExample">
-          <ul class="nav">
-            <li class="nav-item{{ $activePage  == 'profile' ? ' active' : '' }}">
-              <a class="nav-link" href="{{ route('profile.edit') }}">
-                <span class="sidebar-mini"> UP </span>
-                <span class="sidebar-normal">{{ __('User profile') }} </span>
-              </a>
-            </li>
-              @can('add_users','edit_users', 'delete_users')
-                <li class="nav-item{{ $activePage == 'user-management' ? ' active' : '' }}">
-                    <a class="nav-link" href="{{ route('users.index') }}">
-                        <span class="sidebar-mini"> UM </span>
-                        <span class="sidebar-normal"> {{ __('User Management') }} </span>
-                    </a>
-                </li>
-              <li class="nav-item{{ $activePage == 'roles-management' ? ' active' : '' }}">
-                  <a class="nav-link" href="{{ route('roles.index') }}">
-                      <span class="sidebar-mini"> RM </span>
-                      <span class="sidebar-normal"> {{ __('Roles & Permissions') }} </span>
-                  </a>
-              </li>
-              <li class="nav-item{{ $activePage == 'user-invitation' ? ' active' : '' }}">
-                    <a class="nav-link" href="{{ route('invite.index') }}">
-                        <span class="sidebar-mini"> UI </span>
-                        <span class="sidebar-normal"> {{ __('User Invitation') }} </span>
-                    </a>
-                </li>
-              @endcan
-
-          </ul>
-        </div>
-      </li>
-        @can('add_africas','edit_africas', 'delete_africas')
-            <li class="nav-item{{ $activePage  == 'africa-management' ? ' active' : '' }}">
-                <a class="nav-link" href="{{ route('africas.index') }}">
-                    <i class="material-icons">swap_horizontal_circle</i>
-                    <p>{{ __('Africa Management') }}</p>
-=======
     </div>
     <div class="sidebar-wrapper">
         <ul class="nav">
@@ -54,7 +15,6 @@
                 <a class="nav-link" href="{{ route('home') }}">
                     <i class="material-icons">dashboard</i>
                     <p>{{ __('Dashboard') }}</p>
->>>>>>> Stashed changes
                 </a>
             </li>
             <li class="nav-item {{ ($activePage == 'profile' || $activePage == 'user-management') ? ' active' : '' }}">
