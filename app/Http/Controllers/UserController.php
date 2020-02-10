@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Notifications\UserRegistered;
 use App\User;
 use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Hash;
@@ -9,6 +10,8 @@ use Illuminate\Http\Request;
 use App\Authorizable;
 use App\Permission;
 use App\Role;
+use App\Mail\MailtrapExample;
+use Illuminate\Support\Facades\Mail;
 class UserController extends Controller
 {
     use Authorizable;
@@ -126,5 +129,38 @@ class UserController extends Controller
 
         $user->syncRoles($roles);
         return $user;
+    }
+
+    public function invite(){
+        return view('users.invite');
+    }
+    public function send_email(Request $request){
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required|email',
+        ]);
+
+        $name = $request->input('name');
+        $email_address = $request->input('email');
+
+
+        Mail::to($email_address)->send(new MailtrapExample());
+
+        return 'A message has been sent to Mailtrap!';
+    }
+
+    public function register_newuser(){
+        return view('users.register');
+    }
+    public function store_newuser(Request $request){
+
+        return User::create([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'password' => Hash::make('adminadmin'),
+        ]);
+
+        return redirect()->back();
+
     }
 }

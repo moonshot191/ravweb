@@ -1,9 +1,12 @@
 <?php
 namespace App;
+use App\Notifications\UserRegistered;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Spatie\Permission\Traits\HasRoles;
 use Tymon\JWTAuth\Contracts\JWTSubject;
+use Illuminate\Support\Facades\Notification;
+
 class User extends Authenticatable implements JWTSubject
 {
     use Notifiable, HasRoles;
@@ -12,6 +15,10 @@ class User extends Authenticatable implements JWTSubject
      *
      * @var array
      */
+    public function routeNotificationForMail()
+    {
+        return $this->email_address;
+    }
     protected $fillable = [
         'name', 'email', 'password','user_id','username'
     ];
@@ -23,6 +30,19 @@ class User extends Authenticatable implements JWTSubject
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public static function boot()
+    {
+        parent::boot();
+        static ::created(function ($model){
+
+            $admin = User::where('user_id','222112121')->first();
+            Notification::send($admin, new UserRegistered($model));
+//            $user = User::first();
+//            $user->notify(new UserRegistered());
+        });
+        
+    }
 
 
     /**
@@ -45,3 +65,4 @@ class User extends Authenticatable implements JWTSubject
         return [];
     }
 }
+

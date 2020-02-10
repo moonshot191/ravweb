@@ -1,20 +1,15 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+use App\Mail\MailtrapExample;
+use Illuminate\Support\Facades\Mail;
+
 
 Route::get('/', function () {
     return view('welcome');
 });
-Auth::routes((['register' => false]));
+Route::get('register/newUser','UserController@register_newuser')->name('register.newuser');
+Route::post('store/newUser','UserController@store_newuser')->name('newuser.store');
+Auth::routes((['register' => true]));
 
 Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 
@@ -29,7 +24,12 @@ Route::group( ['middleware' => ['auth']], function() {
     Route::resource('apollo', 'ApolloController');
     Route::resource('seshats', 'SeshatController');
     Route::resource('users', 'UserController');
+<<<<<<< Updated upstream
     Route::resource('invite', 'InviteController');
+=======
+    Route::get('invite','UserController@invite')->name('users.invite');
+    Route::get('/send-email', 'UserController@send_email')->name('users.send_email');
+>>>>>>> Stashed changes
     Route::resource('zalmos', 'ZalmoController');
     Route::resource('gaias','GaiaController');
     Route::resource('africas','AfricaController');
